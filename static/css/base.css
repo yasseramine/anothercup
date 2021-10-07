@@ -27,6 +27,34 @@ body{
     border: none;
 }
 
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+    font-size: 22px;
+}
+
+.sidenav-open{
+    width:170px;
+    padding-left: 10px;
+}
+
+.close-right{
+    text-align: right;
+}
+.sidenav .closebtn {
+    margin-right: 15px;
+    font-size: 36px;
+    color:black;
+}
+
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;

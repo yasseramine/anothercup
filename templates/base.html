@@ -44,7 +44,7 @@
     <title>Custom Cupboards{% block extra_title %}{% endblock %}</title>
 </head>
 
-<body>
+<body id="main">
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-md-2 d-none d-md-flex">
             <div class="col-12 col-md-5 col-lg-4 my-auto py-1 py-md-0 text-center text-md-left pr-0 pr-lg-1">
@@ -55,7 +55,8 @@
             <div class="col-12 col-md-4 pl-0 pl-lg-1 pr-0 pr-lg-1 my-auto py-1 py-md-0">
                 <form method="GET" action="">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search our site">
                         <div class="input-group-append">
                             <button class="form-control btn btn-black border border-black rounded-0" type="submit">
                                 <span class="icon">
@@ -69,20 +70,21 @@
             <div class="col-12 col-md-3 col-lg-4 my-auto py-1 py-md-0 pl-0 pl-lg-1">
                 <ul class="list-inline list-unstyled text-center text-md-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link pl-0 pl-lg-1 pr-0 pr-lg-1" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-black nav-link pl-0 pl-lg-1 pr-0 pr-lg-1" href="#" id="user-options"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">My Account</p>
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                <a href="#" class="dropdown-item">Order History</a>
-                                <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Logout</a>
-                         
-                                <a href="#" class="dropdown-item">Register</a>
-                                <a href="#" class="dropdown-item">Login</a>
-                     
+                            <a href="#" class="dropdown-item">Order History</a>
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Logout</a>
+
+                            <a href="#" class="dropdown-item">Register</a>
+                            <a href="#" class="dropdown-item">Login</a>
+
                         </div>
                     </li>
                     <li class="list-inline-item">
@@ -106,18 +108,20 @@
         <div class="row bg-white d-flex pt-2">
             <nav class="navbar navbar-expand-md navbar-light my-auto p-0 w-100 pb-1">
                 <div class="col-6 col-sm-3 d-flex d-md-none">
-                    <button class="navbar-toggler my-auto" type="button" data-toggle="collapse" data-target="#main-nav"
-                        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler my-auto pl-0" type="button" onclick="openNav()" data-toggle="collapse"
+                        data-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <i class="fas fa-bars fa-lg text-black my-auto"></i>
                     </button>
                     {% include 'includes/mobile-top-header.html' %}
                     {% include 'includes/main-nav.html' %}
+                    {% include 'includes/mobile-side-nav.html' %}
             </nav>
         </div>
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-primary text-white">
-                <h4 class="logo-font my-0">Need it fast? Select Express Delivery at checkout!</h4>                
-            </div>            
+                <h4 class="logo-font my-0">Need it fast? Select Express Delivery at checkout!</h4>
+            </div>
         </div>
     </header>
     {% block page_header %}
@@ -131,7 +135,12 @@
         $('.toast').toast('show');
     </script>
     {% endblock %}
-
+    <script>
+        function openNav() {
+            document.getElementById("side-nav").classList.add('sidenav-open');
+            document.getElementById("main").style.marginLeft = "150px";
+        }
+    </script>
 </body>
 
 </html>
