@@ -27,10 +27,6 @@ body{
     border: none;
 }
 
-span .navbar-toggler-icon {
-    color: black !important;
-}
-
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
