@@ -1,0 +1,38 @@
+html {
+    height: 100%;
+}
+
+header{
+    background-color: rgb(18, 77, 129);
+    z-index: 100;
+}
+
+body{
+    font-family: "Slabo+27";
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.text-black {
+    color: rgb(53, 23, 9) !important;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
