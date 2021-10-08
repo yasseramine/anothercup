@@ -8,7 +8,11 @@ header{
 }
 
 .red-theme-color{
-    background-color: rgb(177, 84, 84);
+    background-color: rgb(148, 118, 118);
+}
+
+.light-theme-color{
+    background-color: rgb(173, 166, 166);
 }
 
 body{
