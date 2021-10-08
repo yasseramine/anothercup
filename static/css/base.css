@@ -7,8 +7,16 @@ header{
     z-index: 100;
 }
 
+.red-theme-color{
+    background-color: rgb(177, 84, 84);
+}
+
 body{
     font-family: "Slabo+27";
+}
+
+.logo-small{
+    font-size: 250%;
 }
 
 .logo-font {
@@ -34,7 +42,7 @@ body{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(177, 84, 84);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 10px;
@@ -42,7 +50,7 @@ body{
 }
 
 .sidenav-open{
-    width:170px;
+    width:200px;
     padding-left: 10px;
 }
 
@@ -66,5 +74,17 @@ body{
 
     .header-container {
         padding-top: 164px;
+    }
+}
+
+@media (max-width: 500px){
+    .logo-small{
+        font-size: 170%;
+    }
+}
+
+@media (max-width: 350px){
+    .logo-small{
+        font-size: 150%;
     }
 }
