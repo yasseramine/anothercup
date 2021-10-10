@@ -1,0 +1,106 @@
+[
+    {
+        "pk": 1,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "pin01",
+            "type": "cupboard",
+            "name": "Antique Style Pine Cupboard with Drawer",
+            "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
+            "design_surcharge": 13.99,
+            "example_price": 50.00,
+            "main_image": "pin01-01.png"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "oak01",
+            "type": "cupboard",
+            "name": "Antique Style Oak Cupboard",
+            "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
+            "design_surcharge": 13.99,
+            "example_price": 100.00,
+            "main_image": "oak01-01.png"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "mel01",
+            "type": "cupboard",
+            "name": "Melamine MDF Cupboard",
+            "description": "MDF cupboard with contemporary handles.",
+            "design_surcharge": 10.99,
+            "example_price": 60.00,
+            "main_image": "mel01-01.png"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "pin02",
+            "type": "cupboard",
+            "name": "Classic Pine Cupboard",
+            "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
+            "design_surcharge": 13.99,
+            "example_price": 10.00,
+            "main_image": "pin02-01.png"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "bvn01",
+            "type": "cupboard",
+            "name": "Contemporary Beech Veneer Cupboard",
+            "description": "Nice cupboard.",
+            "design_surcharge": 1.99,
+            "example_price": 10.00,
+            "main_image": "bvn01-01.png"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "wvn01",
+            "type": "cupboard",
+            "name": "Contemporary Walnut Veneer Cupboard",
+            "description": "Another lovely cupboard.",
+            "design_surcharge": 13.99,
+            "example_price": 10.00,
+            "main_image": "wvn01-01.png"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "pin03",
+            "type": "shelves",
+            "name": "Solid Pine Shelving Unit",
+            "description": "Pine Shelves.",
+            "design_surcharge": 3.99,
+            "example_price": 15.00,
+            "main_image": "pin03-01.png"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "cupboards.design",
+        "fields": {
+            "design_id": "oak02",
+            "type": "shelves",
+            "name": "Solid Oak Shelving Unit",
+            "description": "Solid oak shelves",
+            "design_surcharge": 13.99,
+            "example_price": 101.00,
+            "main_image": "oak02-01.png"
+        }
+    }
+]
