@@ -93,16 +93,6 @@ body{
     }
 }
 
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-}
-
 @media (max-width: 500px){
     .logo-small{
         font-size: 170%;
@@ -112,6 +102,16 @@ body{
 @media (max-width: 350px){
     .logo-small{
         font-size: 150%;
+    }
+}
+
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
     }
 }
 
