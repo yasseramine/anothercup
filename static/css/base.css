@@ -75,6 +75,16 @@ body{
     color:black;
 }
 
+.header-container{
+    padding-top: 125px;
+}
+
+@media (min-width: 768px) {
+    .header-container {
+        padding-top: 150px;
+    }
+}
+
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -82,10 +92,6 @@ body{
         right: 0;
         left: 0;
         z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 164px;
     }
 }
 
