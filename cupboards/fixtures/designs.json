@@ -3,7 +3,7 @@
         "pk": 1,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "pin01",
+            "design_id": "cpin01",
             "type": "cupboard",
             "material": 1,
             "name": "Antique Style Pine Cupboard with Drawer",
@@ -17,7 +17,7 @@
         "pk": 2,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "oak01",
+            "design_id": "coak01",
             "type": "cupboard",
             "material": 2,
             "name": "Antique Style Oak Cupboard",
@@ -31,7 +31,7 @@
         "pk": 3,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "mel01",
+            "design_id": "cmel01",
             "type": "cupboard",
             "material": 3,
             "name": "Melamine MDF Cupboard",
@@ -45,7 +45,7 @@
         "pk": 4,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "pin02",
+            "design_id": "cpin02",
             "type": "cupboard",
             "material": 1,
             "name": "Classic Pine Cupboard",
@@ -59,7 +59,7 @@
         "pk": 5,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "bvn01",
+            "design_id": "cbvn01",
             "type": "cupboard",
             "material": 4,
             "name": "Contemporary Beech Veneer Cupboard",
@@ -73,7 +73,7 @@
         "pk": 6,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "wvn01",
+            "design_id": "cwvn01",
             "type": "cupboard",
             "material": 5,
             "name": "Contemporary Walnut Veneer Cupboard",
@@ -87,7 +87,7 @@
         "pk": 7,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "pin03",
+            "design_id": "spin03",
             "type": "shelves",
             "material": 1,
             "name": "Solid Pine Shelving Unit",
@@ -101,8 +101,9 @@
         "pk": 6,
         "model": "cupboards.design",
         "fields": {
-            "design_id": "oak02",
+            "design_id": "soak02",
             "type": "shelves",
+            "material": 6,
             "name": "Solid Oak Shelving Unit",
             "description": "Solid oak shelves",
             "design_surcharge": 13.99,
