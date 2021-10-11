@@ -84,7 +84,6 @@
 
                             <a href="#" class="dropdown-item">Register</a>
                             <a href="#" class="dropdown-item">Login</a>
-
                         </div>
                     </li>
                     <li class="list-inline-item">
@@ -105,9 +104,9 @@
                 </ul>
             </div>
         </div>
-        <div class="row light-theme-color d-flex pt-3 pb-1 pb-md-0">
+        <div id="topnav" class="row light-theme-color d-flex pt-3 pb-1 pb-md-0">
             <nav class="navbar navbar-expand-md navbar-light my-auto p-0 w-100 pb-1 pb-md-0">
-                <div class="col-6 d-flex d-md-none">
+                <div class="col-6 d-flex  d-md-none">
                     <button class="navbar-toggler my-auto pl-0" type="button" onclick="openNav()" data-toggle="collapse"
                         data-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -116,6 +115,7 @@
                     {% include 'includes/mobile-top-header.html' %}
                     {% include 'includes/main-nav.html' %}
                     {% include 'includes/mobile-side-nav.html' %}
+                </div>
             </nav>
         </div>
         

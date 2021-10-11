@@ -30,3 +30,11 @@ class Design(models.Model):
 
     def __str__(self):
         return self.name 
+
+
+class GalleryImage(models.Model):
+    design = models.ForeignKey(Design, on_delete=models.CASCADE)
+    file_name = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.file_name.path

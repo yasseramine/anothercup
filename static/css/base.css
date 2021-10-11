@@ -66,9 +66,17 @@ body{
     padding-left: 10px;
 }
 
+@media (min-width: 768px){
+    .sidenav-open{
+        width:0;
+        padding-left: 0;
+    }
+}
+
 .close-right{
     text-align: right;
 }
+
 .sidenav .closebtn {
     margin-right: 15px;
     font-size: 36px;
@@ -106,3 +114,4 @@ body{
         font-size: 150%;
     }
 }
+
