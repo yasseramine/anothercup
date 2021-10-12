@@ -1,17 +1,17 @@
 from django.shortcuts import render
-from .models import Design
+from .models import Cupboard
 
 # Create your views here.
 
 
-def all_designs(request):
-    """ A view to show all designs, including sorting and search queries """
+def all_cupboards(request):
+    """ A view to show all cupboards, including sorting and search queries """
 
-    designs = Design.objects.all()
+    cupboards = Cupboard.objects.all()
 
     context = {
-        'designs': designs,
+        'cupboards': cupboards,
     }
 
-    return render(request, 'designs/designs.html', context) 
-# Create your views here.
+    return render(request, 'cupboards/cupboards.html', context) 
+

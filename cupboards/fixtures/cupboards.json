@@ -1,7 +1,7 @@
 [
     {
         "pk": 1,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cpin01",
             "type": "cupboard",
@@ -15,7 +15,7 @@
     },
     {
         "pk": 2,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "coak01",
             "type": "cupboard",
@@ -28,7 +28,7 @@
     },
     {
         "pk": 3,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cmel01",
             "type": "cupboard",
@@ -42,7 +42,7 @@
     },
     {
         "pk": 4,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cpin02",
             "type": "cupboard",
@@ -56,7 +56,7 @@
     },
     {
         "pk": 5,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cbvn01",
             "type": "cupboard",
@@ -70,7 +70,7 @@
     },
     {
         "pk": 6,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cwvn01",
             "type": "cupboard",
@@ -84,7 +84,7 @@
     },
     {
         "pk": 7,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "spin03",
             "type": "shelves",
@@ -98,7 +98,7 @@
     },
     {
         "pk": 6,
-        "model": "cupboards.design",
+        "model": "cupboards.cupboard",
         "fields": {
             "design_id": "soak02",
             "type": "shelves",

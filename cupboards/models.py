@@ -16,7 +16,7 @@ class Material(models.Model):
         return self.display_name
 
 
-class Design(models.Model):
+class Cupboard(models.Model):
 
     design_id = models.CharField(max_length=5)
     type = models.CharField(max_length=8)
@@ -33,7 +33,7 @@ class Design(models.Model):
 
 
 class GalleryImage(models.Model):
-    design = models.ForeignKey(Design, on_delete=models.CASCADE)
+    cupboard = models.ForeignKey(Cupboard, on_delete=models.CASCADE)
     file_name = models.ImageField(null=True, blank=True)
 
     def __str__(self):

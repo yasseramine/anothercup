@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Material, Design, GalleryImage
+from .models import Material, Cupboard, GalleryImage
 
 # Register your models here.
 
@@ -14,11 +14,12 @@ class MaterialAdmin(admin.ModelAdmin):
     ordering = ('display_name',)
 
 
-class DesignAdmin(admin.ModelAdmin):
+class CupboardAdmin(admin.ModelAdmin):
     list_display = (
         'design_id',
         'name',
         'type',
+        'material',
         'design_surcharge',
         'example_price',
         'main_image'
@@ -29,13 +30,13 @@ class DesignAdmin(admin.ModelAdmin):
 
 class GalleryImageAdmin(admin.ModelAdmin):
     list_display = (
-        'design',
+        'cupboard',
         'file_name'
     )
 
-    ordering = ('design',)
+    ordering = ('cupboard',)
 
 
 admin.site.register(Material, MaterialAdmin)
-admin.site.register(Design, DesignAdmin)
+admin.site.register(Cupboard, CupboardAdmin)
 admin.site.register(GalleryImage, GalleryImageAdmin)
