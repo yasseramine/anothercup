@@ -15,24 +15,24 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        {%for design in designs%}
-        <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 offset-md-1 col-lg-2 offset-lg-2 text-center text-md-left">
-            <div class="card h-100 border-0 m-0">
-            {% if design.main_image %}
+        {%for cupboard in cupboards%}
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 offset-md-1 text-center text-md-left">
+            <div class="image-wrapper col-8 offset-2 col-sm-6 offset-sm-3 col-md-12 offset-md-0">
+            {% if cupboard.main_image %}
             <a href="">
-                <img class="card-img-top img-fluid" src="{{ design.main_image }}" alt="{{ design.name }}">
+                <img class="card-img-top img-fluid  w-30 mx-auto" src="{{ cupboard.main_image.url }}" alt="{{ cupboard.name }}">
             </a>
             {% else %}
             <a href="">
-                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ design.name }}">
+                <img class="card-img-top img-fluid" src="../media/noimage.png" alt="{{ cupboard.name }}">
             </a>
             {% endif %}
             </div>
         </div>
-            <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-6 p-0 text-center text-md-left">
+            <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-6 p-0 pl-md-4 text-center text-md-left">
                 <div class="card h-100 border-0">
-                    <h5 class="card-header border-0">{{design.name}}</h5>
-                    <p>{{design.description}}</p>
+                    <h5 class="card-header border-0">{{cupboard.name}}</h5>
+                    <p>{{cupboard.description}}</p>
                 </div>
             </div>
             <div class="col-10 offset-1 col-lg-8 offset-2"><hr class="text-black"></div>
