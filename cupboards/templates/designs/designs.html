@@ -4,7 +4,11 @@
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
-        <div class="col"></div>
+        <div class="col">
+            <h4 class="text-center">CHOOSE FROM ONE OF OUR STUNNING</h4>
+            <h3 class="text-center">DESIGNS</h3>
+            <h5 class="text-center"><button class="btn btn-link text-black">Cupboards</button> | <button class="btn btn-link text-black">Shelves</button></h5>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -12,9 +16,28 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col">
-            {{designs}}
+        {%for design in designs%}
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 offset-md-1 text-center text-md-left">
+            <div class="card h-100 border-0 m-0">
+            {% if design.image %}
+            <a href="">
+                <img class="card-img-top img-fluid" src="{{ design.main_image.url }}" alt="{{ design.name }}">
+            </a>
+            {% else %}
+            <a href="">
+                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ design.name }}">
+            </a>
+            {% endif %}
+            </div>
         </div>
+            <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-6 p-0 text-center text-md-left">
+                <div class="card h-100 border-0">
+                    <h5 class="card-header border-0">{{design.name}}</h5>
+                </div>
+            </div>
+            <div class="col-10 offset-1"><hr class="text-black"></div>
+
+        {% endfor %}
     </div>
 </div>
 {% endblock%}

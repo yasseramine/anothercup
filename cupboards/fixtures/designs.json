@@ -23,8 +23,7 @@
             "name": "Antique Style Oak Cupboard",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
             "design_surcharge": 13.99,
-            "example_price": 100.00,
-            "main_image": "oak01-01.png"
+            "example_price": 100.00
         }
     },
     {
@@ -38,7 +37,7 @@
             "description": "MDF cupboard with contemporary handles.",
             "design_surcharge": 10.99,
             "example_price": 60.00,
-            "main_image": "mel01-01.png"
+            "main_image": ""
         }
     },
     {
@@ -52,7 +51,7 @@
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
             "design_surcharge": 13.99,
             "example_price": 10.00,
-            "main_image": "pin02-01.png"
+            "main_image": ""
         }
     },
     {
@@ -66,7 +65,7 @@
             "description": "Nice cupboard.",
             "design_surcharge": 1.99,
             "example_price": 10.00,
-            "main_image": "bvn01-01.png"
+            "main_image": ""
         }
     },
     {
@@ -80,7 +79,7 @@
             "description": "Another lovely cupboard.",
             "design_surcharge": 13.99,
             "example_price": 10.00,
-            "main_image": "wvn01-01.png"
+            "main_image": ""
         }
     },
     {
@@ -94,7 +93,7 @@
             "description": "Pine Shelves.",
             "design_surcharge": 3.99,
             "example_price": 15.00,
-            "main_image": "pin03-01.png"
+            "main_image": ""
         }
     },
     {
@@ -108,7 +107,7 @@
             "description": "Solid oak shelves",
             "design_surcharge": 13.99,
             "example_price": 101.00,
-            "main_image": "oak02-01.png"
+            "main_image": ""
         }
     }
 ]

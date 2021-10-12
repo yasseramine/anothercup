@@ -27,6 +27,13 @@ body{
     text-transform: uppercase;
 }
 
+.main-nav-link{
+    font-size: 110%;
+}
+
+.main-nav-link:hover{
+   background-color: rgb(202, 200, 200) !important;
+}
 .text-black {
     color: rgb(53, 23, 9) !important;
 }
@@ -39,9 +46,8 @@ body{
     background-color: rgb(202, 200, 200);
 }
 
-.dropdown-bg{
-    width:100vw !important;
-}
+/* .dropdown-bg{
+} */
 
 .navbar-light .navbar-toggler {
     border: none;
@@ -105,7 +111,7 @@ body{
     }
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -113,5 +119,9 @@ body{
         left: 0;
         z-index: 1030;
     }
-}
+} */
 
+/* Designs page */
+.card-header{
+    background-color:white;
+}
