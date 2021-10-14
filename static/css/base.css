@@ -28,7 +28,7 @@ body{
 }
 
 .main-nav-link{
-    font-size: 110%;
+    font-size: 115%;
 }
 
 .main-nav-link:hover{
@@ -89,7 +89,7 @@ body{
     color:black;
 }
 
-.header-container{
+/* .header-container{
     padding-top: 125px;
 }
 
@@ -97,7 +97,7 @@ body{
     .header-container {
         padding-top: 155px;
     }
-}
+} */
 
 @media (max-width: 500px){
     .logo-small{
@@ -122,6 +122,39 @@ body{
 } */
 
 /* Designs page */
+.doors-banner{
+    background: url('/media/wood-bg.png') no-repeat center center fixed;
+	background-size: cover;
+ 
+    z-index: 1;
+}
+
+.banner-words{
+    z-index: 100;
+}
 .card-header{
     background-color:white;
+}
+
+.details-btn{
+    width:11rem;
+    border-radius: 0;
+}
+
+.details-btn:hover{
+    color:white;
+}
+.example{
+    line-height: normal;
+}
+
+@media(max-width:568px){
+    .banner-words{
+        font-size: 110%;
+    }
+}
+@media(max-width:756px){
+    .banner-words{
+        font-size: 150%;
+    }
 }

@@ -20,7 +20,7 @@ class Cupboard(models.Model):
 
     design_id = models.CharField(max_length=5)
     type = models.CharField(max_length=8)
-    material = models.ForeignKey('Material', null=True, blank=True,
+    material = models.ForeignKey('Material', null=True, blank=False,
                                  on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     description = models.TextField()
