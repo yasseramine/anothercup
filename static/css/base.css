@@ -8,11 +8,11 @@ header{
 }
 
 .red-theme-color{
-    background-color: rgb(168, 153, 153);
+    background-color: rgb(168, 153, 153) !important;
 }
 
 .light-theme-color{
-    background-color: rgb(202, 200, 200);
+    background-color: rgb(202, 200, 200) !important;
 }
 
 body{
@@ -157,4 +157,9 @@ body{
     .banner-words{
         font-size: 150%;
     }
+}
+
+/* Cupboard details page */
+.card{
+    border-radius: 0;
 }
