@@ -9,28 +9,88 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-6 text-center text-md-left">
-            <div class="image-wrapper col-8 offset-2 col-sm-6 offset-sm-3 col-md-12 offset-md-0 mt-5">
-            {% if cupboard.main_image %}
-            
-                <img class="card-img-top img-fluid  w-30 mx-auto" src="{{ cupboard.main_image.url }}" alt="{{ cupboard.name }}">
-            
-            {% else %}
-            
+        <div class="col-12 col-md-6 text-center text-md-left">
+            <div class="image-wrapper col-12 col-sm-10 offset-sm-1 col-md-12 offset-md-0 mt-3 mt-md-5">
+                {% if cupboard.main_image %}
+
+                <img class="card-img-top img-fluid mx-auto" src="{{ cupboard.main_image.url }}"
+                    alt="{{ cupboard.name }}">
+
+                {% else %}
+
                 <img class="card-img-top img-fluid" src="../media/noimage.png" alt="{{ cupboard.name }}">
-            
-            {% endif %}
+
+                {% endif %}
             </div>
         </div>
-            <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-6 p-0 pl-md-2 text-center text-md-left">
-                <div class="card border-0 m-5 p-md-3 light-theme-color ml-md-0 mr-md-4">
-                    <h3 class="card-header border-0 light-theme-color mt-3 mt-md-0 mt-lg-2">{{cupboard.name}}</h3>
-                    <p class="pl-md-3 mb-2 ml-4 mr-4 m-md-0">{{cupboard.description}}</p>
-                    <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.example_price}}</h6>
-                    <p class="pl-md-3 mb-1 example">for cupboard of dimensions:</p>
-                    <p class="pl-md-3 mb-1">H: 150cm / W: 100cm / D: 50cm</p>
-                </div>
+        <div class="col-12 col-md-6 p-0 pl-md-2 text-center text-md-left">
+            <div class="card border-0 m-3 mt-md-5 p-md-3 pb-3 light-theme-color ml-md-0 mr-md-4">
+                <h3 class="card-header border-0 light-theme-color mt-3 mt-md-0 mt-lg-1">{{cupboard.name}}</h3>
+                <p class="pl-md-3 mb-2 ml-4 mr-4 m-md-0">{{cupboard.description}}</p>
+                <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.example_price}}</h6>
+                <p class="pl-md-3 mb-1 example">for cupboard of dimensions:</p>
+                <p class="pl-md-3 mb-1">H: 150cm / W: 100cm / D: 50cm</p>
             </div>
+            <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
+                <form class="" action="" method="POST">
+                
+
+                
+                    <div class="container-fluid">
+                        <div class="row pr-5 pr-lg-0">
+                            <div class="col-12 text-center col-lg-6 text-lg-left">
+                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-0">Enter Your Dimensions:</h5>
+                                <div class="row">
+                                    <div class="col-6 pl-0 pr-0 text-right">
+                                        <div class="">Height:</div>
+                                    </div>
+                                    <div class="col-6 text-left">
+
+                                        <input id="height" class="dim-input" type="text" name="height" minlength="1"
+                                            maxlength="5"> cm
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 pl-0 pr-0 text-right">
+                                        <div class="">Width:</div>
+                                    </div>
+                                    <div class="col-6 text-left">
+
+                                        <input id="width" class="dim-input" type="text" name="width" minlength="1"
+                                            maxlength="5"> cm</div>
+                                </div>
+                                <div class="row pb-1">
+                                    <div class="col-6 pl-0 pr-0 text-right">
+                                        <div class="">Depth:</div>
+                                    </div>
+                                    <div class="col-6 text-left">
+                                        <input id="depth" class="dim-input " type="text" name="depth" minlength="1"
+                                            maxlength="5"> cm
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center col-lg-6 text-lg-left">
+                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-0 ">Select number of shelves:</h5>
+                                <div class="select-wrapper pl-5 ml-2">
+                                <select name="shelves" id="shelves">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 </div>
 {% endblock%}

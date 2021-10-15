@@ -163,3 +163,13 @@ body{
 .card{
     border-radius: 0;
 }
+.dim-input{
+    width:3.5rem;
+}
+
+#shelves{
+    height:30px;
+    border-radius:0;
+    width:2.5rem;
+}
+
