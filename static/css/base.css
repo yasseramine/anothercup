@@ -7,6 +7,11 @@ header{
     z-index: 100;
 }
 
+.text-black{
+    color:black !important;
+    border-color: black !important;
+}
+
 .red-theme-color{
     background-color: rgb(168, 153, 153) !important;
 }
@@ -171,5 +176,19 @@ body{
     height:30px;
     border-radius:0;
     width:2.5rem;
+}
+
+button{
+    border-radius: 0 !important;
+}
+button:hover{
+    background-color:white !important
+}
+
+.number-input{
+    height:30px;
+    border-radius:0;
+    width:2.5rem;
+    border-width: 0.5px;
 }
 

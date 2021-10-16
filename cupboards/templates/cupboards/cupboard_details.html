@@ -33,62 +33,97 @@
             </div>
             <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
                 <form class="" action="" method="POST">
-                
-
-                
                     <div class="container-fluid">
-                        <div class="row pr-5 pr-lg-0">
+                        <div class="row pr-5 pr-lg-0 pt-1">
                             <div class="col-12 text-center col-lg-6 text-lg-left">
-                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-0">Enter Your Dimensions:</h5>
+                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-1 pt-0 pt-2">Enter Your
+                                    Dimensions:</h5>
                                 <div class="row">
-                                    <div class="col-6 pl-0 pr-0 text-right">
-                                        <div class="">Height:</div>
+                                    <div class="col-6 pl-0 pr-3 text-right">
+                                        <label for="height" class="">Height:</label>
                                     </div>
-                                    <div class="col-6 text-left">
-
+                                    <div class="col-6 text-left pl-0">
                                         <input id="height" class="dim-input" type="text" name="height" minlength="1"
                                             maxlength="5"> cm
-
                                     </div>
-
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 pl-0 pr-0 text-right">
-                                        <div class="">Width:</div>
+                                    <div class="col-6 pl-0 pr-3 text-right">
+                                        <label for="width" class="">Width:</label>
                                     </div>
-                                    <div class="col-6 text-left">
-
+                                    <div class="col-6 text-left pl-0">
                                         <input id="width" class="dim-input" type="text" name="width" minlength="1"
                                             maxlength="5"> cm</div>
                                 </div>
                                 <div class="row pb-1">
-                                    <div class="col-6 pl-0 pr-0 text-right">
-                                        <div class="">Depth:</div>
+                                    <div class="col-6 pl-0 pr-3 text-right">
+                                        <label for="depth" class="">Depth:</label>
                                     </div>
-                                    <div class="col-6 text-left">
+                                    <div class="col-6 text-left pl-0">
                                         <input id="depth" class="dim-input " type="text" name="depth" minlength="1"
                                             maxlength="5"> cm
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 text-center col-lg-6 text-lg-left">
-                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-0 ">Select number of shelves:</h5>
+                                <h5 class="card-header border-0 red-theme-color mt-1 pt-0 pl-lg-0 pt-lg-2">Select number
+                                    of shelves:</h5>
                                 <div class="select-wrapper pl-5 ml-2">
-                                <select name="shelves" id="shelves">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
+                                    <select name="shelves" id="shelves">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
                             </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center pt-3">
+                                <button type="submit" class="btn btn-lg light-theme-color">Calculate Price</button>
                             </div>
                         </div>
                     </div>
                 </form>
 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12  p-0  text-center text-md-left">
+            <div class="card border-2 text-black m-3 mt-lg-5 pb-3 mx-lg-5 pl-lg-5 white">
+                <strong>
+                    <h5 class="ml-md-5 mb-0 pt-2">Cost for shelves H: [h] / W: [w] / D: [d] = </h5>
+                </strong>
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-12 pt-3">
+                            <h3 class="text-center">£ [COST]</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 text-right pt-3 pr-3">
+                            <label for="quantity" class="">Quantity:</label>
+                            <input id="quantity" class="number-input mr-4" type="text" name="quantity" value="1"
+                                minlength="1" maxlength="5">
+                            </div>
+                                <div class="col-5 text-left pt-2 pl-3">
+                                    <button type="submit" class="btn btn-lg red-theme-color mr-5">Add to Cart</button>
+                                    <a href="{% url 'cupboards' %}" class="text-black text-right  d-none d-md-inline-block">Back to designs</a>
+                                </div>
+                    </div>
+                    <div class="row d-md-none">
+                        <div class="col-12 pt-2 text-center">
+                            <a href="{% url 'cupboards' %}" class="text-black">Back to designs</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
