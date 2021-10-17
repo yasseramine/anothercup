@@ -6,7 +6,7 @@ from .models import Material, Cupboard, GalleryImage
 class MaterialAdmin(admin.ModelAdmin):
     list_display = (
         'display_name',
-        'material_id',
+        'material_code',
         'name',
         'price_per_m2',
     )

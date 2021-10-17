@@ -32,21 +32,19 @@
                 <p class="pl-md-3 mb-1">H: 150cm / W: 100cm / D: 50cm</p>
             </div>
             <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
-                
-                    <!-- insert action as url for calculated_cupboard -->
-                    <form class="" action="{% url 'calculated_cupboard' cupboard.id  cupboard.material.id%}" method="POST">
-                        {% csrf_token %}
+                <form class="" action="{% url 'calculated_cupboard' cupboard.id  cupboard.material.id%}" method="POST">
+                    {% csrf_token %}
                     <div class="container-fluid">
                         <div class="row pr-5 pr-lg-0 pt-1">
                             <div class="col-12 text-center col-lg-6 text-lg-left">
-                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-1 pt-0 pt-2">Enter Your
+                                <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-1 pt-0 pt-2">Update Your
                                     Dimensions:</h5>
                                 <div class="row">
                                     <div class="col-6 pl-0 pr-3 text-right">
                                         <label for="height" class="">Height:</label>
                                     </div>
                                     <div class="col-6 text-left pl-0">
-                                        <input id="height" class="dim-input" type="text" name="height" placeholder="000.0" minlength="1"
+                                        <input id="height" class="dim-input" type="text" name="height" value="{{H}}" minlength="1"
                                             maxlength="5"> cm
                                     </div>
                                 </div>
@@ -55,7 +53,7 @@
                                         <label for="width" class="">Width:</label>
                                     </div>
                                     <div class="col-6 text-left pl-0">
-                                        <input id="width" class="dim-input" type="text" name="width" placeholder="000.0" minlength="1"
+                                        <input id="width" class="dim-input" type="text" name="width" value="{{W}}" minlength="1"
                                             maxlength="5"> cm</div>
                                 </div>
                                 <div class="row pb-1">
@@ -63,7 +61,7 @@
                                         <label for="depth" class="">Depth:</label>
                                     </div>
                                     <div class="col-6 text-left pl-0">
-                                        <input id="depth" class="dim-input " type="text" name="depth" placeholder="000.0" minlength="1"
+                                        <input id="depth" class="dim-input " type="text" name="depth" value="{{D}}" minlength="1"
                                             maxlength="5"> cm
                                     </div>
                                 </div>
@@ -73,7 +71,7 @@
                                     of shelves:</h5>
                                 <div class="select-wrapper pl-5 ml-2">
                                     <select name="shelves" id="shelves">
-                                        <option value="3">3</option>
+                                        <option value="{{S}}">{{S}}</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -87,7 +85,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center pt-3">
-                                <button type="submit" class="btn btn-lg light-theme-color">Calculate Price</button>
+                                <button type="submit" class="btn btn-lg light-theme-color">Recalculate</button>
                             </div>
                         </div>
                     </div>
@@ -98,6 +96,36 @@
                 <a href="{% url 'cupboards' %}" class="text-black"><h5>Back to designs</h5></a>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-12  p-0  text-center text-md-left">
+            <div class="card border-2 border-black
+                m-3 mt-lg-5 pb-3 mx-lg-5 white">
+                <strong>
+                    <h5 class="ml-md-5 mb-0 pt-2">Cost for {{cupboard.type}} with {{S}} shelves of <br class="m-0 p-0 pt-2 d-md-none"> 
+                        H: {{H}} cm / W: {{W}} cm / D: {{D}} cm = </h5>
+                </strong>
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row text-center ">
+                        <div class="col-12 pt-3">
+                            <h3 class="text-center" name="cost">£ {{cost}}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-left ml-5 pt-1">
+                            <label for="quantity" class="">Quantity:</label>
+                            <input id="quantity" class="number-input" type="text" name="quantity" value="1"
+                                minlength="1" maxlength="5">
+                            </div>
+                                <div class="col-12 text-center pt-2 ">
+                                    <button type="submit" class="btn btn-lg red-theme-color">Add to Cart</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        
     </div>
 </div>
 {% endblock%}

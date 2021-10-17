@@ -4,7 +4,7 @@ from django.db import models
 
 class Material(models.Model):
 
-    material_id = models.CharField(max_length=3)
+    material_code = models.CharField(max_length=3)
     name = models.CharField(max_length=254)
     display_name = models.CharField(max_length=254, null=True, blank=True)
     price_per_m2 = models.DecimalField(max_digits=6, decimal_places=2)

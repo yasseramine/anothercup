@@ -87,7 +87,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "spin03",
-            "type": "shelves",
+            "type": "shelving",
             "material": 1,
             "name": "Solid Pine Shelving Unit",
             "description": "Pine Shelves.",
@@ -101,7 +101,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "soak02",
-            "type": "shelves",
+            "type": "shelving",
             "material": 6,
             "name": "Solid Oak Shelving Unit",
             "description": "Solid oak shelves",
