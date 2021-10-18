@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Cupboard, Material
+from django.db.models import Q
 
 # Create your views here.
 
@@ -8,6 +9,17 @@ def all_cupboards(request):
     """ A view to show all cupboards, including sorting and search queries """
 
     cupboards = Cupboard.objects.all()
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect(reverse('cupboards'))
+            
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            cupboards = cupboards.filter(queries)
 
     context = {
         'cupboards': cupboards,
@@ -38,22 +50,12 @@ def calculated_cupboard(request, cupboard_id, material_id):
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     material = get_object_or_404(Material, pk=material_id)
 
-    # methods = ["GET", "POST"]
     if request.method == "POST":
         height_in_mm = float(request.POST.get("height")) * 10
         width_in_mm = float(request.POST.get("width")) * 10
         depth_in_mm = float(request.POST.get("depth")) * 10
         shelves = int(request.POST.get("shelves"))
         price_per_mm2 = float(material.price_per_m2)/1000000
-
-    print(height_in_mm)
-    print(width_in_mm)
-    print(depth_in_mm)
-    print(shelves)
-    print(price_per_mm2)
-    print(cupboard.name)
-    print(material)
-
        
     """ Calculation.  Shelves are multiplied by 10 as there
     is a £10 cutting fee per shelf"""

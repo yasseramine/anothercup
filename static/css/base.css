@@ -195,3 +195,11 @@ button:hover{
     border-width: 0.5px;
 }
 
+/* Calculated cupboard page */
+.atc_btn{
+    width: 10rem;
+}
+.atc_btn:hover{
+    border-color: black;
+}
+
