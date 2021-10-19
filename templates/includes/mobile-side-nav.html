@@ -11,6 +11,16 @@
                 <a href="#" class="dropdown-item pl-2">Pricing</a>
             </div>
         </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                All Designs
+            </a>
+            <div class="dropdown-menu red-theme-color border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'cupboards' %}?sort=exampleprice&direction=asc" class="dropdown-item ">By Price</a>
+                <a href="{% url 'cupboards' %}?sort=name&direction=asc" class="dropdown-item ">By Name</a>
+                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item">All Designs</a>
+            </div>
+        </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="options-link"
@@ -18,9 +28,9 @@
                 Designs
             </a>
             <div class="dropdown-menu red-theme-color border-0 pt-0" aria-labelledby="options-link">
-                <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item pl-2">Cupboards</a>
-                <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item pl-2">Shelving</a>
-                <a href="{%url 'cupboards'%}" class="dropdown-item pl-2">All Designs</a>
+                <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item">Cupboards</a>
+                <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item">Shelving Units</a>
+                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item pl-2">All Designs</a>
             </div>
         </li>
         <li class="nav-item dropdown">

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 from .models import Cupboard, Material, Type
 
@@ -13,8 +14,25 @@ def all_cupboards(request):
     cupboards = Cupboard.objects.all()
     query = None
     types = None
+    sort = None
+    direction = None
 
     if request.GET:
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                cupboards = cupboards.annotate(lower_name=Lower('name'))
+            if sortkey == 'type':
+                sortkey = 'type__name'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            cupboards = cupboards.order_by(sortkey)
+            
         if 'type' in request.GET:
             types = request.GET['type'].split(',')
             cupboards = cupboards.filter(type__name__in=types)
@@ -29,10 +47,13 @@ def all_cupboards(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             cupboards = cupboards.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'cupboards': cupboards,
         'search_term': query,
-        'current_types': types
+        'current_types': types,
+        'current_sorting': current_sorting,
     }
 
     # Insert some sort of form validation for entering dimensions,

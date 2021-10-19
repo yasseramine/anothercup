@@ -18,7 +18,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
+    <div class="row mt-1 mb-2">
+        <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+            <div class="sort-select-wrapper w-50">
+                <select id="sort-selector" class="custom-select border-black custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                    <option value="exampleprice_asc" {% if current_sorting == 'exampleprice_asc' %}selected{% endif %}>Price (low to high)</option>
+                    <option value="exampleprice_desc" {% if current_sorting == 'exampleprice_desc' %}selected{% endif %}>Price (high to low)</option>
+                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 order-md-first">
+            <p class="text-muted mt-3 pl-md-4 light-theme-text text-center text-md-left">
+                {% if search_term or current_types or current_sorting != 'None_None' %}
+                    <span class=""><a href="{%url 'cupboards'%}?type=cupboard,shelving" class="light-theme-text">All Designs</a> | </span>
+                {% endif %}
+                {{ cupboards|length }} {{current_types.friendly_name}} {% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+            </p>
+        </div>
+    </div>
+    
     <div class="row">
         {%for cupboard in cupboards%}
         <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 offset-md-1 text-center text-md-left p-0">
@@ -38,7 +60,7 @@
                 <div class="card h-100 border-0">
                     <h4 class="card-header border-0">{{cupboard.name}}</h4>
                     <p class="pl-md-3">{{cupboard.description}}</p>
-                    <h6 class="pl-md-3"><strong>Example price*:</strong> £{{cupboard.example_price}}</h6>
+                    <h6 class="pl-md-3"><strong>Example price*:</strong> £{{cupboard.exampleprice}}</h6>
                     <p class="text-center mb-0 mt-2"><a class="btn btn-lg details-btn red-theme-color" href="{% url 'cupboard_details' cupboard.id %}"><strong>SELECT</strong></a></p>
                     <br>
                     <p class="pl-md-3"><strong>Select this cupboard design to enter your required dimensions and receive a quote.</strong></p>
@@ -49,6 +71,44 @@
             <div class="col-10 offset-1 col-lg-8 offset-lg-2 pb-3"><hr></div>
 
         {% endfor %}
+        <div class="col-12 pt-1 pt-md-2 mb-5 text-center">
+            <a href="" class="text-black btt-link"><h5>Back to top</h5></a>
+        </div>
     </div>
 </div>
 {% endblock%}
+
+{% block postloadjs %}
+    {{ block.super }}
+
+<script type="text/javascript">
+    $('.btt-link').click(function(e) {
+        window.scrollTo(0,0)
+    })
+</script>
+
+<script type="text/javascript">
+    $('#sort-selector').change(function() {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if(selectedVal != "reset"){
+            var sort = selectedVal.split("_")[0];
+            var direction = selectedVal.split("_")[1];
+
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+
+            window.location.replace(currentUrl);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+
+            window.location.replace(currentUrl);
+        }
+    })
+</script>
+{% endblock %}
+
+

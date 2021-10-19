@@ -27,7 +27,7 @@
             <div class="card border-0 m-3 mt-md-5 p-md-3 pb-3 light-theme-color ml-md-0 mr-md-4">
                 <h3 class="card-header border-0 light-theme-color mt-3 mt-md-0 mt-lg-1">{{cupboard.name}}</h3>
                 <p class="pl-md-3 mb-2 ml-4 mr-4 m-md-0">{{cupboard.description}}</p>
-                <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.example_price}}</h6>
+                <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.exampleprice}}</h6>
                 <p class="pl-md-3 mb-1 example">for cupboard of dimensions:</p>
                 <p class="pl-md-3 mb-1">H: 150cm / W: 100cm / D: 50cm</p>
             </div>
@@ -92,9 +92,6 @@
                 </form>
 
             </div>
-            <div class="col-12 pt-1 pt-md-2 text-center">
-                <a href="{% url 'cupboards' %}" class="text-black"><h5>Back to designs</h5></a>
-            </div>
         </div>
     </div>
     <div class="row">
@@ -125,7 +122,11 @@
                 </form>
             </div>
         </div>
+        <div class="col-12 pt-1 pt-md-2 text-center">
+            <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="text-black"><h5>Back to designs</h5></a>
+        </div>
         
     </div>
 </div>
 {% endblock%}
+
