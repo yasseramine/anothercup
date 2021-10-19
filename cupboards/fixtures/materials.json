@@ -43,7 +43,7 @@
         "pk": 5,
         "model": "cupboards.material",
         "fields": {
-            "material_id": "wvn",
+            "material_code": "wvn",
             "name": "walnut_mdf",
             "display_name": "Walnut Veneered MDF",
             "price_per_m2": 8.99
@@ -53,7 +53,7 @@
         "pk": 6,
         "model": "cupboards.material",
         "fields": {
-            "material_id": "ovn",
+            "material_code": "ovn",
             "name": "oak_mdf",
             "display_name": "Oak Veneered MDF",
             "price_per_m2": 8.99

@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Material(models.Model):
 
     material_code = models.CharField(max_length=3)
@@ -16,10 +17,18 @@ class Material(models.Model):
         return self.display_name
 
 
+class Type(models.Model):
+    name = models.CharField(max_length=254)
+
+    def __str__(self):
+        return self.name
+
+
 class Cupboard(models.Model):
 
     design_id = models.CharField(max_length=5)
-    type = models.CharField(max_length=8)
+    type = models.ForeignKey('Type', null=True, blank=True,
+                                 on_delete=models.SET_NULL)
     material = models.ForeignKey('Material', null=True, blank=False,
                                  on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)

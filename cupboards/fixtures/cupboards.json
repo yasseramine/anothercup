@@ -4,7 +4,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cpin01",
-            "type": "cupboard",
+            "type": 1,
             "material": 1,
             "name": "Antique Style Pine Cupboard with Drawer",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
@@ -18,7 +18,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "coak01",
-            "type": "cupboard",
+            "type": 1,
             "material": 2,
             "name": "Antique Style Oak Cupboard",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
@@ -31,7 +31,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cmel01",
-            "type": "cupboard",
+            "type": 1,
             "material": 3,
             "name": "Melamine MDF Cupboard",
             "description": "MDF cupboard with contemporary handles.",
@@ -45,7 +45,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cpin02",
-            "type": "cupboard",
+            "type": 1,
             "material": 1,
             "name": "Classic Pine Cupboard",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
@@ -59,7 +59,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cbvn01",
-            "type": "cupboard",
+            "type": 1,
             "material": 4,
             "name": "Contemporary Beech Veneer Cupboard",
             "description": "Nice cupboard.",
@@ -73,7 +73,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "cwvn01",
-            "type": "cupboard",
+            "type": 1,
             "material": 5,
             "name": "Contemporary Walnut Veneer Cupboard",
             "description": "Another lovely cupboard.",
@@ -87,7 +87,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "spin03",
-            "type": "shelving",
+            "type": 2,
             "material": 1,
             "name": "Solid Pine Shelving Unit",
             "description": "Pine Shelves.",
@@ -101,7 +101,7 @@
         "model": "cupboards.cupboard",
         "fields": {
             "design_id": "soak02",
-            "type": "shelving",
+            "type": 2,
             "material": 6,
             "name": "Solid Oak Shelving Unit",
             "description": "Solid oak shelves",

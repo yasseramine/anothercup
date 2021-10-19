@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Material, Cupboard, GalleryImage
+from .models import Material, Cupboard, GalleryImage, Type
 
 # Register your models here.
+
 
 class MaterialAdmin(admin.ModelAdmin):
     list_display = (
@@ -12,6 +13,11 @@ class MaterialAdmin(admin.ModelAdmin):
     )
 
     ordering = ('display_name',)
+
+
+class TypeAdmin(admin.ModelAdmin):
+
+    ordering = ('name',)
 
 
 class CupboardAdmin(admin.ModelAdmin):
@@ -40,3 +46,4 @@ class GalleryImageAdmin(admin.ModelAdmin):
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Cupboard, CupboardAdmin)
 admin.site.register(GalleryImage, GalleryImageAdmin)
+admin.site.register(Type, TypeAdmin)

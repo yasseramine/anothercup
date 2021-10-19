@@ -1,0 +1,16 @@
+[
+    {
+        "pk": 1,
+        "model": "cupboards.type",
+        "fields": {
+            "name": "cupboard"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cupboards.type",
+        "fields": {
+            "name": "shelving"
+        }
+    }
+]
