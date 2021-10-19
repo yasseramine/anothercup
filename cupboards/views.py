@@ -12,8 +12,13 @@ def all_cupboards(request):
 
     cupboards = Cupboard.objects.all()
     query = None
+    types = None
 
     if request.GET:
+        if 'type' in request.GET:
+            types = request.GET['type'].split(',')
+            cupboards = cupboards.filter(type__name__in=types)
+            types = Type.objects.filter(name__in=types)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -27,6 +32,7 @@ def all_cupboards(request):
     context = {
         'cupboards': cupboards,
         'search_term': query,
+        'current_types': types
     }
 
     # Insert some sort of form validation for entering dimensions,
