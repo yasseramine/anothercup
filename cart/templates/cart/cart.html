@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container-fluid header-container">
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mb-2">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="logo-font text-center mb-4">Cart</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {% if cart_items %}
+                <div class="table-responsive rounded"></div>
+            {% else %}
+                <p class="lead text-center mt-3 mb-4">Your cart is empty.</p>
+                <hr>
+        </div>
+                
+            {% endif %}
+            <div class="col-12 pt-2 pt-md-4 text-center">
+                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="text-black"><h5>Back to designs</h5></a>
+            </div>
+    </div>
+</div>
+
+{% endblock %}
