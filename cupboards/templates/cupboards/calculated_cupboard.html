@@ -111,7 +111,7 @@
                         <h3 class="text-center" name="cost">£ {{cost}}</h3>
                     </div>
                 </div>
-                <form class="form" action="{% url 'add_to_cart' cupboard.id H W D S dims_code cost %}" method="POST">
+                <form class="form" action="{% url 'add_to_cart' cupboard.id H W D S dims_code cost type %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-12 text-center pt-1">
@@ -119,8 +119,8 @@
                             <input id="quantity" class="number-input" type="number" name="quantity" value="1"
                                 minlength="1" maxlength="5">
                         </div>
-                        <!-- Hidden Inputs -->
-                        <div class="d-none">
+                        <!-- Hidden Inputs currently unused-->
+                        <!-- <div class="d-none">
                             <label for="cart-type"></label>
                             <input type="text" id="cart-type" value="{{type.name}}">
                             <label for="cart-height"></label>
@@ -133,7 +133,7 @@
                             <input type="text" id="cart-shelves" value="{{S}}">
                             <label for="cart-cost"></label>
                             <input type="text" id="cart-cost" value="{{cost}}">
-                        </div>
+                        </div> -->
                         <!--  -->
                         <div class="col-12 text-center pt-4 ">
                             <button type="submit" class="btn btn-lg red-theme-color">Add to Cart</button>
