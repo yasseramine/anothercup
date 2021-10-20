@@ -8,3 +8,8 @@ def view_cart(request):
 
 
     return render(request, 'cart/cart.html')
+
+
+def add_to_cart(request, cupboard_id):
+    """ Add a quantity of the specified product to the shopping bag """
+

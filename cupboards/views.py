@@ -107,35 +107,23 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
             )) * price_per_mm2) + float(cupboard.design_surcharge) + (
                 shelves*10)
 
+    H = height_in_mm/10
+    D = str(depth_in_mm/10)
+    W = str(width_in_mm/10)
+    S = str(shelves)
+    cost = round(cost, 2)
+    dims_code = f"{H}{W}{D}{S}"
+
     context = {
-        'H': height_in_mm/10,
-        'D': str(depth_in_mm/10),
-        'W': str(width_in_mm/10),
-        'S': str(shelves),
-        'cost': round(cost, 2),
+        'H': H,
+        'D': D,
+        'W': W,
+        'S': S,
+        'cost': cost,
         'cupboard': cupboard,
-        'type': type
+        'type': type,
+        'dims_code': dims_code
     }
 
     return render(request, 'cupboards/calculated_cupboard.html', context) 
 
-
-@login_required
-def saved_cupboard(request, cupboard_id, H, W, D, S, cost):
-
-    saved_cupboard = {
-        'user': request.user,
-        'cupboard': cupboard_id,
-        'height': H,
-        'width': W,
-        'depth': D,
-        'shelves': S,
-        'cost': cost
-    }
-
-    context = {
-        "saved_cupboard": saved_cupboard
-
-    }
-
-    return render(request, 'profiles/my_cupboards.html', context)

@@ -185,7 +185,8 @@ button{
     border-radius: 0 !important;
 }
 button:hover{
-    background-color:white !important
+    background-color:white !important;
+    border-color: black !important;
 }
 
 .number-input{

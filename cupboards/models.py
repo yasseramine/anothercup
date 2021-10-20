@@ -49,16 +49,4 @@ class GalleryImage(models.Model):
     def __str__(self):
         return self.file_name.path
 
-class SavedCupboard(models.Model):
-
-    user = models.CharField(max_length=254, null=True, blank=False)
-    cupboard = models.ForeignKey(Cupboard, on_delete=models.CASCADE, null=True, blank=False)
-    height = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=False)
-    width = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=False)
-    depth = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=False)
-    shelves = models.IntegerField(null=True, blank=False)
-    cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=False)
-
-    def __str__(self):
-        return self.name 
 
