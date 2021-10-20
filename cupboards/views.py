@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.contrib.auth.decorators import login_required
 
 from .models import Cupboard, Material, Type
 
@@ -117,3 +118,24 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     }
 
     return render(request, 'cupboards/calculated_cupboard.html', context) 
+
+
+@login_required
+def chosen_cupboard(request, cupboard_id, H, W, D, S, cost):
+
+    chosen_cupboard = {
+        'user': request.user,
+        'cupboard': cupboard_id,
+        'height': H,
+        'width': W,
+        'depth': D,
+        'shelves': S,
+        'cost': cost
+    }
+
+    context = {
+        "chosen_cupboard":chosen_cupboard
+
+    }
+
+    return render(request, 'profiles/my_cupboards.html', context)

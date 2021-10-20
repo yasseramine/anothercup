@@ -180,6 +180,10 @@ body{
 button{
     border-radius: 0 !important;
 }
+
+.btn{
+    border-radius: 0 !important;
+}
 button:hover{
     background-color:white !important
 }
