@@ -105,22 +105,38 @@
                             class="m-0 p-0 pt-2 d-md-none">
                         H: {{H}} cm / W: {{W}} cm / D: {{D}} cm = </h5>
                 </strong>
-                    <div class="row text-center ">
-                        <div class="col-12 pt-3">
-                            <h3 class="text-center" name="cost">£ {{cost}}</h3>
-                        </div>
+
+                <div class="row text-center ">
+                    <div class="col-12 pt-3">
+                        <h3 class="text-center" name="cost">£ {{cost}}</h3>
                     </div>
+                </div>
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-12 text-center pt-1">
                             <label for="quantity" class="">Quantity:</label>
                             <input id="quantity" class="number-input" type="text" name="quantity" value="1"
                                 minlength="1" maxlength="5">
                         </div>
-                        <div class="col-12 text-center pt-4 ">
-                            <a href="{% url 'chosen_cupboard' cupboard.id H W D S cost %}"
-                                class="btn btn-lg atc_btn red-theme-color">Add to Cart</a>
+                        <!-- Hidden Inputs -->
+                        <div class="d-none">
+                            <label for="cart-type"></label>
+                            <input type="text" id="cart-type" value="{{type.name}}">
+                            <label for="cart-height"></label>
+                            <input type="number" id="cart-height" value="{{H}}">
+                            <label for="cart-width"></label>
+                            <input type="text" id="cart-width" value="{{W}">
+                            <label for="cart-depth"></label>
+                            <input type="text" id="cart-depth" value="{{D}}">
+                            <label for="cart-shelves"></label>
+                            <input type="text" id="cart-shelves" value="{{S}}">
+                            <label for="cart-cost"></label>
+                            <input type="text" id="cart-cost" value="{{cost}}">
                         </div>
-                        
+                        <!--  -->
+                        <div class="col-12 text-center pt-4 ">
+                            <button type="submit" class="btn btn-lg red-theme-color">Add to Cart</button>
                         </div>
                 </form>
             </div>

@@ -121,9 +121,9 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
 
 
 @login_required
-def chosen_cupboard(request, cupboard_id, H, W, D, S, cost):
+def saved_cupboard(request, cupboard_id, H, W, D, S, cost):
 
-    chosen_cupboard = {
+    saved_cupboard = {
         'user': request.user,
         'cupboard': cupboard_id,
         'height': H,
@@ -134,7 +134,7 @@ def chosen_cupboard(request, cupboard_id, H, W, D, S, cost):
     }
 
     context = {
-        "chosen_cupboard":chosen_cupboard
+        "saved_cupboard": saved_cupboard
 
     }
 
