@@ -3,9 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
-from.models import SavedCupboard
 
-from .models import Cupboard, Material, Type
+from .models import Cupboard, Material, Type, SavedCupboard
 
 # Create your views here.
 
@@ -105,7 +104,7 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
         cost = ((
             (height_in_mm*depth_in_mm*2) + (height_in_mm*width_in_mm) +
             (width_in_mm*depth_in_mm*(2+shelves)
-            )) * price_per_mm2) + float(cupboard.design_surcharge) + (
+              )) * price_per_mm2) + float(cupboard.design_surcharge) + (
                 shelves*10)
 
     H = height_in_mm/10
@@ -113,7 +112,7 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     W = str(width_in_mm/10)
     S = str(shelves)
     cost = round(cost, 2)
-    code = f"{cupboard_id}{H}{W}{D}{S}"
+    code = f"{H}#{W}#{D}#{S}#{cost}"
 
     context = {
         'H': H,
@@ -126,13 +125,13 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
         'code': code
     }
 
-    print(context)
-
     return render(request, 'cupboards/calculated_cupboard.html', context)
 
 
 @login_required
 def save_cupboard(request, cupboard_id, H, W, D, S, cost, code):
+
+    redirect_url = request.POST.get('redirect_url')
 
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     saved_cupboard = {
@@ -151,7 +150,7 @@ def save_cupboard(request, cupboard_id, H, W, D, S, cost, code):
     users_cupboards = list(SavedCupboard.objects.filter(user=request.user))
     if code in users_cupboards:
         # messages.info(request, message)(request, f"You have already saved this cupboard")
-        return redirect(redirect_url)
+        return redirect('redirect_url')
 
     else:
         SavedCupboard.objects.create(**saved_cupboard)
@@ -161,4 +160,4 @@ def save_cupboard(request, cupboard_id, H, W, D, S, cost, code):
         "saved_cupboard": saved_cupboard
     }
 
-    return render(request, 'profiles/my_cupboards.html', context)
+    return redirect('cart/view_cart')

@@ -9,24 +9,32 @@ def cart_contents(request):
     cart_items = []
     total = 0
     count = 0
-    cart = request.session.get('cart', {"cart_items": cart_items, "total": total, "count": count})
+    cart = request.session.get('cart', {})
     delivery = 25.00
 
-    # print(cart)
+    for item_id, item_data in cart.items():
 
-    # cupboard = get_object_or_404(Cupboard,
-    #                             pk=cart["cupboard_id"])
+        cupboard = get_object_or_404(Cupboard, pk=item_id)  
 
-    # cart_items = WHAT
+        for code, quantity in item_data['cupboards_by_code'].items():
+            price = float(code.split('#')[4])
+            total += quantity * price
+            count += quantity
+            cart_items.append({
+                'item_id': item_id,
+                'quantity': quantity,
+                'cupboard': cupboard,
+                'code': code,
+            })
 
-    # print(cupboard)
+    grand_total = delivery + total
+    
+    context = {
+        'cart_items': cart_items,
+        'total': total,
+        'count': count,
+        'delivery': delivery,
+        'grand_total': grand_total,
+    }
 
-    # cart = {
-    #     'cart_items': cart_items,
-    #     'total': total,
-    #     'count': count,
-    #     'delivery': delivery,
-    #     # 'grand_total': grand_total
-    # }
-
-    return cart
+    return context

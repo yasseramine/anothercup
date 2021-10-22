@@ -111,19 +111,20 @@
                         <h3 class="text-center" name="cost">£ {{cost}}</h3>
                     </div>
                 </div>
+                <form class="form" action="{% url 'add_to_cart' cupboard.id code %}" method="POST">
+                    {% csrf_token %}
             
                     <div class="row">
+                        <div class="col-12 text-center pt-1">
+                            <label for="quantity" class="">Quantity:</label>
+                            <input id="quantity" class="number-input" type="number" name="quantity" value="1"
+                                minlength="1" maxlength="5">
+                        </div>
+
                         <div class="col-12 text-center pt-4 ">
-                            <a href="{% url 'save_cupboard' cupboard.id H W D S cost code %}" class="btn btn-lg atc-btn red-theme-color">Save Cupboard</a>
+                            <button type="submit" class="btn btn-lg red-theme-color">Add to Cart</button>
                         </div>
-                        <div class="col-12  pt-4 text-center">
-                            <h5>Save this {{type.friendly_name | lower}} to my cupboards to continue to checkout.</h5>
-                            <h5>{% if request.user.is_authenticated %}<a class="pt-1 text-black"
-                                    href="{% url 'my_cupboards' %}">Go to my cupboards</a>{% else %} You must <a
-                                    href="{% url 'account_login' %}" class=" text-black">login</a> or <a
-                                    class=" text-black" href="{% url 'account_signup' %}">register</a> to do so.
-                                </h5>{% endif %}
-                        </div>
+                    </form>
             </div>
         </div>
         <div class="col-12 pt-1 pt-md-2 pb-4 text-center">

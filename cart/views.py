@@ -13,38 +13,26 @@ def view_cart(request):
     return render(request, 'cart/cart.html')
 
 
-def add_to_cart(request, cupboard_id, H, W, D, S, code, cost):
+def add_to_cart(request, cupboard_id, code):
     """ Add a quantity of the specified product to the shopping bag """
 
+    # redirect_url = request.POST.get('redirect_url')
+    
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
-    new_cupboard_dict = {
-                        "code": code,
-                        "spec": {
-                                'cupboard_id': cupboard_id,
-                                'height': H,
-                                'width': W,
-                                'depth': D,
-                                'shelves': S,
-                                'cost': cost,
-                                'quantity': quantity
-                                }
-                        }
 
-    if code in list(cart.keys()):
-        cart[code][{"quantity": quantity}] += quantity
-        messages.success(request, f'Cart updated')
-
+    if cupboard_id in list(cart.keys()):
+        if code in cart[cupboard_id]['cupboards_by_code'].keys():
+            cart[cupboard_id]['cupboards_by_code'][code] += quantity
+            messages.success(request, f'Cart updated')
+        else:
+            cart[cupboard_id]['cupboards_by_code'][code] = quantity
+            messages.success(request, f"{cupboard.name} added to cart")
     else:
-        cart['code']["quantity"] = quantity
-        cart[cart_items].append(new_cupboard_dict)
+        cart[cupboard_id] = {'cupboards_by_code': {code: quantity}}
         messages.success(request, f"{cupboard.name} added to cart")
 
-    print(cart)
-    print('new')
-    print(new_cupboard_dict)
-
     request.session['cart'] = cart
-
+    print(cart)
     return redirect('view_cart')
