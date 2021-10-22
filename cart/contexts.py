@@ -8,11 +8,25 @@ def cart_contents(request):
 
     cart_items = []
     total = 0
-    product_count = 0
-    cart = request.session.get('cart', {})
+    count = 0
+    cart = request.session.get('cart', {"cart_items": cart_items, "total": total, "count": count})
+    delivery = 25.00
 
-    context = {
-        
-    }
+    # print(cart)
 
-    return context 
+    # cupboard = get_object_or_404(Cupboard,
+    #                             pk=cart["cupboard_id"])
+
+    # cart_items = WHAT
+
+    # print(cupboard)
+
+    # cart = {
+    #     'cart_items': cart_items,
+    #     'total': total,
+    #     'count': count,
+    #     'delivery': delivery,
+    #     # 'grand_total': grand_total
+    # }
+
+    return cart

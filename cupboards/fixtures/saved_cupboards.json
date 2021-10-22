@@ -1,0 +1,30 @@
+[
+    {
+        "pk": 1,
+        "model": "cupboards.savedcupboard",
+        "fields": {
+            "user": "juliets",
+            "cupboard": 1,
+            "height": 120,
+            "width": 100,
+            "depth": 30,
+            "shelves": 4,
+            "cost": 139.99,
+            "code": "1120100304"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cupboards.savedcupboard",
+        "fields": {
+            "user": "joeb",
+            "cupboard": 3,
+            "height": 120,
+            "width": 90,
+            "depth": 30,
+            "shelves": 4,
+            "cost": 109.99,
+            "code": "312090304"
+        }
+    }
+]

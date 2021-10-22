@@ -5,3 +5,7 @@ from cupboards.models import Cupboard
 
 # Create your views here.
 
+def my_cupboards(request):
+
+    return render(request, 'profiles/my_cupboards.html')
+
