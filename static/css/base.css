@@ -204,3 +204,14 @@ button:hover{
     border-color: black;
 }
 
+/* Cart page */
+.chkt-btn:hover{
+    background-color:white !important;
+    border-color: black !important;
+}
+
+@media(min-width: 992px){
+    .large-text{
+        font-size: 120%;
+    }
+}

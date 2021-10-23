@@ -7,29 +7,113 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
+<div class="container-fluid px-md-3 px-lg-5 mb-2">
     <div class="row">
-        <div class="col">
-            
+        <div class="col-12">
+
             <h2 class="logo-font text-center my-2 my-md-4">Cart</h2>
             <hr class="mt-0">
         </div>
     </div>
 
+    {% if cart_items %}
+    <div class="row d-none d-md-flex text-center">
+        <div class="col-3">
+            <h5 class="pl-2">Image</h5>
+        </div>
+        <div class="col-4">
+            <h5>Details</h5>
+        </div>
+        <div class="col-1 text-center">
+            <h5>Price</h5>
+        </div>
+        <div class="col-2">
+            <h5 class="text-center">Quantity</h5>
+
+        </div>
+        <div class="col-2">
+            <h5>Subtotal</h5>
+        </div>
+    </div>
+    <hr class="d-none d-md-block">
+    {% for item in cart_items %}
+    <div class="row">
+        <div class="col-4 col-md-3">
+            {% if item.cupboard.main_image %}
+            <img class="img-fluid rounded" src="{{ item.cupboard.main_image.url }}" alt="{{ item.cupboard.name }}">
+            {% else %}
+            <img class="img-fluid rounded" src="../media/noimage.png" alt="{{ item.product.name }}">
+            {% endif %}
+        </div>
+
+        <div class="col-8 col-md-4 large-text pt-lg-4">
+            <p class="my-0"><strong>{{ item.cupboard.name }}</strong></p>
+            <p class="my-1">H: {{ item.spec.height}} cm / W: {{ item.spec.width}} cm / D: {{ item.spec.depth}} cm
+            </p>
+            <p class="my-0">Shelves: {{ item.spec.shelves}}</p>
+            <p class="my-2 d-block d-md-none">Price: £{{ item.price }}</p>
+            <form class="form update-form d-block d-md-none" method="POST" action="">
+                {% csrf_token %}
+                <label for="quantity" class="">Qty:</label>
+                <input id="quantity" class="number-input text-center" type="number" name="quantity"
+                    value="{{item.quantity}}" minlength="1" maxlength="5">
+            </form>
+        </div>
+        <div class="col-0 col-md-1 d-none d-md-block text-center pt-lg-4">
+            <p class="my-0 text-center large-text">£{{ item.price }}</p>
+        </div>
+        
+        <div class="col-0 col-md-2 d-none d-md-block text-center large-text pt-lg-4">
+            <form class="form" method="POST" action="">
+                {% csrf_token %}
+                <label for="quantity" class=""></label>
+                <input id="quantity" class="number-input text-center" type="number" name="quantity"
+                    value="{{item.quantity}}" minlength="1" maxlength="5">
+        </form>
+        </div>
+  
+        <div class="col-0 col-md-2 d-none d-md-block pt-lg-4 text-center">
+            <p class="my-0 large-text">£ SUBTOTAL</p>
+        </div>
+    </div>
+    <hr>
+
+    {% endfor %}
+    <div class="col-12 px-0 pt-2 pb-0 col-md-7 offset-md-5 col-lg-5 offset-lg-7">
+        <div class="card light-theme-color rounded-0 border-0 text-right py-3 px-4 p-lg-4">
+
+            <h5 class="pr-lg-5"><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h5>
+            <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
+            <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>
+            <div class="col-12 text-center text-md-right p-0 pr-lg-5 pt-2">
+                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="btn red-theme-color chkt-btn rounded-0 btn-lg">
+                    <span class=>Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock fa-sm"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
     <div class="row">
         <div class="col">
-            {% if cart_items %}
-                <!-- <div class="table-responsive rounded"></div> -->
-                {{cart_items}}
-            {% else %}
-                <p class="lead text-center mt-3 mb-4">Your cart is empty.</p>
-                <hr>
+            <p class="lead text-center mt-3 mb-4">Your cart is empty.</p>
+            <hr>
         </div>
-                
-            {% endif %}
-            <div class="col-12 pt-2 pt-md-4 text-center">
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="text-black"><h5>Back to designs</h5></a>
-            </div>
+
+        {% endif %}
+
+        <div class="col-12 pt-0 pb-3 text-center">
+            <a href="" class="text-black mr-3">
+                <h4 class="py-0">Empty cart
+            </a>
+            <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="ml-3 text-black">
+                Back to designs
+            </a>
+            </h4>
+        </div>
     </div>
 </div>
 

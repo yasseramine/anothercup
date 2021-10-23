@@ -20,10 +20,19 @@ def cart_contents(request):
             price = float(code.split('#')[4])
             total += quantity * price
             count += quantity
+
+            spec = {
+                "height": float(code.split('#')[0]),
+                "width": float(code.split('#')[1]),
+                "depth": float(code.split('#')[2]),
+                "shelves": int(code.split('#')[3])
+            }
             cart_items.append({
                 'item_id': item_id,
                 'quantity': quantity,
                 'cupboard': cupboard,
+                "price": price,
+                "spec": spec,
                 'code': code,
             })
 
