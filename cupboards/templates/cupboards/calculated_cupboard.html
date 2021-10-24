@@ -99,7 +99,7 @@
     <div class="row">
         <div class="col-12  p-0  text-center text-md-left">
             <div class="card border-2 border-black
-                m-3 mt-lg-5 pb-3 mx-lg-5 white">
+                m-3 mt-lg-5 pb-3 mx-lg-5 white" id="calculation">
                 <strong>
                     <h5 class="ml-md-5 mb-0 pt-2">Cost for {{type.name}} with {{S}} shelves of <br
                             class="m-0 p-0 pt-2 d-md-none">
@@ -111,20 +111,43 @@
                         <h3 class="text-center" name="cost">£ {{cost}}</h3>
                     </div>
                 </div>
-                <form class="form" action="{% url 'add_to_cart' cupboard.id code %}" method="POST">
+                <!-- HERE -->
+                <form class="form text-center" action="{% url 'add_to_cart' cupboard.id code %}" method="POST">
                     {% csrf_token %}
-            
                     <div class="row">
-                        <div class="col-12 text-center pt-1">
-                            <label for="quantity" class="">Quantity:</label>
-                            <input id="quantity" class="number-input" type="number" name="quantity" value="1"
-                                minlength="1" maxlength="5">
+                        <div class="col-12 text-center pt-2">
+                            <div class="form-group mr-5 pr-3">
+                               
+                                    <label for="quantity" class="">Quantity:</label>
+                                   
+                                        <button class="decrement-qty btn btn-sm light-theme-color rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-minus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                  
+                                   
+                                    <input id="quantity" class="number-input qty_input" type="number" name="quantity" value="1"
+                                        minlength="1" maxlength="5">
+
+                                    
+                                        <button class="increment-qty btn btn-sm light-theme-color rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-plus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                  
+                             
+                            </div>
                         </div>
 
-                        <div class="col-12 text-center pt-4 ">
+                        <div class="col-12 text-center pt-2">
                             <button type="submit" class="btn btn-lg red-theme-color">Add to Cart</button>
                         </div>
-                    </form>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col-12 pt-1 pt-md-2 pb-4 text-center">
@@ -136,3 +159,16 @@
     </div>
 </div>
 {% endblock%}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+$(window).load(function() {
+    $(function() { 
+        $('html, body').scrollTop( $('#calculation').offset().top);
+}); 
+});
+</script>
+
+{% include 'cupboards/includes/quantity_input_script.html' %}
+{% endblock %}

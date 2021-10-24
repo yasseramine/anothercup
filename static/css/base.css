@@ -203,6 +203,9 @@ button:hover{
 .atc_btn:hover{
     border-color: black;
 }
+.input-group, .input-group-prepend, .input-group-append{
+    display:block;
+}
 
 /* Cart page */
 .chkt-btn:hover{

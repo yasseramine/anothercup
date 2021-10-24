@@ -62,16 +62,20 @@
         <div class="col-0 col-md-1 d-none d-md-block text-center pt-lg-4">
             <p class="my-0 text-center large-text">£{{ item.price }}</p>
         </div>
-        
+        <!-- HERE -->
         <div class="col-0 col-md-2 d-none d-md-block text-center large-text pt-lg-4">
             <form class="form" method="POST" action="">
                 {% csrf_token %}
-                <label for="quantity" class=""></label>
-                <input id="quantity" class="number-input text-center" type="number" name="quantity"
-                    value="{{item.quantity}}" minlength="1" maxlength="5">
-        </form>
+                
+
+                        <label for="quantity" class=""></label>
+                        <input id="quantity" class="number-input text-center" type="number" name="quantity"
+                            value="{{item.quantity}}" minlength="1" maxlength="5" min="1" max="99"
+                            data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+            </form>
+            <!--  -->
         </div>
-  
+
         <div class="col-0 col-md-2 d-none d-md-block pt-lg-4 text-center">
             <p class="my-0 large-text">£ SUBTOTAL</p>
         </div>
@@ -86,7 +90,8 @@
             <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
             <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>
             <div class="col-12 text-center text-md-right p-0 pr-lg-5 pt-2">
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="btn red-theme-color chkt-btn rounded-0 btn-lg">
+                <a href="{%url 'cupboards'%}?type=cupboard,shelving"
+                    class="btn red-theme-color chkt-btn rounded-0 btn-lg">
                     <span class=>Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock fa-sm"></i>
