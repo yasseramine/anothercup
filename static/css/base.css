@@ -190,10 +190,11 @@ button:hover{
 }
 
 .number-input{
-    height:30px;
+    height:33px !important;
     border-radius:0;
     width:2.5rem;
     border-width: 0.5px;
+ 
 }
 
 /* Calculated cupboard page */
@@ -206,6 +207,10 @@ button:hover{
 .input-group, .input-group-prepend, .input-group-append{
     display:block;
 }
+.plus-minus{
+    height:2rem;
+    width: 2rem;
+}
 
 /* Cart page */
 .chkt-btn:hover{
@@ -213,8 +218,18 @@ button:hover{
     border-color: black !important;
 }
 
-@media(min-width: 992px){
+@media(min-width: 1060px){
     .large-text{
         font-size: 120%;
     }
+}
+
+@media(max-width: 820px){
+    .small-text{
+        font-size: 90%;
+    }
+}
+
+.update-link{
+    cursor: pointer;
 }
