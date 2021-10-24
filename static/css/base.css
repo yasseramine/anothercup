@@ -236,3 +236,7 @@ button:hover{
 .update-cart{
     background:none;
 }
+
+form{
+    display:inline;
+}

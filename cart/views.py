@@ -58,3 +58,25 @@ def update_cart(request, item_id):
     return redirect('view_cart')
 
 
+def remove_item(request, item_id):
+    """Remove an item from the shopping cart"""
+
+    try:
+        cupboard = get_object_or_404(Cupboard, pk=item_id)
+        code = request.POST['spec_code']
+        cart = request.session.get('cart', {})
+
+        del cart[item_id]['cupboards_by_code'][code]
+        if not cart[item_id]['cupboards_by_code']:
+            cart.pop(item_id)
+            messages.success(request, f'Item successfully removed from cart')
+
+        request.session['cart'] = cart
+        return redirect('view_cart')
+
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
+ 
+
+

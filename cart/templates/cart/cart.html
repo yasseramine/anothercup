@@ -48,10 +48,11 @@
             <p class="my-1">H: {{ item.spec.height}} cm / W: {{ item.spec.width}} cm / D: {{ item.spec.depth}} cm
             </p>
             <p class="my-0">Shelves: {{ item.spec.shelves}}</p>
-           
+
             <h5 class="my-1 d-block d-md-none">Price: £{{ item.price }}</h5>
-          
-            <form class="form d-block d-md-none update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
+
+            <form class="form d-block d-md-none update-form" method="POST"
+                action="{% url 'update_cart' item.item_id %}">
                 {% csrf_token %}
                 <div class="form-group p-0">
                     <label for="quantity" class=""></label>
@@ -60,7 +61,8 @@
                         data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                         <i class="fas fa-minus fa-sm"></i>
                     </button>
-                    <input id="quantity" class="number-input id_qty_{{ item.item_id }} text-center align-middle qty_input" type="number"
+                    <input id="quantity"
+                        class="number-input id_qty_{{ item.item_id }} text-center align-middle qty_input" type="number"
                         name="quantity" value="{{item.quantity}}" minlength="1" maxlength="5" min="1" max="99"
                         data-item_id="{{ item.item_id }}" id="">
                     <span> <button
@@ -69,90 +71,100 @@
                             <i class="fas fa-plus fa-sm"></i>
                         </button></span>
                     <span class="pl-2 pr-1">
-                            <button type="submit" class="btn-link update-cart text-info d-md-none text-left border-0">
-                                <i class="fas fa-check fa-sm"></i> Update
-                            </button>
-                 
-                    </span>
-                    <span><a class="remove-item update-link text-danger d-md-none px-1" id="remove_{{ item.item_id }}"
-                            data-size="{{ item.code }}">Remove <i class="fas fa-times fa-sm"></i></a></span>
-                            <p class="my-0 d-block d-md-none pt-1">In cart: {{item.quantity}}</p>
-                    <input type="hidden" name="spec_code" value="{{ item.code }}">
-                </div>
+                        <button type="submit" class="btn-link update-cart text-info d-md-none text-left border-0">
+                            <i class="fas fa-check fa-sm"></i> Update
+                        </button>
             </form>
+            </span>
+            <form class="d-md-none" method="POST" action="{% url 'remove_item' item.item_id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-link update-cart text-danger update-cart border-0">Remove
+                    <i class="fas fa-times fa-sm"></i>
+                </button>
+                <input type="hidden" name="spec_code" value="{{ item.code }}">
+            </form>
+            <p class="my-0 d-block d-md-none pt-1">In cart: {{item.quantity}}</p>
+            <input type="hidden" name="spec_code" value="{{ item.code }}">
         </div>
 
-        <div class="col-0 col-md-1 d-none pl-0 d-md-block text-center pt-1 pt-lg-4">
-            <h5 class="my-0 text-center large-text">£{{ item.price }}</h5>
-        </div>
-        <div class="col-0 col-md-2 px-0 d-none d-md-block text-center large-text small-text pt-lg-4">
-            <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
-                {% csrf_token %}
-                <div class="form-group mb-1 p-0">
-                    <label for="quantity" class=""></label>
-                    <button
-                        class="decrement-qty decrement-qty_{{item.item_id}} btn plus-minus btn-sm light-theme-color rounded-0 align-middle"
-                        data-item_id="{{ item.item_id }}">
-                        <i class="fas fa-minus fa-sm"></i>
-                    </button>
-                    <input id="quantity" class="number-input id_qty_{{item.item_id}} text-center qty_input align-middle" type="number"
-                        name="quantity" value="{{item.quantity}}" minlength="1" maxlength="5" min="1" max="99"
-                        data-item_id="{{ item.item_id }}">
-                    <button
-                        class="increment-qty increment-qty_{{item.item_id}} btn plus-minus btn-sm light-theme-color rounded-0 align-middle"
-                        data-item_id="{{ item.item_id }}">
-                        <i class="fas fa-plus fa-sm"></i>
-                    </button>
-                    <input type="hidden" name="spec_code" value="{{ item.code }}">
-                </div>
-             <button type="submit" class="btn-link small-text update-cart text-info text-left border-0">
-                    <i class="fas fa-check fa-sm"></i> Update
-                </button>      
-                
-            <a class="remove-item text-danger update-link small-text" id="remove_{{ item.item_id }}"
-                data-size="{{ item.code }}">Remove <i class="fas fa-times fa-sm"></i></a>
-            </form>
-                <p class="my-0 d-none d-md-block pt-1">In cart: {{item.quantity}}</p>
-        </div>
-        <div class="col-0 col-md-2 d-none d-md-block pt-lg-4 text-center">
-            <p class="my-0 large-text">£ SUBTOTAL</p>
-        </div>
     </div>
-    <hr>
-    {% endfor %}
-    <div class="col-12 px-0 pt-2 pb-0 col-md-7 offset-md-5 col-lg-5 offset-lg-7">
-        <div class="card light-theme-color rounded-0 border-0 text-right py-3 px-4 p-lg-4">
-            <h5 class="pr-lg-5"><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h5>
-            <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
-            <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>
-            <div class="col-12 text-center text-md-right p-0 pr-lg-5 pt-2">
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving"
-                    class="btn red-theme-color chkt-btn rounded-0 btn-lg">
-                    <span class=>Secure Checkout</span>
-                    <span class="icon">
-                        <i class="fas fa-lock fa-sm"></i>
-                    </span>
-                </a>
+
+    <div class="col-0 col-md-1 d-none pl-0 d-md-block text-center pt-1 pt-lg-4">
+        <h5 class="my-0 text-center large-text">£{{ item.price }}</h5>
+    </div>
+    <div class="col-0 col-md-2 px-0 d-none d-md-block text-center large-text small-text pt-lg-4">
+        <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
+            {% csrf_token %}
+            <div class="form-group mb-1 p-0">
+                <label for="quantity" class=""></label>
+                <button
+                    class="decrement-qty decrement-qty_{{item.item_id}} btn plus-minus btn-sm light-theme-color rounded-0 align-middle"
+                    data-item_id="{{ item.item_id }}">
+                    <i class="fas fa-minus fa-sm"></i>
+                </button>
+                <input id="quantity" class="number-input id_qty_{{item.item_id}} text-center qty_input align-middle"
+                    type="number" name="quantity" value="{{item.quantity}}" minlength="1" maxlength="5" min="1" max="99"
+                    data-item_id="{{ item.item_id }}">
+                <button
+                    class="increment-qty increment-qty_{{item.item_id}} btn plus-minus btn-sm light-theme-color rounded-0 align-middle"
+                    data-item_id="{{ item.item_id }}">
+                    <i class="fas fa-plus fa-sm"></i>
+                </button>
+                <input type="hidden" name="spec_code" value="{{ item.code }}">
             </div>
+            <button type="submit" class="btn-link small-text update-cart text-info text-left border-0">
+                <i class="fas fa-check fa-sm"></i> Update
+            </button>
+        </form>
+        <form method="POST" action="{% url 'remove_item' item.item_id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-link small-text update-cart text-danger update-cart border-0">Remove
+                <i class="fas fa-times fa-sm"></i>
+            </button>
+            <input type="hidden" name="spec_code" value="{{ item.code }}">
+        </form>
+        <p class="my-0 d-none d-md-block pt-1">In cart: {{item.quantity}}</p>
+    </div>
+    <div class="col-0 col-md-2 d-none d-md-block pt-lg-4 text-center">
+        <p class="my-0 large-text">£ SUBTOTAL</p>
+    </div>
+</div>
+<hr>
+{% endfor %}
+<div class="col-12 px-0 pt-2 pb-0 col-md-7 offset-md-5 col-lg-5 offset-lg-7">
+    <div class="card light-theme-color rounded-0 border-0 text-right py-3 px-5 p-lg-4">
+        <h5 class="pr-lg-5"><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h5>
+        <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
+        <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>
+        <div class="col-12 text-center p-0 pt-2">
+            <a href="" class="btn red-theme-color chkt-btn rounded-0 btn-lg">
+                <span class=>Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock fa-sm"></i>
+                </span>
+            </a>
         </div>
     </div>
-    {% else %}
-    <div class="row">
-        <div class="col">
-            <p class="lead text-center mt-3 mb-4">Your cart is empty.</p>
-            <hr>
-        </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col">
+        <p class="lead text-center mt-3 mb-4">Your cart is empty.</p>
+        <hr>
+    </div>
+    {% endif %}
+    <div class="col-12 pt-0 pb-3 text-center">
+        {% if cart_items %}
+        <a href="" class="text-black mr-3">
+            <h4 class="py-0">Empty cart</h4>
+        </a>
         {% endif %}
-        <div class="col-12 pt-0 pb-3 text-center">
-            <a href="" class="text-black mr-3">
-                <h4 class="py-0">Empty cart
-            </a>
-            <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="ml-3 text-black">
-                Back to designs
-            </a>
-            </h4>
-        </div>
+        <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="ml-3 text-black">
+            <h4>Back to designs</h4>
+        </a>
+        </h4>
     </div>
+</div>
 </div>
 
 {% endblock %}
@@ -160,25 +172,4 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'cupboards/includes/quantity_input_script.html' %}
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-cart').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var code = $(this).data('spec_code');
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'code': code};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
-</script>
 {% endblock %}
