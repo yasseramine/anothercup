@@ -15,8 +15,6 @@ def view_cart(request):
 
 def add_to_cart(request, cupboard_id, code):
     """ Add a quantity of the specified product to the shopping bag """
-
-    # redirect_url = request.POST.get('redirect_url')
     
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     quantity = int(request.POST.get('quantity'))
@@ -36,3 +34,27 @@ def add_to_cart(request, cupboard_id, code):
     request.session['cart'] = cart
     print(cart)
     return redirect('view_cart')
+
+
+def update_cart(request, item_id):
+    """Update the quantity  in the cart of a design with dimensions"""
+
+    cupboard = get_object_or_404(Cupboard, pk=item_id)
+    quantity = int(request.POST.get('quantity'))
+    code = request.POST['spec_code']
+    cart = request.session.get('cart', {})
+
+    if quantity > 0:
+        cart[item_id]['cupboards_by_code'][code] = quantity
+        messages.success(request, 
+                            f'Updated size quantity to {cart[item_id]["cupboards_by_code"][code]}')
+    else:
+        del cart[item_id]['cupboards_by_code'][code]
+        if not cart[item_id]['cupboards_by_code']:
+            cart.pop(item_id)
+        messages.success(request, f'Item removed from cart')
+
+    request.session['cart'] = cart
+    return redirect('view_cart')
+
+

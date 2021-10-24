@@ -48,9 +48,10 @@
             <p class="my-1">H: {{ item.spec.height}} cm / W: {{ item.spec.width}} cm / D: {{ item.spec.depth}} cm
             </p>
             <p class="my-0">Shelves: {{ item.spec.shelves}}</p>
-            <h5 class="my-2 d-block d-md-none">Price: £{{ item.price }}</h5>
-
-            <form class="form d-block d-md-none update-form" method="POST" action="">
+           
+            <h5 class="my-1 d-block d-md-none">Price: £{{ item.price }}</h5>
+          
+            <form class="form d-block d-md-none update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                 {% csrf_token %}
                 <div class="form-group p-0">
                     <label for="quantity" class=""></label>
@@ -67,22 +68,25 @@
                             data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                             <i class="fas fa-plus fa-sm"></i>
                         </button></span>
-                    <span class="pl-2 pr-1"><a class="update-link update-cart text-info d-md-none text-left"><i
-                                class="fas fa-check fa-sm"></i> Update</a></span>
+                    <span class="pl-2 pr-1">
+                            <button type="submit" class="btn-link update-cart text-info d-md-none text-left border-0">
+                                <i class="fas fa-check fa-sm"></i> Update
+                            </button>
+                 
+                    </span>
                     <span><a class="remove-item update-link text-danger d-md-none px-1" id="remove_{{ item.item_id }}"
                             data-size="{{ item.code }}">Remove <i class="fas fa-times fa-sm"></i></a></span>
+                            <p class="my-0 d-block d-md-none pt-1">In cart: {{item.quantity}}</p>
                     <input type="hidden" name="spec_code" value="{{ item.code }}">
                 </div>
             </form>
-
         </div>
 
         <div class="col-0 col-md-1 d-none pl-0 d-md-block text-center pt-1 pt-lg-4">
             <h5 class="my-0 text-center large-text">£{{ item.price }}</h5>
         </div>
-
         <div class="col-0 col-md-2 px-0 d-none d-md-block text-center large-text small-text pt-lg-4">
-            <form class="form update-form" method="POST" action="">
+            <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                 {% csrf_token %}
                 <div class="form-group mb-1 p-0">
                     <label for="quantity" class=""></label>
@@ -101,13 +105,15 @@
                     </button>
                     <input type="hidden" name="spec_code" value="{{ item.code }}">
                 </div>
-            </form>
-            <a class="update-link update-cart text-info"><i class="fas fa-check fa-sm"></i>
-                    Update</a>
-            <a class="remove-item text-danger update-link " id="remove_{{ item.item_id }}"
+             <button type="submit" class="btn-link small-text update-cart text-info text-left border-0">
+                    <i class="fas fa-check fa-sm"></i> Update
+                </button>      
+                
+            <a class="remove-item text-danger update-link small-text" id="remove_{{ item.item_id }}"
                 data-size="{{ item.code }}">Remove <i class="fas fa-times fa-sm"></i></a>
+            </form>
+                <p class="my-0 d-none d-md-block pt-1">In cart: {{item.quantity}}</p>
         </div>
-
         <div class="col-0 col-md-2 d-none d-md-block pt-lg-4 text-center">
             <p class="my-0 large-text">£ SUBTOTAL</p>
         </div>
@@ -116,7 +122,6 @@
     {% endfor %}
     <div class="col-12 px-0 pt-2 pb-0 col-md-7 offset-md-5 col-lg-5 offset-lg-7">
         <div class="card light-theme-color rounded-0 border-0 text-right py-3 px-4 p-lg-4">
-
             <h5 class="pr-lg-5"><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h5>
             <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
             <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>

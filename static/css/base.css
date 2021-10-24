@@ -218,18 +218,21 @@ button:hover{
     border-color: black !important;
 }
 
-@media(min-width: 1060px){
-    .large-text{
-        font-size: 120%;
-    }
-}
-
-@media(max-width: 820px){
+@media(min-width: 768px){
     .small-text{
         font-size: 90%;
     }
 }
 
-.update-link{
+@media(min-width: 992px){
+    .small-text{
+        font-size: 100%;
+    }
+}
+/* .update-link{
     cursor: pointer;
+} */
+
+.update-cart{
+    background:none;
 }
