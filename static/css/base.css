@@ -38,6 +38,24 @@ body{
     text-transform: uppercase;
 }
 
+.mob-search-bar{
+    display: inline !important;
+    width: 88% !important;
+    margin-right: 0 !important;
+}
+.mob-search-btn{
+    display: inline !important;
+    width:10% !important;
+    margin-left: 0 !important;
+}
+.mob-srch-grp-appnd{
+    display: inline !important;
+}
+.mob-srch-grp{
+    width: 100%;
+    display: inline;
+}
+
 .main-nav-link{
     font-size: 115%;
 }

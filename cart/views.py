@@ -26,10 +26,10 @@ def add_to_cart(request, cupboard_id, code):
             messages.success(request, f'Cart quantity updated!')
         else:
             cart[cupboard_id]['cupboards_by_code'][code] = quantity
-            messages.success(request, f"{cupboard.name} added to cart.")
+            messages.success(request, f"{quantity} {cupboard.name} added to cart.")
     else:
         cart[cupboard_id] = {'cupboards_by_code': {code: quantity}}
-        messages.success(request, f"{cupboard.name} added to cart.")
+        messages.success(request, f"{quantity} {cupboard.name} added to cart.")
 
     request.session['cart'] = cart
     print(cart)
