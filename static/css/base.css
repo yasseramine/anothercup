@@ -286,6 +286,10 @@ form{
     align-items: center !important;
 }
 
+.back{
+    z-index: -99999 !important;
+}
+
 .toast-error{
     background-color: rgb(231, 193, 193);
     color:red !important;

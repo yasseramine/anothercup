@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block page_header %}
-<div class="container-fluid header-container">
+<div class="container-fluid header-container back">
     <div class="row">
         <div class="col-12 p-0">
-            <div class="doors-banner">
+            <div class="doors-banner ">
                 <div class="col-12 ">
             <h3 class="text-center banner-words p-4">CHOOSE FROM ONE OF OUR TOP QUALITY DESIGNS</h3>
                 </div>
         </div>
-            <h5 class="text-center m-3"><a href="{%url 'cupboards'%}?type=cupboard" class="text-black pt-0">Cupboards</a> | <a href="{%url 'cupboards'%}?type=shelving"  class="text-black pt-0">Shelves</a></h5>
+            <h5 class="text-center back m-3"><a href="{%url 'cupboards'%}?type=cupboard" class="text-black pt-0">Cupboards</a> | <a href="{%url 'cupboards'%}?type=shelving"  class="text-black pt-0">Shelves</a></h5>
         </div>
         <div class="col-12"><hr class="mt-0 mx-5"></div>
     </div>
@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row mt-1 mb-2">
         <div class="col-12 col-md-6  order-md-last d-flex justify-content-center justify-content-md-end">
-            <div class="sort-select-wrapper w-40 mb-md-2 mr-md-5">
+            <div class="sort-select-wrapper back w-40 mb-md-2 mr-md-5">
                 <select id="sort-selector" class="custom-select border-black custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                     <option value="exampleprice_asc" {% if current_sorting == 'exampleprice_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -45,7 +45,7 @@
     <div class="row">
         {%for cupboard in cupboards%}
         <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 offset-md-1 text-center text-md-left p-0">
-            <div class="image-wrapper col-8 offset-2 col-sm-6 offset-sm-3 col-md-12 offset-md-0 mt-md-3 mt-lg-1 p-0 p-lg-3 pb-0">
+            <div class="image-wrapper back col-8 offset-2 col-sm-6 offset-sm-3 col-md-12 offset-md-0 mt-md-3 mt-lg-1 p-0 p-lg-3 pb-0">
             {% if cupboard.main_image %}
             <a href="{% url 'cupboard_details' cupboard.id %}">
                 <img class="card-img-top img-fluid  w-30 mx-auto" src="{{ cupboard.main_image.url }}" alt="{{ cupboard.name }}">
@@ -58,7 +58,7 @@
             </div>
         </div>
             <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-6 p-0 pl-md-4 text-center text-md-left">
-                <div class="card h-100 border-0">
+                <div class="card h-100 border-0 back">
                     <h4 class="card-header border-0">{{cupboard.name}}</h4>
                     <p class="pl-md-3">{{cupboard.description}}</p>
                     <h6 class="pl-md-3"><strong>Example price*:</strong> £{{cupboard.exampleprice}}</h6>
