@@ -231,7 +231,10 @@ button:hover{
 }
 
 .update-cart{
-    background:none;
+    background:none !important;
+}
+.update-cart:hover{
+    background:none !important;
 }
 
 form{

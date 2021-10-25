@@ -12,7 +12,7 @@
         </div>
             <h5 class="text-center m-3"><a href="{%url 'cupboards'%}?type=cupboard" class="text-black pt-0">Cupboards</a> | <a href="{%url 'cupboards'%}?type=shelving"  class="text-black pt-0">Shelves</a></h5>
         </div>
-        <div class="col-10 offset-1 col-lg-8 offset-lg-2"><hr class="mt-0"></div>
+        <div class="col-12"><hr class="mt-0 mx-5"></div>
     </div>
 </div>
 {% endblock %}
@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row mt-1 mb-2">
         <div class="col-12 col-md-6  order-md-last d-flex justify-content-center justify-content-md-end">
-            <div class="sort-select-wrapper w-50">
+            <div class="sort-select-wrapper w-40 mb-md-2 mr-md-5">
                 <select id="sort-selector" class="custom-select border-black custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                     <option value="exampleprice_asc" {% if current_sorting == 'exampleprice_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 order-md-first">
-            <p class="text-muted mt-2 mt-md-0 pl-md-4 light-theme-text text-center text-md-left">
+            <p class="text-muted mt-2 mt-md-0 pl-md-4 mb-1 light-theme-text text-center text-md-left">
                 {% if search_term or current_types or current_sorting != 'None_None' %}
                     <span class=""><a href="{%url 'cupboards'%}?type=cupboard,shelving" class="light-theme-text">All Designs</a> | </span>
                 {% endif %}
@@ -40,6 +40,7 @@
             </p>
         </div>
     </div>
+    <hr class="mb-1 mb-md-0 mt-0 mx-5">
     
     <div class="row">
         {%for cupboard in cupboards%}

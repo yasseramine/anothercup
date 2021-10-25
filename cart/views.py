@@ -26,10 +26,10 @@ def add_to_cart(request, cupboard_id, code):
             messages.success(request, f'Cart quantity updated!')
         else:
             cart[cupboard_id]['cupboards_by_code'][code] = quantity
-            messages.success(request, f"{cupboard.name} added to cart")
+            messages.success(request, f"{cupboard.name} added to cart.")
     else:
         cart[cupboard_id] = {'cupboards_by_code': {code: quantity}}
-        messages.success(request, f"{cupboard.name} added to cart")
+        messages.success(request, f"{cupboard.name} added to cart.")
 
     request.session['cart'] = cart
     print(cart)
@@ -47,12 +47,12 @@ def update_cart(request, item_id):
     if quantity > 0:
         cart[item_id]['cupboards_by_code'][code] = quantity
         messages.success(request, 
-                            f'Updated dimensions quantity to {cart[item_id]["cupboards_by_code"][code]}')
+                            f'Quantity in cart updated to {cart[item_id]["cupboards_by_code"][code]}.')
     else:
         del cart[item_id]['cupboards_by_code'][code]
         if not cart[item_id]['cupboards_by_code']:
             cart.pop(item_id)
-        messages.success(request, f'Item removed from cart')
+        messages.info(request, f'Item removed from cart.')
 
     request.session['cart'] = cart
     return redirect('view_cart')
@@ -69,13 +69,13 @@ def remove_item(request, item_id):
         del cart[item_id]['cupboards_by_code'][code]
         if not cart[item_id]['cupboards_by_code']:
             cart.pop(item_id)
-            messages.success(request, f'Item successfully removed from cart')
+            messages.info(request, f'Item removed from cart.')
 
         request.session['cart'] = cart
         return redirect('view_cart')
 
     except Exception as e:
-        messages.error(request, f'Error removing item: {e}')
+        messages.error(request, f'Error removing item: {e}.')
         return HttpResponse(status=500)
  
 
