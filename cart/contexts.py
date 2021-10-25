@@ -23,11 +23,18 @@ def cart_contents(request):
             total += float(subtotal)
             count += quantity
 
+            height = code.split('#')[0]
+            width = code.split('#')[1]
+            depth = code.split('#')[2]
+            shelves = code.split('#')[3]
+            dims = f"({height} x {width} x {depth})cm"
+
             spec = {
-                "height": float(code.split('#')[0]),
-                "width": float(code.split('#')[1]),
-                "depth": float(code.split('#')[2]),
-                "shelves": int(code.split('#')[3])
+                "height": float(height),
+                "width": float(width),
+                "depth": float(depth),
+                "shelves": int(shelves),
+                "dims": dims
             }
             cart_items.append({
                 'item_id': item_id,
