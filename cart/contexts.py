@@ -27,7 +27,7 @@ def cart_contents(request):
             width = code.split('#')[1]
             depth = code.split('#')[2]
             shelves = code.split('#')[3]
-            dims = f"({height} x {width} x {depth})cm"
+            dims = f"({height} x {width} x {depth})cm with {shelves} shelves."
 
             spec = {
                 "height": float(height),
