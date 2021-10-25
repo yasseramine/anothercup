@@ -126,14 +126,14 @@
         <p class="my-0 d-none d-md-block pt-1">In cart: {{item.quantity}}</p>
     </div>
     <div class="col-0 col-md-2 d-none d-md-block pt-lg-4 text-center">
-        <p class="my-0 large-text">£ SUBTOTAL</p>
+        <h5 class="my-0 large-text">£ {{item.subtotal}}</h5>
     </div>
 </div>
 <hr>
 {% endfor %}
 <div class="col-12 px-0 pt-2 pb-0 col-md-7 offset-md-5 col-lg-5 offset-lg-7">
     <div class="card light-theme-color rounded-0 border-0 text-right py-3 px-5 p-lg-4">
-        <h5 class="pr-lg-5"><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h5>
+        <h4 class="pr-lg-5">Cart Total: £{{ total|floatformat:2 }}</h4>
         <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
         <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>
         <div class="col-12 text-center p-0 pt-2">

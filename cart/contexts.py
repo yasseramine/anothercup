@@ -18,7 +18,9 @@ def cart_contents(request):
 
         for code, quantity in item_data['cupboards_by_code'].items():
             price = float(code.split('#')[4])
-            total += quantity * price
+            subtotal = quantity * price
+            subtotal = format(subtotal, '.2f')
+            total += float(subtotal)
             count += quantity
 
             spec = {
@@ -33,6 +35,7 @@ def cart_contents(request):
                 'cupboard': cupboard,
                 "price": price,
                 "spec": spec,
+                "subtotal": subtotal,
                 'code': code,
             })
 
