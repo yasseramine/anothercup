@@ -229,9 +229,6 @@ button:hover{
         font-size: 100%;
     }
 }
-/* .update-link{
-    cursor: pointer;
-} */
 
 .update-cart{
     background:none;
@@ -240,3 +237,50 @@ button:hover{
 form{
     display:inline;
 }
+
+/* Toasts */
+
+.overlay{
+    height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+    z-index: -1;
+	background: rgba(134, 127, 127, 0.89);
+}
+
+.toast{
+    font-size: 110%;
+}
+
+.close:hover{
+    background: none !important;
+}
+
+.toasts-container{
+    z-index: 999999 !important;
+    height: 100%;
+    width: 100%;
+    align-items: center !important;
+}
+
+.toast-error{
+    background-color: rgb(231, 193, 193);
+    color:red !important;
+}
+
+.toast-warning{
+    background-color: rgb(231, 224, 193);
+    color:rgb(156, 98, 31) !important;
+}
+.toast-info{
+    background-color: rgb(188, 236, 245);
+    color:rgb(25, 36, 138) !important;
+}
+.toast-success{
+    background-color: rgb(188, 245, 205);
+    color:rgb(27, 92, 43) !important;
+}
+
+

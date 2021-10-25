@@ -23,7 +23,7 @@ def add_to_cart(request, cupboard_id, code):
     if cupboard_id in list(cart.keys()):
         if code in cart[cupboard_id]['cupboards_by_code'].keys():
             cart[cupboard_id]['cupboards_by_code'][code] += quantity
-            messages.success(request, f'Cart updated')
+            messages.success(request, f'Cart quantity updated!')
         else:
             cart[cupboard_id]['cupboards_by_code'][code] = quantity
             messages.success(request, f"{cupboard.name} added to cart")
@@ -47,7 +47,7 @@ def update_cart(request, item_id):
     if quantity > 0:
         cart[item_id]['cupboards_by_code'][code] = quantity
         messages.success(request, 
-                            f'Updated size quantity to {cart[item_id]["cupboards_by_code"][code]}')
+                            f'Updated dimensions quantity to {cart[item_id]["cupboards_by_code"][code]}')
     else:
         del cart[item_id]['cupboards_by_code'][code]
         if not cart[item_id]['cupboards_by_code']:
