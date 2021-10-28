@@ -157,6 +157,7 @@ body{
 .details-btn{
     width:11rem;
     border-radius: 0;
+  
 }
 
 .details-btn:hover{
@@ -273,6 +274,7 @@ form{
 
 .toast{
     font-size: 110%;
+    z-index: 3;
 }
 
 .close:hover{
@@ -287,7 +289,7 @@ form{
 }
 
 .back{
-    z-index: -99999 !important;
+    z-index: 1 !important;
 }
 
 .toast-error{
