@@ -40,3 +40,23 @@
 .order-number{
   word-break: break-all;
 }
+
+/* loading overlay */
+#loading-overlay {
+	display: none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(122, 190, 148, 0.85);
+    z-index: 99999999 !important;
+}
+
+.loading-spinner {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+}
