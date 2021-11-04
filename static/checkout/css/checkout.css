@@ -35,3 +35,8 @@
     color: #000;
     border: 1px solid #000;
 }
+
+/* checkout success */
+.order-number{
+  word-break: break-all;
+}

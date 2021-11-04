@@ -276,6 +276,12 @@ form{
     font-size: 110%;
     z-index: 3;
 }
+/* tiny screens */
+@media(max-width:400px){
+    .toast{
+        width: 280px !important;
+    }
+}
 
 .close:hover{
     background: none !important;
