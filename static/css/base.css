@@ -269,7 +269,7 @@ form{
 	left: 0;
 	position: fixed;
     z-index: -1;
-	background: rgba(134, 127, 127, 0.89);
+	background: rgba(156, 150, 150, 0.664);
 }
 
 .toast{
