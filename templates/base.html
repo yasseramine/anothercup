@@ -91,9 +91,9 @@
                             aria-labelledby="user-options">
                             <a href="#" class="dropdown-item">Order History</a>
                             <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Logout</a>
-                            <a href="#" class="dropdown-item">Register</a>
-                            <a href="#" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                         </div>
                     </li>
                     <li class="list-inline-item p-0">

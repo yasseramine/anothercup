@@ -316,4 +316,35 @@ form{
     color:rgb(27, 92, 43) !important;
 }
 
+/* Allauth formatting */
 
+.hover-white{
+    height:40px;
+    min-width:85px;
+}
+.hover-white:hover{
+    background-color:#FFFFFF !important;
+}
+.no-bg{
+    background:none;
+}
+.no-bg:hover{
+    background:none !important;
+}
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+}
+
+.allauth-form-inner-content input {
+    border-color: #000;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
+}
