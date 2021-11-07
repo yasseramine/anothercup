@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 
-from .models import Cupboard, Material, Type, SavedCupboard
+from .models import Cupboard, Material, Type
 
 # Create your views here.
 
@@ -126,38 +126,3 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     }
 
     return render(request, 'cupboards/calculated_cupboard.html', context)
-
-
-@login_required
-def save_cupboard(request, cupboard_id, H, W, D, S, cost, code):
-
-    redirect_url = request.POST.get('redirect_url')
-
-    cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
-    saved_cupboard = {
-        'user': request.user,
-        'cupboard': cupboard,
-        'height': H,
-        'width': W,
-        'depth': D,
-        'shelves': S,
-        'cost': cost,
-        'code': code
-    }
-
-# check if user has already saved this cupboard:
-
-    users_cupboards = list(SavedCupboard.objects.filter(user=request.user))
-    if code in users_cupboards:
-        # messages.info(request, message)(request, f"You have already saved this cupboard")
-        return redirect('redirect_url')
-
-    else:
-        SavedCupboard.objects.create(**saved_cupboard)
-  
-
-    context = {
-        "saved_cupboard": saved_cupboard
-    }
-
-    return redirect('cart/view_cart')
