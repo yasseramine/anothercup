@@ -59,8 +59,9 @@
                         <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
                             <form class="form" method="GET" action="{% url 'cupboards' %}">
                                 <div class="input-group  mob-srch-grp w-100">
-                                    <input class="form-control mob-search-bar border border-black rounded-0 align-middle" type="text" name="q"
-                                        placeholder="Search our site">
+                                    <input
+                                        class="form-control mob-search-bar border border-black rounded-0 align-middle"
+                                        type="text" name="q" placeholder="Search our site">
                                     <div class="input-group-append mob-srch-grp-appnd">
                                         <button
                                             class="form-control mob-search-btn btn red-theme-color border-0 border-black rounded-0"
@@ -76,39 +77,39 @@
                     </li>
                 </ul>
             </div>
-        
-        <div class="col-3 col-lg-6 p-0 pr-2 pb-1 my-auto text-right">
-            <ul class="list-inline list-unstyled text-right p-0 my-0">
-                <li class="list-inline-item dropdown p-0">
-                    <a class="text-black nav-link p-0 pr-1" href="#" id="user-options" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <i class="fas fa-user fa-lg p-2"></i>
+
+            <div class="col-3 col-lg-6 p-0 pr-2 pb-1 my-auto text-right">
+                <ul class="list-inline list-unstyled text-right p-0 my-0">
+                    <li class="list-inline-item dropdown p-0">
+                        <a class="text-black nav-link p-0 pr-1" href="#" id="user-options" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <i class="fas fa-user fa-lg p-2"></i>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu user-menu dropdown-menu-right text-right border-0"
+                            aria-labelledby="user-options">
+                            <a href="#" class="dropdown-item">Order History</a>
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Logout</a>
+                            <a href="#" class="dropdown-item">Register</a>
+                            <a href="#" class="dropdown-item">Login</a>
                         </div>
-                    </a>
-                    <div class="dropdown-menu user-menu dropdown-menu-right text-right border-0"
-                        aria-labelledby="user-options">
-                        <a href="#" class="dropdown-item">Order History</a>
-                        <a href="#" class="dropdown-item">My Profile</a>
-                        <a href="#" class="dropdown-item">Logout</a>
-                        <a href="#" class="dropdown-item">Register</a>
-                        <a href="#" class="dropdown-item">Login</a>
-                    </div>
-                </li>
-                <li class="list-inline-item p-0">
-                    <a class="nav-link text-black p-0" href="{% url 'view_cart' %}">
-                        <div class="text-center">
-                        <i class="fas fa-shopping-cart  fa-lg p-2 pr-3"></i>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-12 pt-1 light-theme-color text-center">
-            <a href="{% url 'home' %}" class="nav-link pt-0 text-center">
-                <h2 class="logo-font logo-small text-black my-0 pt-2 pb-0">Custom Cupboards</h2>
-            </a>
-        </div>
+                    </li>
+                    <li class="list-inline-item p-0">
+                        <a class="nav-link text-black p-0" href="{% url 'view_cart' %}">
+                            <div class="text-center">
+                                <i class="fas fa-shopping-cart  fa-lg p-2 pr-3"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 pt-1 light-theme-color text-center">
+                <a href="{% url 'home' %}" class="nav-link pt-0 text-center">
+                    <h2 class="logo-font logo-small text-black my-0 pt-2 pb-0">Custom Cupboards</h2>
+                </a>
+            </div>
         </div>
         <div class="row light-theme-color d-flex pb-1 pb-md-0">
             <nav class="navbar navbar-expand-md navbar-light my-auto p-0 w-100 pb-1 pb-md-0">
@@ -121,27 +122,27 @@
                     {% include 'includes/mobile-top-header.html' %}
                     {% include 'includes/main-nav.html' %}
                     {% include 'includes/mobile-side-nav.html' %}
-                
+
             </nav>
         </div>
     </header>
 
     {% if messages %}
     <div class="toasts-container d-flex justify-content-center align-items-center">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}
