@@ -106,9 +106,12 @@
                 </fieldset>
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                    <!-- Stripe Card Input -->
                     <div class="mb-1" id="card-element"></div>
-
+                    <!-- Stripe errors div -->
                     <div class="mb-1 text-danger" id="card-errors" role="alert"></div>
+                    <!-- make client secret key available in view without being seen -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
 
                 <div class="submit-button text-right mt-4 mb-3">
