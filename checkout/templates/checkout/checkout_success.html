@@ -20,7 +20,7 @@
 
                 <h2 class="logo-font my-4 text-center">Thank You For Your Order</h2>
                 <hr>
-                <p class="text-black text-center">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                <p class="text-black text-center">Your order information is below. A confirmation email  {% if from_profile %}was {% else %}will be {% endif %}sent to <strong>{{ order.email }}</strong>.</p>
             </div>
         </div>
 
@@ -191,9 +191,15 @@
         </div>
         <div class="row">
 			<div class="col-12 pt-0 pb-3 text-center">
+                {% if from_profile %}
+                        <a href="{% url 'profile' %}" class="ml-3 text-black">
+                            <h4>Back to profile</h4>
+                        </a>
+                {% else %}
                 <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="ml-3 text-black">
                     <h4>Back to designs</h4>
                 </a>
+                {% endif %}
                 </h4>
             </div>
 		</div>
