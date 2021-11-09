@@ -5,6 +5,7 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 
 from .models import Cupboard, Material, Type
+from .forms import DesignForm, MaterialForm
 
 # Create your views here.
 
@@ -126,3 +127,32 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     }
 
     return render(request, 'cupboards/calculated_cupboard.html', context)
+
+
+
+def add_design_material(request):
+    """A view just to render the page with forms to add a new design or new material"""
+
+    form1 = DesignForm()
+    form2 = MaterialForm()
+    template = 'cupboards/add_design_material.html'
+
+    context = {
+        "form1": form1,
+        "form2": form2
+    }
+
+    return render(request, template, context)
+
+
+
+def add_design(request):
+    """ Add a new design to the collection"""
+
+    return 'add_design_material'
+
+
+def add_material(request):
+    """ Add a new material to the database"""
+
+    return 'add_design_material'

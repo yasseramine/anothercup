@@ -16,6 +16,9 @@ class Material(models.Model):
     def get_display_name(self):
         return self.display_name
 
+    def price_per_m2(self):
+        return self.price_per_m2
+
 
 class Type(models.Model):
     name = models.CharField(max_length=254)
@@ -23,6 +26,9 @@ class Type(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_friendly_name(self):
+        return self.friendly_name
 
 
 class Cupboard(models.Model):

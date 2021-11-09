@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="logo-font my-4 text-center">Product Management</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h5 class="text-center">Add a Design</h5>
+                <form method="POST" action="{% url 'add_design' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form1 | crispy }}
+                    <div class="text-right">
+                  
+                        <button class="btn red-theme-color rounded-0" type="submit">Add Design</button>
+                    </div>
+                </form>
+            </div>            
+
+        <div class="col-12 col-md-6">
+            <h5 class="text-center">Add a Material</h5>
+            <form method="POST" action="{% url 'add_material' %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form2 | crispy }}
+                <div class="text-right">
+              
+                    <button class="btn red-theme-color rounded-0" type="submit">Add Material</button>
+                </div>
+            </form>
+         
+        </div>  
+        </div> 
+        <div class="col-12">
+            <a class="btn light-theme-color rounded-0" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
+        </div>         
+    </div>
+    </div>
+{% endblock %}
