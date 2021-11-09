@@ -1,0 +1,1 @@
+Custom Cupboards Order confirmation for order {{ order.order_number }}
