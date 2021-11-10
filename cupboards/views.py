@@ -211,7 +211,7 @@ def edit_design(request, cupboard_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Design successfully updated.')
-            return redirect(reverse('cupboards'))
+            return redirect(reverse('cupboard.details', args=[cupboard.id]))
         else:
             messages.error(request, 'Failed to update design. Please ensure the form is valid.')
     else:

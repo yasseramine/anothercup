@@ -24,9 +24,14 @@
                 <h5 class="text-center">Edit Design</h5>
                 <form method="POST" action="{% url 'edit_design' cupboard.id%}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form | crispy }}
+                    {% for field in form %}
+                        {% if field.name != 'main_image' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
                     <div class="text-center my-4">
-                  
                         <button class="btn red-theme-color cancel-btn rounded-0 font-weight-bold" type="submit">Edit</button>
                         <a class="btn light-theme-color rounded-0 font-weight-bold cancel-btn" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
                     </div>
@@ -35,4 +40,14 @@
         </div>       
     </div>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
 {% endblock %}
