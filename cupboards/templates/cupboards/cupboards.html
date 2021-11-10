@@ -74,12 +74,18 @@
             <div class="card h-100 border-0 back">
                 <h4 class="card-header border-0">{{cupboard.name}}</h4>
                 <p class="pl-md-3">{{cupboard.description}}</p>
+                <p class="pl-md-3">Material: {{cupboard.material.display_name}}</p>
                 <h6 class="pl-md-3"><strong>Example price*:</strong> £{{cupboard.example_price}}</h6>
-                <p class="text-center mb-0 mt-2"><a class="btn btn-lg details-btn red-theme-color"
-                        href="{% url 'cupboard_details' cupboard.id %}"><strong>SELECT</strong></a>
+                <p class="text-center mb-0 mt-2">
                     {% if request.user.is_superuser %}
                     <a href="{% url 'edit_design' cupboard.id %}"
                         class="btn light-theme-color rounded-0 cancel-btn my-2 "><strong>Edit</strong></a>
+                    {% endif %}
+                    <a class="btn btn-lg details-btn red-theme-color"
+                        href="{% url 'cupboard_details' cupboard.id %}"><strong>SELECT</strong></a>
+                    {% if request.user.is_superuser %}
+                    <a href="{% url 'delete_design' cupboard.id %}"
+                        class="btn light-theme-color rounded-0 cancel-btn my-2 "><strong>Delete</strong></a>
                     {% endif %}
                 </p>
                 <br>

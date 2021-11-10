@@ -11,7 +11,8 @@
 {{material.display_name}}
 {{material.example_price}}
 {% if request.user.is_superuser %}
-<a href="{% url 'edit_material' material.id %}" class="btn red-theme-color rounded-0 cancel-btn my-2" ><strong>Edit</strong></a>
+<a href="{% url 'edit_material' material.id %}" class="btn light-theme-color rounded-0 cancel-btn my-2" ><strong>Edit</strong></a>
+<a href="{% url 'delete_material' material.id %}" class="btn light-theme-color rounded-0 cancel-btn my-2" ><strong>Delete</strong></a>
 {% endif %}
 {% endfor %}
 {% endblock%}

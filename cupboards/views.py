@@ -198,14 +198,12 @@ def edit_design(request, cupboard_id):
             messages.error(request, 'Failed to update design. Please ensure the form is valid.')
     else:
         form = DesignForm(instance=cupboard)
-        messages.info(request, f'You are editing {cupboard.name}')
 
     template = 'cupboards/edit_design.html'
     context = {
         'form': form,
         'cupboard': cupboard
     }
-
     return render(request, template, context)
 
 
@@ -222,12 +220,30 @@ def edit_material(request, material_id):
             messages.error(request, 'Failed to update material. Please ensure the form is valid.')
     else:
         form = MaterialForm(instance=material)
-        messages.info(request, f'You are editing {material.display_name}')
 
     template = 'cupboards/edit_material.html'
     context = {
         'form': form,
         'material': material
     }
-
     return render(request, template, context)
+
+
+def delete_design(request, cupboard_id):
+    """ Delete a design from the collection """
+    cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
+    cupboard.delete()
+    messages.success(request, 'Design deleted.')
+    return redirect(reverse('cupboards'))
+
+
+def delete_material(request, material_id):
+    """ Delete a material from the database """
+    material = get_object_or_404(Material, pk=material_id)
+    material.delete()
+    messages.success(request, 'Material deleted.')
+
+    # Delete designs made of this material
+    # Cupboard.objects.filter(material=material_id).delete()
+
+    return redirect(reverse('materials'))
