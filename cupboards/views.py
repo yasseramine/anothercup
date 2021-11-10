@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
@@ -129,9 +130,12 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     return render(request, 'cupboards/calculated_cupboard.html', context)
 
 
-
+@login_required
 def add_design_material(request):
     """A view just to render the page with forms to add a new design or new material"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to access this page.')
+        return redirect(reverse('home'))
 
     form1 = DesignForm()
     form2 = MaterialForm()
@@ -141,26 +145,35 @@ def add_design_material(request):
         "form1": form1,
         "form2": form2
     }
-
     return render(request, template, context)
 
 
+@login_required
 def add_design(request):
     """ Add a new design to the collection"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to do this.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = DesignForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            cupboard = form.save()
             messages.success(request, 'Design successfully added.')
-            return redirect('add_design_material')
+            return redirect(reverse('cupboard.details', args=[cupboard.id]))
         else:
             messages.error(request, 'Failed to add design. Please ensure the form is valid.')
     else:
         return redirect('add_design_material')
 
 
+@login_required
 def add_material(request):
     """ Add a new material to the database"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to do this.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = MaterialForm(request.POST, request.FILES)
         if form.is_valid():
@@ -185,8 +198,13 @@ def list_materials(request):
     return render(request, 'cupboards/materials.html', context) 
 
 
+@login_required
 def edit_design(request, cupboard_id):
     """ Edit a cupboard or shelving unit design """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to do this.')
+        return redirect(reverse('home'))
+
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     if request.method == 'POST':
         form = DesignForm(request.POST, request.FILES, instance=cupboard)
@@ -207,8 +225,13 @@ def edit_design(request, cupboard_id):
     return render(request, template, context)
 
 
+@login_required
 def edit_material(request, material_id):
     """ Edit a material """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to do this.')
+        return redirect(reverse('home'))
+
     material = get_object_or_404(Material, pk=material_id)
     if request.method == 'POST':
         form = MaterialForm(request.POST, request.FILES, instance=material)
@@ -229,21 +252,28 @@ def edit_material(request, material_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_design(request, cupboard_id):
     """ Delete a design from the collection """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to do this.')
+        return redirect(reverse('home'))
+
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     cupboard.delete()
     messages.success(request, 'Design deleted.')
     return redirect(reverse('cupboards'))
 
 
+@login_required
 def delete_material(request, material_id):
     """ Delete a material from the database """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorised to do this.')
+        return redirect(reverse('home'))
+        
     material = get_object_or_404(Material, pk=material_id)
     material.delete()
     messages.success(request, 'Material deleted.')
-
-    # Delete designs made of this material
-    # Cupboard.objects.filter(material=material_id).delete()
 
     return redirect(reverse('materials'))
