@@ -15,7 +15,7 @@ class Material(models.Model):
 
     def get_display_name(self):
         return self.display_name
-        
+
 
 class Type(models.Model):
     name = models.CharField(max_length=254)
@@ -30,7 +30,7 @@ class Type(models.Model):
 
 class Cupboard(models.Model):
 
-    design_id = models.CharField(max_length=5)
+    design_id = models.CharField(max_length=6)
     type = models.ForeignKey('Type', null=True, blank=True,
                                  on_delete=models.SET_NULL)
     material = models.ForeignKey('Material', null=True, blank=False,

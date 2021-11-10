@@ -189,7 +189,7 @@ def edit_design(request, cupboard_id):
     """ Edit a cupboard or shelving unit design """
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     if request.method == 'POST':
-        form = DesignForm(request.POST, request.FILES, instance=product)
+        form = DesignForm(request.POST, request.FILES, instance=cupboard)
         if form.is_valid():
             form.save()
             messages.success(request, 'Design successfully updated.')
