@@ -1,4 +1,5 @@
 from django import forms
+from .widgets import CustomClearableFileInput
 from .models import Cupboard, Type, Material
 
 # Add a cupboard design
@@ -7,6 +8,8 @@ class DesignForm(forms.ModelForm):
     class Meta:
         model = Cupboard
         fields = '__all__'
+
+    main_image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
