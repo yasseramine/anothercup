@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container-fluid header-container">
+</div>
+{% endblock %}
+
+{% block content %}
+{% for material in materials%}
+{{material.display_name}}
+{{material.example_price}}
+<a href="{% url 'edit_material' material.id %}" class="btn red-theme-color rounded-0 cancel-btn my-2" ><strong>Edit</strong></a>
+{% endfor %}
+{% endblock%}
