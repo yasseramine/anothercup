@@ -27,7 +27,7 @@ class CupboardAdmin(admin.ModelAdmin):
         'type',
         'material',
         'design_surcharge',
-        'exampleprice',
+        'example_price',
         'main_image'
     )
 

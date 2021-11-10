@@ -8,7 +8,7 @@ class Material(models.Model):
     material_code = models.CharField(max_length=3)
     name = models.CharField(max_length=254)
     display_name = models.CharField(max_length=254, null=True, blank=True)
-    price_per_m2 = models.DecimalField(max_digits=6, decimal_places=2)
+    price_per_m2 = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False)
 
     def __str__(self):
         return self.name
@@ -16,8 +16,8 @@ class Material(models.Model):
     def get_display_name(self):
         return self.display_name
 
-    def price_per_m2(self):
-        return self.price_per_m2
+    # def price_per_m2(self):
+    #     return self.price_per_m2
 
 
 class Type(models.Model):
@@ -41,7 +41,7 @@ class Cupboard(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     design_surcharge = models.DecimalField(max_digits=6, decimal_places=2)
-    exampleprice = models.DecimalField(max_digits=6, decimal_places=2)
+    example_price = models.DecimalField(max_digits=6, decimal_places=2)
     main_image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

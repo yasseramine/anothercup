@@ -25,9 +25,10 @@
                 <form method="POST" action="{% url 'add_design' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form1 | crispy }}
-                    <div class="text-right">
+                    <div class="text-center my-4">
                   
-                        <button class="btn red-theme-color rounded-0" type="submit">Add Design</button>
+                        <button class="btn red-theme-color rounded-0 font-weight-bold" type="submit">Add Design</button>
+                        <a class="btn light-theme-color rounded-0 font-weight-bold cancel-btn" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
                     </div>
                 </form>
             </div>            
@@ -37,17 +38,14 @@
             <form method="POST" action="{% url 'add_material' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form2 | crispy }}
-                <div class="text-right">
-              
-                    <button class="btn red-theme-color rounded-0" type="submit">Add Material</button>
+                <div class="text-center my-4">
+                    <button class="btn red-theme-color rounded-0 font-weight-bold" type="submit">Add Material</button>
+                    <a class="btn light-theme-color cancel-btn rounded-0 font-weight-bold" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
                 </div>
             </form>
          
         </div>  
-        </div> 
-        <div class="col-12">
-            <a class="btn light-theme-color rounded-0" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
-        </div>         
+        </div>       
     </div>
     </div>
 {% endblock %}

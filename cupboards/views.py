@@ -145,14 +145,29 @@ def add_design_material(request):
     return render(request, template, context)
 
 
-
 def add_design(request):
     """ Add a new design to the collection"""
-
-    return 'add_design_material'
+    if request.method == 'POST':
+        form = DesignForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Design successfully added.')
+            return redirect('add_design_material')
+        else:
+            messages.error(request, 'Failed to add design. Please ensure the form is valid.')
+    else:
+        return redirect('add_design_material')
 
 
 def add_material(request):
     """ Add a new material to the database"""
-
-    return 'add_design_material'
+    if request.method == 'POST':
+        form = MaterialForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Material successfully added.')
+            return redirect('add_design_material')
+        else:
+            messages.error(request, 'Failed to add material. Please ensure the form is valid.')
+    else:
+        return redirect('add_design_material')

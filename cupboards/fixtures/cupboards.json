@@ -9,7 +9,7 @@
             "name": "Antique Style Pine Cupboard with Drawer",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
             "design_surcharge": 13.99,
-            "exampleprice": 50.00,
+            "example_price": 50.00,
             "main_image": "pin01-01.png"
         }
     },
@@ -23,7 +23,7 @@
             "name": "Antique Style Oak Cupboard",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
             "design_surcharge": 13.99,
-            "exampleprice": 100.00
+            "example_price": 100.00
         }
     },
     {
@@ -36,7 +36,7 @@
             "name": "Melamine MDF Cupboard",
             "description": "MDF cupboard with contemporary handles.",
             "design_surcharge": 10.99,
-            "exampleprice": 60.00,
+            "example_price": 60.00,
             "main_image": ""
         }
     },
@@ -50,7 +50,7 @@
             "name": "Classic Pine Cupboard",
             "description": "Classic shelved pine cupboard with pretty shaped panelled double doors and a top 'medicine drawer' to keep things out of reach. Made of solid 20mm Norwegian Pine with a waxed finish.",
             "design_surcharge": 13.99,
-            "exampleprice": 10.00,
+            "example_price": 10.00,
             "main_image": ""
         }
     },
@@ -64,7 +64,7 @@
             "name": "Contemporary Beech Veneer Cupboard",
             "description": "Nice cupboard.",
             "design_surcharge": 1.99,
-            "exampleprice": 10.00,
+            "example_price": 10.00,
             "main_image": ""
         }
     },
@@ -78,7 +78,7 @@
             "name": "Contemporary Walnut Veneer Cupboard",
             "description": "Another lovely cupboard.",
             "design_surcharge": 13.99,
-            "exampleprice": 10.00,
+            "example_price": 10.00,
             "main_image": ""
         }
     },
@@ -92,7 +92,7 @@
             "name": "Solid Pine Shelving Unit",
             "description": "Pine Shelves.",
             "design_surcharge": 3.99,
-            "exampleprice": 15.00,
+            "example_price": 15.00,
             "main_image": ""
         }
     },
@@ -106,7 +106,7 @@
             "name": "Solid Oak Shelving Unit",
             "description": "Solid oak shelves",
             "design_surcharge": 13.99,
-            "exampleprice": 101.00,
+            "example_price": 101.00,
             "main_image": ""
         }
     }

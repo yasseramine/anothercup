@@ -326,6 +326,7 @@ form{
 .hover-white:hover{
     background-color:#FFFFFF !important;
 }
+
 .no-bg{
     background:none;
 }
@@ -348,4 +349,12 @@ form{
 
 .allauth-form-inner-content input::placeholder {
     color: #aab7c4;
+}
+
+/* Product management */
+.cancel-btn{
+    width:7.5rem;
+}
+.cancel-btn:hover{
+    background-color: white !important;
 }
