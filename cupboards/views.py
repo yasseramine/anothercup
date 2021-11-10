@@ -171,3 +171,63 @@ def add_material(request):
             messages.error(request, 'Failed to add material. Please ensure the form is valid.')
     else:
         return redirect('add_design_material')
+
+
+def list_materials(request):
+    """ A view to show more detailed information about te materials available and a link for admin to edit materials in the database"""
+
+    materials = Material.objects.all()
+
+    context = {
+        'materials': materials
+    }
+
+    return render(request, 'cupboards/materials.html', context) 
+
+
+def edit_design(request, cupboard_id):
+    """ Edit a cupboard or shelving unit design """
+    cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
+    if request.method == 'POST':
+        form = DesignForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Design successfully updated.')
+            return redirect(reverse('cupboards'))
+        else:
+            messages.error(request, 'Failed to update design. Please ensure the form is valid.')
+    else:
+        form = DesignForm(instance=cupboard)
+        messages.info(request, f'You are editing {cupboard.name}')
+
+    template = 'cupboards/edit_design.html'
+    context = {
+        'form': form,
+        'cupboard': cupboard
+    }
+
+    return render(request, template, context)
+
+
+def edit_material(request, material_id):
+    """ Edit a material """
+    material = get_object_or_404(Material, pk=material_id)
+    if request.method == 'POST':
+        form = MaterialForm(request.POST, request.FILES, instance=material)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Material info successfully updated.')
+            return redirect(reverse('materials'))
+        else:
+            messages.error(request, 'Failed to update material. Please ensure the form is valid.')
+    else:
+        form = MaterialForm(instance=material)
+        messages.info(request, f'You are editing {material.display_name}')
+
+    template = 'cupboards/edit_material.html'
+    context = {
+        'form': form,
+        'material': material
+    }
+
+    return render(request, template, context)

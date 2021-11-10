@@ -357,4 +357,5 @@ form{
 }
 .cancel-btn:hover{
     background-color: white !important;
+    border-color: #000;
 }
