@@ -7,7 +7,7 @@
         <div class="col-12 p-0">
             <div class="doors-banner ">
                 <div class="col-12 ">
-                    <h3 class="text-center banner-words p-4">CHOOSE FROM ONE OF OUR TOP QUALITY DESIGNS</h3>
+                    <h3 class="text-center banner-words p-3 p-md-4">CHOOSE FROM ONE OF OUR TOP QUALITY DESIGNS</h3>
                 </div>
             </div>
             <h5 class="text-center back m-3">|
@@ -61,7 +61,7 @@
 
     <div class="row">
         {%for cupboard in cupboards%}
-        <div class="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 offset-md-1 text-center text-md-left p-0">
+        <div class="col-12 col-md-4 offset-md-1 text-center text-md-left p-0">
             <div
                 class="image-wrapper back col-8 offset-2 col-sm-6 offset-sm-3 col-md-12 offset-md-0 mt-md-3 mt-lg-1 p-0 p-lg-3 pb-0">
                 {% if cupboard.main_image %}
@@ -99,7 +99,7 @@
                     {% endif %}
                 </p>
                 <br>
-                <p class="pl-md-3"><strong>Select this cupboard design and enter your required dimensions on the next
+                <p class="pl-md-3"><strong>Select this {{cupboard.type.friendly_name | lower}} design and enter your required dimensions on the next
                         page to receive a quote.</strong></p>
                 <p class="pl-md-3 mb-1 example d-none d-md-block"><small>*Given for cost comparison. Calculated
                         for a unit with
