@@ -152,6 +152,11 @@ body{
         font-size: 150%;
     }
 }
+@media (max-width: 768px){
+    .dropdown-item{
+        font-weight:bold;
+    }
+}
 
 /* Designs page */
 .doors-banner{
@@ -181,9 +186,10 @@ body{
     line-height: normal;
 }
 
-/* .custom-select:active{
-    border:none;
-} */
+.black-line{
+    border-top: 0.2px solid black !important;
+}
+
 
 @media(max-width:568px){
     .banner-words{

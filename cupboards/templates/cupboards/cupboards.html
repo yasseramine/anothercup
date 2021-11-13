@@ -32,31 +32,32 @@
                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                     <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>
                         Price (low to high)</option>
-                    <option value="price_desc"
-                        {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                    <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high
+                        to low)</option>
                     <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)
                     </option>
-                    <option value="material_asc" {% if current_sorting == 'material_asc' %}selected{% endif %}>Material (A-Z)
+                    <option value="material_asc" {% if current_sorting == 'material_asc' %}selected{% endif %}>Material
+                        (A-Z)
                     </option>
                 </select>
             </div>
         </div>
         <div class="col-12 col-md-6 order-md-first">
-            <p class="text-muted mt-2 mt-md-0 pl-md-4 mb-1 light-theme-text text-left">
+            <p class="text-muted mt-2 mt-md-0 pl-md-4 mb-md-1 mb-3 light-theme-text text-left">
                 <span class=""><a href="{%url 'cupboards'%}" class="light-theme-text">
-                    All Designs</a> | </span>
+                        All Designs</a> | </span>
 
                 {% if type %}
                 {{ type.friendly_name }}s |
-             
-                
+
+
                 {% endif %}
                 {{ cupboards|length }} results {% if search_term %} found for
                 <strong>"{{ search_term }}"</strong>{% endif %}
             </p>
         </div>
     </div>
-    <hr class="mb-1 mb-md-0 mt-0 mx-5">
+    <hr class="mb-1 mb-md-0 mt-0 mx-5 d-none d-md-block">
 
     <div class="row">
         {%for cupboard in cupboards%}
@@ -80,31 +81,44 @@
                 <h4 class="card-header border-0">{{cupboard.name}}</h4>
                 <p class="pl-md-3">{{cupboard.description}}</p>
                 <p class="pl-md-3">Material: {{cupboard.material.display_name}}</p>
-                <h6 class="pl-md-3"><strong>Example price*:</strong> £{{cupboard.example_price}}</h6>
+                <h6 class="pl-md-3"><strong>Example price*: £{{cupboard.example_price}}</strong></h6>
+                <p class="pl-md-3 mb-1 example d-block d-md-none">*Given for cost comparison.  Calculated for a
+                    unit with
+                    dimensions:</p>
+                <p class="pl-md-3 mb-3 d-block d-md-none">H: 150cm / W: 100cm / D: 50cm and 4 shelves.</p>
                 <p class="text-center mb-0 mt-2">
                     {% if request.user.is_superuser %}
                     <a href="{% url 'edit_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cancel-btn my-2 "><strong>Edit</strong></a>
+                        class="btn light-theme-color rounded-0 cancel-btn my-2 d-none d-md-block"><strong>Edit</strong></a>
                     {% endif %}
                     <a class="btn btn-lg details-btn red-theme-color"
                         href="{% url 'cupboard_details' cupboard.id %}"><strong>SELECT</strong></a>
                     {% if request.user.is_superuser %}
                     <a href="{% url 'delete_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cancel-btn my-2 "><strong>Delete</strong></a>
+                        class="btn light-theme-color rounded-0 cancel-btn my-2 d-none d-md-block"><strong>Delete</strong></a>
                     {% endif %}
                 </p>
                 <br>
                 <p class="pl-md-3"><strong>Select this cupboard design and enter your required dimensions on the next
                         page to receive a quote.</strong></p>
-                <p class="pl-md-3 mb-1 example">*Example price is given to enable price comparison for a cupboard of
-                    dimensions:</p>
-                <p class="pl-md-3 mb-1">H: 150cm / W: 100cm / D: 50cm</p>
+                <p class="pl-md-3 mb-1 example d-none d-md-block"><small>*Given for cost comparison. Calculated
+                        for a unit with
+                        dimensions:</small></p>
+                <p class="pl-md-3 mb-1 d-none d-md-block"><small>H: 150cm / W: 100cm / D: 50cm and 4 shelves.</small>
+                </p>
+                {% if request.user.is_superuser %}
+                <p class="text-center mx-0 d-block d-md-none">
+                    <a href="{% url 'edit_design' cupboard.id %}"
+                        class="btn light-theme-color rounded-0 cancel-btn mt-2 mb-0"><strong>Edit</strong></a>
+                        <a href="{% url 'delete_design' cupboard.id %}"
+                        class="btn light-theme-color rounded-0 cancel-btn mt-2 mb-0"><strong>Delete</strong></a> 
+                </p>
+                {% endif %}
             </div>
         </div>
-        <div class="col-10 offset-1 col-lg-8 offset-lg-2 pb-3">
-            <hr>
+        <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 pb-3">
+            <hr class="black-line">
         </div>
-
         {% endfor %}
         <div class="col-12 pt-1 pt-md-2 mb-5 text-center">
             <a href="" class="text-black btt-link">
@@ -114,7 +128,6 @@
     </div>
 </div>
 {% endblock%}
-
 {% block postloadjs %}
 {{ block.super }}
 
