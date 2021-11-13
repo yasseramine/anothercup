@@ -15,7 +15,7 @@
                 <a href="{%url 'cupboards'%}?type={{t.name}}" class="text-black pt-0">{{t.friendly_name}}s</a> |
                 {% endfor %}
         </div>
-        <div class="col-12">
+        <div class="col-12 d-none d-md-block">
             <hr class="mt-0 mx-5">
         </div>
     </div>
@@ -26,7 +26,7 @@
 <div class="container-fluid">
     <div class="row mt-1 mb-2">
         <div class="col-12 col-md-6  order-md-last d-flex justify-content-center justify-content-md-end">
-            <div class="sort-select-wrapper back w-40 mb-md-2 mr-md-5">
+            <div class="sort-select-wrapper back w-40 mb-2 mr-md-5">
                 <select id="sort-selector"
                     class="custom-select border-black custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 order-md-first">
-            <p class="text-muted mt-2 mt-md-0 pl-md-4 mb-1 light-theme-text text-center text-md-left">
+            <p class="text-muted mt-2 mt-md-0 pl-md-4 mb-1 light-theme-text text-left">
                 <span class=""><a href="{%url 'cupboards'%}" class="light-theme-text">
                     All Designs</a> | </span>
 
@@ -70,7 +70,7 @@
                 </a>
                 {% else %}
                 <a href="{% url 'cupboard_details' cupboard.id %}">
-                    <img class="card-img-top img-fluid" src="../media/noimage.png" alt="{{ cupboard.name }}">
+                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ cupboard.name }}">
                 </a>
                 {% endif %}
             </div>
