@@ -17,6 +17,7 @@ def all_cupboards(request):
     cupboards = Cupboard.objects.all()
     query = None
     types = None
+    all_types = Type.objects.all()
     sort = None
     direction = None
 
@@ -28,8 +29,16 @@ def all_cupboards(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 cupboards = cupboards.annotate(lower_name=Lower('name'))
+
+            if sortkey == 'price':
+                sortkey = 'example_price'
+
+            if sortkey == 'material':
+                sortkey = 'material__name'
+
             if sortkey == 'type':
                 sortkey = 'type__name'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -55,7 +64,8 @@ def all_cupboards(request):
     context = {
         'cupboards': cupboards,
         'search_term': query,
-        'current_types': types,
+        'all_types': all_types,
+        'types': types,
         'current_sorting': current_sorting,
     }
 
