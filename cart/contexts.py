@@ -10,7 +10,7 @@ def cart_contents(request):
     total = 0
     count = 0
     cart = request.session.get('cart', {})
-    delivery = 25.00
+    delivery = 0
 
     for item_id, item_data in cart.items():
 
@@ -22,6 +22,7 @@ def cart_contents(request):
             subtotal = format(subtotal, '.2f')
             total += float(subtotal)
             count += quantity
+            delivery += count * 25
 
             height = code.split('#')[0]
             width = code.split('#')[1]

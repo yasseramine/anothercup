@@ -99,6 +99,7 @@ def checkout(request):
             return redirect(reverse('cupboards'))
 
         current_cart = cart_contents(request)
+        delivery = current_cart['delivery']
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
