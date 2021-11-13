@@ -1,3 +1,4 @@
+<div id="sidenav_underlay" class="d-none"></div>
 <div class="navbar-collapse d-md-none sidenav" id="side-nav">
     <div class="close-right"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></div>
     <ul class="navbar-nav mx-auto my-auto">
@@ -9,30 +10,33 @@
             <div class="dropdown-menu red-theme-color border-0 pt-0" aria-labelledby="info-link">
                 <a href="#" class="dropdown-item pl-2">What we do</a>
                 <a href="#" class="dropdown-item pl-2">Pricing</a>
+                <a href="{% url 'materials' %}" class="dropdown-item pl-2">Our Materials</a>
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Designs
+            <a class="logo-font font-weight-bold nav-link text-black mr-5 " href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Designs
             </a>
-            <div class="dropdown-menu red-theme-color border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'cupboards' %}?sort=exampleprice&direction=asc" class="dropdown-item ">By Price</a>
-                <a href="{% url 'cupboards' %}?sort=name&direction=asc" class="dropdown-item ">By Name</a>
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item">All Designs</a>
+            <div class="dropdown-menu red-theme-color border-0 pt-0" aria-labelledby="all-products-link">
+                <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item pl-2 pt-0">Cupboards</a>
+                <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item pl-2">Shelving Units</a>
+                <a href="{%url 'cupboards'%}" class="dropdown-item">All Designs</a>
+                <a href="{% url 'cupboards' %}?sort=price&direction=asc" class="dropdown-item small">By Price</a>
+                <a href="{% url 'cupboards' %}?sort=name&direction=asc" class="dropdown-item small">By Name</a>
+                <a href="{% url 'cupboards' %}?sort=material&direction=asc" class="dropdown-item small">By Material</a>
             </div>
         </li>
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="options-link"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Designs
             </a>
             <div class="dropdown-menu red-theme-color border-0 pt-0" aria-labelledby="options-link">
                 <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item">Cupboards</a>
-                <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item">Shelving Units</a>
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item pl-2">All Designs</a>
+
             </div>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black" href="#" id="shipping-link" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -49,6 +53,7 @@
 
 <script>
     function closeNav() {
+        document.getElementById("sidenav_underlay").classList.add('d-none');
         document.getElementById("side-nav").classList.remove('sidenav-open');
         document.getElementById("main").style.marginLeft = "0";
     }

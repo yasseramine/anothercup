@@ -11,25 +11,27 @@
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Designs
+            <a class="logo-font font-weight-bold main-nav-link nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Designs
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'cupboards' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
-                <a href="{% url 'cupboards' %}?sort=name&direction=asc" class="dropdown-item ">By Name</a>
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item">All Designs</a>
+                <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item pl-2">Cupboards</a>
+                <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item pl-2">Shelving Units</a>
+                <a href="{%url 'cupboards'%}" class="dropdown-item">All Designs</a>
+                <a href="{% url 'cupboards' %}?sort=price&direction=asc" class="dropdown-item small">By Price</a>
+                <a href="{% url 'cupboards' %}?sort=name&direction=asc" class="dropdown-item small">By Name</a>
+                <a href="{% url 'cupboards' %}?sort=material&direction=asc" class="dropdown-item small">By Material</a>
             </div>
         </li>
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold main-nav-link nav-link text-black mr-5" href="#" id="options-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Designs
             </a>
             <div class="dropdown-menu dropdown-bg border-0 pt-0" aria-labelledby="options-link">
                 <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item pl-2">Cupboards</a>
-                <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item pl-2">Shelving Units</a>
-                <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item pl-2">All Designs</a>
+                
             </div>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link main-nav-link text-black" href="#" id="shipping-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Info

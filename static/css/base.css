@@ -90,11 +90,21 @@ body{
     border: none;
 }
 
+#sidenav_underlay{
+    height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+    z-index: 1;
+	background: rgba(148, 143, 140, 0.781);
+}
+
 .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color: rgb(168, 153, 153);
@@ -115,6 +125,10 @@ body{
         width:0;
         padding-left: 0;
     }
+    #sidenav_underlay{
+        display:none !important;
+    }
+   
 }
 
 .close-right{

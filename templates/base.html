@@ -163,6 +163,7 @@
     {% endblock %}
     <script>
         function openNav() {
+            document.getElementById("sidenav_underlay").classList.remove('d-none');
             document.getElementById("side-nav").classList.add('sidenav-open');
             document.getElementById("main").style.marginLeft = "200px";
         }
