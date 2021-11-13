@@ -52,7 +52,9 @@
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
         {{ form | crispy }}
+        <div class="text-center">
         <a class="btn red-theme-color hover-white"><button class="no-bg border-0" type="submit">{% trans "Add E-mail" %}</button></a>
+        </div>
     </form>
   {% endif %}
 
