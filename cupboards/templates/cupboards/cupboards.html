@@ -43,11 +43,15 @@
         </div>
         <div class="col-12 col-md-6 order-md-first">
             <p class="text-muted mt-2 mt-md-0 pl-md-4 mb-1 light-theme-text text-center text-md-left">
-                {% if search_term or current_types or current_sorting != 'None_None' %}
-                <span class=""><a href="{%url 'cupboards'%}?type=cupboard,shelving" class="light-theme-text">All
-                        Designs</a> | </span>
+                <span class=""><a href="{%url 'cupboards'%}" class="light-theme-text">
+                    All Designs</a> | </span>
+
+                {% if type %}
+                {{ type.friendly_name }}s |
+             
+                
                 {% endif %}
-                {{ cupboards|length }} {{current_types.friendly_name}} {% if search_term %} found for
+                {{ cupboards|length }} results {% if search_term %} found for
                 <strong>"{{ search_term }}"</strong>{% endif %}
             </p>
         </div>

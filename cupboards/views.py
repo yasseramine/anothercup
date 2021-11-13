@@ -16,8 +16,9 @@ def all_cupboards(request):
 
     cupboards = Cupboard.objects.all()
     query = None
-    types = None
+    type = None
     all_types = Type.objects.all()
+    types = all_types
     sort = None
     direction = None
 
@@ -48,10 +49,13 @@ def all_cupboards(request):
         if 'type' in request.GET:
             types = request.GET['type'].split(',')
             cupboards = cupboards.filter(type__name__in=types)
-            types = Type.objects.filter(name__in=types)
+            type = Type.objects.filter(name__in=types)[0]
+            
+        print(type)
 
         if 'q' in request.GET:
             query = request.GET['q']
+
             if not query:
                 messages.error(request, "Please enter some search criteria.")
                 return redirect(reverse('cupboards'))
@@ -65,6 +69,7 @@ def all_cupboards(request):
         'cupboards': cupboards,
         'search_term': query,
         'all_types': all_types,
+        'type': type,
         'types': types,
         'current_sorting': current_sorting,
     }

@@ -33,7 +33,6 @@
             </div>
             <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
                 
-                    <!-- insert action as url for calculated_cupboard -->
                     <form class="" action="{% url 'calculated_cupboard' cupboard.id  cupboard.material.id cupboard.type.id %}" method="POST">
                         {% csrf_token %}
                     <div class="container-fluid">
@@ -95,7 +94,7 @@
             </div>
         </div>
         <div class="col-12 pt-1 pt-md-2 pb-3 text-center">
-            <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="text-black"><h5>Back to designs</h5></a>
+            <a href="{%url 'cupboards'%}" class="text-black"><h5>Back to designs</h5></a>
         </div>
     </div>
 </div>

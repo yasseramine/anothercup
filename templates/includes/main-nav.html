@@ -11,11 +11,10 @@
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Designs
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Designs
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'cupboards' %}?sort=exampleprice&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'cupboards' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'cupboards' %}?sort=name&direction=asc" class="dropdown-item ">By Name</a>
                 <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="dropdown-item">All Designs</a>
             </div>
