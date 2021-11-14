@@ -58,6 +58,7 @@ body{
 
 .main-nav-link{
     font-size: 115%;
+    width: 150px;
 }
 
 .main-nav-link:hover{
@@ -201,6 +202,9 @@ body{
         font-size: 150%;
     }
 }
+.cupboard-cancel-btn{
+    width:4.5rem;
+}
 
 /* Cupboard details page */
 .card{
@@ -208,12 +212,16 @@ body{
 }
 .dim-input{
     width:3.5rem;
+    border-radius:0;
+    border:none;
+    padding-left: 5px;
 }
 
 #shelves{
     height:30px;
     border-radius:0;
-    width:2.5rem;
+    width:3rem;
+    border:none;
 }
 
 button{
