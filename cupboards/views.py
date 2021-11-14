@@ -86,8 +86,26 @@ def cupboard_details(request, cupboard_id):
 
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
 
+    max_height = 2400
+    max_width = 2400
+    max_depth = 600
+    min_depth = 150
+
+    if cupboard.type.name == "cupboard":
+        min_height = 400
+        min_width = 400
+    else:
+        min_height = 200
+        min_width = 200
+
     context = {
         'cupboard': cupboard,
+        'max_height': max_height,
+        'max_width': max_width,
+        'max_depth': max_depth,
+        'min_height': min_height,
+        'min_width': min_width,
+        'min_depth': min_depth
     }
 
     return render(request, 'cupboards/cupboard_details.html', context) 
@@ -101,9 +119,9 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     type = get_object_or_404(Type, pk=type_id)
 
     if request.method == "POST":
-        height_in_mm = float(request.POST.get("height")) * 10
-        width_in_mm = float(request.POST.get("width")) * 10
-        depth_in_mm = float(request.POST.get("depth")) * 10
+        height = int(request.POST.get("height"))
+        width = int(request.POST.get("width"))
+        depth = int(request.POST.get("depth"))
         shelves = int(request.POST.get("shelves"))
         price_per_mm2 = float(material.price_per_m2)/1000000
        
@@ -112,24 +130,36 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
 
     if type.name == "cupboard":
         cost = ((
-            (height_in_mm*depth_in_mm*2) + (height_in_mm*width_in_mm*2) +
-            (width_in_mm*depth_in_mm*(2+shelves)
+            (height*depth*2) + (height*width*2) +
+            (width*depth*(2+shelves)
             )) * price_per_mm2) + float(cupboard.design_surcharge) + (
                 shelves*10)
 # or if shelving has not front
     else:
         cost = ((
-            (height_in_mm*depth_in_mm*2) + (height_in_mm*width_in_mm) +
-            (width_in_mm*depth_in_mm*(2+shelves)
-              )) * price_per_mm2) + float(cupboard.design_surcharge) + (
+            (height*depth*2) + (height*width) +
+            (width*depth*(2+shelves)
+            )) * price_per_mm2) + float(cupboard.design_surcharge) + (
                 shelves*10)
 
-    H = height_in_mm/10
-    D = str(depth_in_mm/10)
-    W = str(width_in_mm/10)
-    S = str(shelves)
+    H = height
+    D = depth
+    W = width
+    S = shelves
     cost = round(cost, 2)
     code = f"{H}#{W}#{D}#{S}#{cost}"
+
+    max_height = 2400
+    max_width = 2400
+    max_depth = 600
+    min_depth = 150
+
+    if cupboard.type.name == "cupboard":
+        min_height = 400
+        min_width = 400
+    else:
+        min_height = 200
+        min_width = 200
 
     context = {
         'H': H,
@@ -139,7 +169,13 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
         'cost': cost,
         'cupboard': cupboard,
         'type': type,
-        'code': code
+        'code': code,
+        'max_height': max_height,
+        'max_width': max_width,
+        'max_depth': max_depth,
+        'min_height': min_height,
+        'min_width': min_width,
+        'min_depth': min_depth
     }
 
     return render(request, 'cupboards/calculated_cupboard.html', context)
