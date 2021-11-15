@@ -32,7 +32,7 @@ def add_to_cart(request, cupboard_id, code):
         messages.success(request, f"{quantity} {cupboard.name} added to cart.")
 
     request.session['cart'] = cart
-    print(cart)
+
     return redirect('view_cart')
 
 

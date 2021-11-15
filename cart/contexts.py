@@ -30,8 +30,6 @@ def cart_contents(request):
             dims = f"{height}mm x {width}mm x {depth}mm with {shelves} shelves."
             postage = float(code.split('#')[5])
 
-            print(postage)
-
             postage_subtotal = postage * quantity
 
             delivery += postage_subtotal

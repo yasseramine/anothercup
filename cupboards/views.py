@@ -74,9 +74,6 @@ def all_cupboards(request):
         'current_sorting': current_sorting,
     }
 
-    # Insert some sort of form validation for entering dimensions,
-    # with max and min values
-
     return render(request, 'cupboards/cupboards.html', context) 
 
 
@@ -111,19 +108,22 @@ def cupboard_details(request, cupboard_id):
     return render(request, 'cupboards/cupboard_details.html', context) 
 
 
-def calculated_cupboard(request, cupboard_id, material_id, type_id):
+def calculated_cupboard(request, cupboard_id):
     """ A view to calculate the cost of a cupboard after the user has entered their required dimensions and number of shelves in the form on the product_details template, then return an updated template showing the cost for those dimensions (dimensions also rendered back to them)"""
 
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
-    material = get_object_or_404(Material, pk=material_id)
-    type = get_object_or_404(Type, pk=type_id)
+
+    type = get_object_or_404(Type, pk=cupboard.type.id)
+
+    material = get_object_or_404(Material, pk=cupboard.material.id)
 
     if request.method == "POST":
         height = int(request.POST.get("height"))
         width = int(request.POST.get("width"))
         depth = int(request.POST.get("depth"))
         shelves = int(request.POST.get("shelves"))
-        price_per_mm2 = float(material.price_per_m2)/1000000
+
+    price_per_mm2 = float(material.price_per_m2)/1000000
        
     """ Calculation.  Shelves are multiplied by 10 as there
     is a £10 cutting fee per shelf"""
@@ -160,7 +160,57 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     max_depth = 600
     min_depth = 150
 
-    if cupboard.type.name == "cupboard":
+    if type.name == "cupboard":
+        min_height = 400
+        min_width = 400
+    else:
+        min_height = 200
+        min_width = 200
+
+    context = {
+        'H': H,
+        'D': D,
+        'W': W,
+        'S': S,
+        'cost': cost,
+        'cupboard': cupboard,
+        'type': type,
+        'code': code,
+        'max_height': max_height,
+        'max_width': max_width,
+        'max_depth': max_depth,
+        'min_height': min_height,
+        'min_width': min_width,
+        'min_depth': min_depth,
+        'postage': postage
+    }
+
+    return render(request, 'cupboards/calculated_cupboard.html', context)
+
+
+def cart_cupboard(request, cupboard_id, height, width, depth, shelves, price, postage):
+
+    cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
+
+    type = get_object_or_404(Type, pk=cupboard.type.id)
+
+    material = get_object_or_404(Material, pk=cupboard.material.id)
+
+
+    H=height
+    W = width
+    D = depth
+    S = shelves 
+    cost = price
+    postage = postage
+    code = f"{H}#{W}#{D}#{S}#{cost}#{postage}"
+
+    max_height = 2400
+    max_width = 2400
+    max_depth = 600
+    min_depth = 150
+
+    if type.name == "cupboard":
         min_height = 400
         min_width = 400
     else:
@@ -330,4 +380,6 @@ def delete_material(request, material_id):
 
 # @login_required
 # def add_image(request):
+
+
     

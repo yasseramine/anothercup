@@ -23,29 +23,32 @@
             <div class="card border-0 m-3 mt-md-5 p-md-3 pb-3 light-theme-color ml-md-0 mr-md-4">
                 <h3 class="card-header border-0 light-theme-color mt-3 mt-md-0 mt-lg-1">{{cupboard.name}}</h3>
                 <p class="pl-md-3 mb-2 ml-4 mr-4 m-md-0">{{cupboard.description}}</p>
-                <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.example_price}} <small class="d-none d-lg-block small">(for cupboard of dimensions: H: 1500mm / W: 1000mm / D: 500mm)</small></h6>
+                <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.example_price}} <small
+                        class="d-none d-lg-block small">(for cupboard of dimensions: H: 1500mm / W: 1000mm / D:
+                        500mm)</small></h6>
                 <p class="pl-md-3 mb-1 example small d-lg-none">(for cupboard of dimensions:</p>
                 <p class="pl-md-3 mb-1 small d-lg-none">H: 1500mm / W: 1000mm / D: 500mm)</p>
             </div>
             <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
-                <form class=""
-                    action="{% url 'calculated_cupboard' cupboard.id  cupboard.material.id cupboard.type.id %}"
-                    method="POST">
+                <form class="" action="{% url 'calculated_cupboard' cupboard.id %}" method="POST">
                     {% csrf_token %}
                     <div class="container-fluid">
                         <div class="row pr-lg-0 pt-1">
                             <div class="col-12 text-center text-lg-center col-lg-8 text-lg-left">
                                 <h5 class="card-header border-0 red-theme-color mt-1 pl-lg-1 pt-0 pt-2 pb-1">Update Your
                                     Dimensions:</h5>
-                                    <h6 class="mb-0"><small><strong>Max: </strong>H: {{max_height}}mm / W: {{max_width}}mm / D: {{max_depth}}mm</small></h6>
-                                    <h6><small><strong>Min: </strong>H: {{min_height}}mm / W: {{min_width}}mm / D: {{min_depth}}mm</small></h6>
+                                <h6 class="mb-0"><small><strong>Max: </strong>H: {{max_height}}mm / W: {{max_width}}mm /
+                                        D: {{max_depth}}mm</small></h6>
+                                <h6><small><strong>Min: </strong>H: {{min_height}}mm / W: {{min_width}}mm / D:
+                                        {{min_depth}}mm</small></h6>
                                 <div class="row pr-5 pt-2">
                                     <div class="col-6 pl-0 pr-3 text-right">
                                         <label for="height" class="">Height:</label>
                                     </div>
                                     <div class="col-6 text-left pl-0">
-                                        <input id="height" class="dim-input validate mb-1" type="number" name="height" placeholder="{{H}}" minlength="1"
-                                            maxlength="" max="{{max_height}}" min="{{min_height}}" value="{{H}}" required> mm
+                                        <input id="height" class="dim-input validate mb-1" type="number" name="height"
+                                            placeholder="{{H}}" minlength="1" maxlength="" max="{{max_height}}"
+                                            min="{{min_height}}" value="{{H}}" required> mm
                                     </div>
                                 </div>
                                 <div class="row pr-5">
@@ -53,16 +56,18 @@
                                         <label for="width" class="">Width:</label>
                                     </div>
                                     <div class="col-6 text-left pl-0">
-                                        <input id="width" class="dim-input validate my-1" type="number" name="width" placeholder="{{W}}" minlength="1"
-                                            maxlength="4" max="{{max_width}}" min="{{min_width}}" value="{{W}}" required> mm</div>
+                                        <input id="width" class="dim-input validate my-1" type="number" name="width"
+                                            placeholder="{{W}}" minlength="1" maxlength="4" max="{{max_width}}"
+                                            min="{{min_width}}" value="{{W}}" required> mm</div>
                                 </div>
                                 <div class="row pb-1 pr-5">
                                     <div class="col-6 pl-0 pr-3 text-right">
                                         <label for="depth" class="">Depth:</label>
                                     </div>
                                     <div class="col-6 text-left pl-0">
-                                        <input id="depth" class="dim-input validate mt-1" type="number" name="depth" placeholder="{{D}}" minlength="1"
-                                            maxlength="4" max="{{max_depth}}" min="{{min_depth}}" value="{{D}}" required> mm
+                                        <input id="depth" class="dim-input validate mt-1" type="number" name="depth"
+                                            placeholder="{{D}}" minlength="1" maxlength="4" max="{{max_depth}}"
+                                            min="{{min_depth}}" value="{{D}}" required> mm
                                     </div>
                                 </div>
                             </div>
@@ -101,16 +106,14 @@
             <div class="card border-2 border-black
                 m-3 mt-lg-5 pb-3 mx-lg-5 white" id="calculation">
                 <strong>
-                    <h5 class="ml-md-5 mb-0 pt-2">Cost for {{type.friendly_name | lower}} of <br
-                            class=" d-md-none">
-                        H: {{H}} mm / W: {{W}} mm / D: {{D}} mm<br
-                        class="d-md-none">
-                         with {{S}} shelves: </h5>
+                    <h5 class="ml-md-5 mb-0 pt-2">Cost for {{type.friendly_name | lower}} of <br class=" d-md-none">
+                        H: {{H}} mm / W: {{W}} mm / D: {{D}} mm<br class="d-md-none">
+                        with {{S}} shelves: </h5>
                 </strong>
 
                 <div class="row text-center ">
                     <div class="col-12 pt-3">
-                        <h3 class="text-center" >£ {{cost}}</h3>
+                        <h3 class="text-center">£ {{cost}}</h3>
                         <h6 class="text-center">Delivery: £{{postage}}</h6>
                     </div>
                 </div>
@@ -120,15 +123,18 @@
                         <div class="col-12 text-center pt-2">
                             <div class="form-group mr-5 pr-3">
                                 <label for="quantity" class="">Quantity:</label>
-                                <button class="decrement-qty btn plus-minus btn-sm light-theme-color rounded-0 decrement-qty_{{ item.item_id }} align-middle"
+                                <button
+                                    class="decrement-qty btn plus-minus btn-sm light-theme-color rounded-0 decrement-qty_{{ item.item_id }} align-middle"
                                     data-item_id="{{ item.item_id }}">
                                     <span>
                                         <i class="fas fa-minus fa-sm"></i>
                                     </span>
                                 </button>
-                                <input id="quantity" class="number-input id_qty_{{ item.item_id }} qty_input align-middle text-center" type="number" name="quantity"
-                                    value="1" minlength="1" maxlength="5">
-                                <button class="increment-qty increment-qty_{{ item.item_id }} btn plus-minus btn-sm light-theme-color rounded-0 align-middle"
+                                <input id="quantity"
+                                    class="number-input id_qty_{{ item.item_id }} qty_input align-middle text-center"
+                                    type="number" name="quantity" value="1" minlength="1" maxlength="5">
+                                <button
+                                    class="increment-qty increment-qty_{{ item.item_id }} btn plus-minus btn-sm light-theme-color rounded-0 align-middle"
                                     data-item_id="{{ item.item_id }}">
                                     <span>
                                         <i class="fas fa-plus fa-sm"></i>
@@ -144,9 +150,9 @@
             </div>
         </div>
         <div class="col-12 pt-1 pt-md-3 pb-4 text-center">
-            <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="text-black">
-                <h5>Back to designs</h5>
-            </a>
+            <h5><a href="{% url 'view_cart' %}" class="text-black">View Cart </a> | 
+                <a href="{%url 'cupboards'%}" class="text-black"> Back to designs</a></h5>
+
         </div>
 
     </div>

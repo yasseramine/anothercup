@@ -29,7 +29,7 @@
             </div>
             <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
                 
-                    <form class="" action="{% url 'calculated_cupboard' cupboard.id  cupboard.material.id cupboard.type.id %}" method="POST">
+                    <form class="" action="{% url 'calculated_cupboard' cupboard.id %}" method="POST">
                         {% csrf_token %}
                     <div class="container-fluid">
                         <div class="row pr-0 pr-lg-0 pt-1">

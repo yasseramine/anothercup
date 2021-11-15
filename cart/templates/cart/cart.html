@@ -37,9 +37,9 @@
 
         <div class="col-4 col-md-3">
             {% if item.cupboard.main_image %}
-            <img class="img-fluid rounded" src="{{ item.cupboard.main_image.url }}" alt="{{ item.cupboard.name }}">
+           <a href="{% url 'cart_cupboard' item.cupboard.id item.spec.height item.spec.width item.spec.depth item.spec.shelves item.price item.spec.postage %}"> <img class="img-fluid rounded" src="{{ item.cupboard.main_image.url }}" alt="{{ item.cupboard.name }}"></a>
             {% else %}
-            <img class="img-fluid rounded" src="../media/noimage.png" alt="{{ item.cupboard.name }}">
+            <a href="{% url 'cart_cupboard' item.cupboard.id item.spec.height item.spec.width item.spec.depth item.spec.shelves item.price item.spec.postage %}"><img class="img-fluid rounded" src="../media/noimage.png" alt="{{ item.cupboard.name }}"></a>
             {% endif %}
         </div>
 
@@ -161,7 +161,7 @@
             <h4 class="py-0">Empty cart</h4>
         </a>
         {% endif %} -->
-        <a href="{%url 'cupboards'%}?type=cupboard,shelving" class="ml-3 text-black">
+        <a href="{%url 'cupboards'%}" class="ml-3 text-black">
             <h4>Back to designs</h4>
         </a>
         </h4>
