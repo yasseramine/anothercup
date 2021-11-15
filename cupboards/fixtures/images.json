@@ -1,0 +1,29 @@
+[
+    {
+        "pk": 1,
+        "model": "cupboards.image",
+        "fields": {
+            "file": "pin01-01.png",
+            "cupboard":1,
+            "main_image": "True"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "cupboards.image",
+        "fields": {
+            "file": "pin01-02.png",
+            "cupboard":1,
+            "main_image": "False"
+        }
+    },
+    {
+    "pk": 1,
+        "model": "cupboards.image",
+        "fields": {
+            "file": "pin01-02.png",
+            "cupboard":1,
+            "main_image": "False"
+        }
+    }
+]

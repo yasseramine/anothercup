@@ -14,17 +14,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="logo-font my-4 text-center">Product Management</h2>
+                <h2 class="logo-font my-4 text-center">Add a Design</h2>
                 <hr>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6">
-                <h5 class="text-center">Add a Design</h5>
+            <div class="col-12 col-md-8 offset-md-2 offset-lg-3 col-lg-6">
                 <form method="POST" action="{% url 'add_design' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {% for field in form1 %}
+                    {% for field in form %}
                         {% if field.name != 'main_image' %}
                             {{ field | as_crispy_field }}
                         {% else %}
@@ -38,18 +37,7 @@
                 </form>
             </div>            
 
-        <div class="col-12 col-md-6">
-            <h5 class="text-center">Add a Material</h5>
-            <form method="POST" action="{% url 'add_material' %}" class="form mb-2" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form2 | crispy }}
-                <div class="text-center my-4">
-                    <button class="btn red-theme-color rounded-0 font-weight-bold" type="submit">Add Material</button>
-                    <a class="btn light-theme-color cancel-btn rounded-0 font-weight-bold" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
-                </div>
-            </form>
-         
-        </div>  
+        
         </div>       
     </div>
     </div>

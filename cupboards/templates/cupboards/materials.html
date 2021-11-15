@@ -7,12 +7,54 @@
 {% endblock %}
 
 {% block content %}
-{% for material in materials%}
-{{material.display_name}}
-{{material.example_price}}
-{% if request.user.is_superuser %}
-<a href="{% url 'edit_material' material.id %}" class="btn light-theme-color rounded-0 cancel-btn my-2" ><strong>Edit</strong></a>
-<a href="{% url 'delete_material' material.id %}" class="btn light-theme-color rounded-0 cancel-btn my-2" ><strong>Delete</strong></a>
-{% endif %}
-{% endfor %}
+<div class="container-fluid">
+    <div class="overlay"></div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2 class="logo-font my-4 text-center">Materials Management</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 mx-md-0 pl-4">
+            <div class="row">
+                <div class="col-5 my-2 font-weight-bold pl-5">Material Name</div>
+                <div class="col-3 my-2 font-weight-bold ">Price /sqm</div>
+                <div class="col-4"></div>
+
+            </div>
+
+            {% for material in materials%}
+            <div class="row my-2">
+                <div class="col-5 mt-3 pl-5">{{material.display_name}}</div>
+                <div class="col-2 mt-3 ">{{material.price_per_m2}}</div>
+
+                <div class="col-5 text-center">
+                    <a href="{% url 'edit_material' material.id %}"
+                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Edit</strong></a>
+                    <a href="{% url 'delete_material' material.id %}"
+                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Delete</strong></a>
+                </div>
+
+            </div>
+            {% endfor %}
+            <hr class="d-md-none">
+        </div>
+        <div class="col-12 col-md-6 px-5 pl-md-0">
+
+            <h5 class="text-center font-weight-bold my-2">Add a Material</h5>
+            <form method="POST" action="{% url 'add_material' %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-center my-4 pt-3">
+                    <button class="btn red-theme-color rounded-0 font-weight-bold" type="submit">Add
+                        Material</button>
+                    <a class="btn light-theme-color cancel-btn rounded-0 font-weight-bold border-black"
+                        href="{%url 'cupboards'%}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock%}

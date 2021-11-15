@@ -1,19 +1,18 @@
 <div class="collapse red-theme-color navbar-collapse d-none d-md-block" id="main-nav">
     <ul class="navbar-nav mx-auto my-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link main-nav-link text-black text-center" href="#" id="info-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link main-nav-link text-black text-center" href="#" id="about-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 About Us
             </a>
-            <div class="dropdown-menu border-0 pt-0" aria-labelledby="info-link">
+            <div class="dropdown-menu border-0 pt-0" aria-labelledby="about-link">
                 <a href="#" class="dropdown-item pl-2">What we do</a> 
-                <a href="{% url 'materials' %}" class="dropdown-item pl-2">Our Materials</a>
                 <a href="#" class="dropdown-item pl-2">Pricing</a>   
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold main-nav-link nav-link text-black text-center" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Designs
+            <a class="logo-font font-weight-bold main-nav-link nav-link text-black text-center" href="#" id="designs-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Designs
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+            <div class="dropdown-menu border-0" aria-labelledby="designs-link">
                 <a href="{%url 'cupboards'%}?type=cupboard" class="dropdown-item pl-2">Cupboards</a>
                 <a href="{%url 'cupboards'%}?type=shelving" class="dropdown-item pl-2">Shelving Units</a>
                 <a href="{%url 'cupboards'%}" class="dropdown-item">All Designs</a>
@@ -23,14 +22,25 @@
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link main-nav-link text-black text-center" href="#" id="shipping-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link main-nav-link text-center text-black" href="#" id="info-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Info
             </a>
-            <div class="dropdown-menu border-0 pt-0" aria-labelledby="shipping-link">
+            <div class="dropdown-menu border-0 pt-0" aria-labelledby="info-link">
                 <a href="#" class="dropdown-item pl-2">Delivery</a>
                 <a href="#" class="dropdown-item pl-2">Returns</a>
                 <a href="#" class="dropdown-item pl-2">Contact</a>
             </div>
         </li>
+        {% if request.user.is_superuser %}
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link main-nav-link text-center text-black" href="#" id="management-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Management
+            </a>
+            <div class="dropdown-menu border-0 pt-0" aria-labelledby="management-link">
+                <a href="{% url 'add_design' %}" class="dropdown-item pl-2">Add a Design</a>
+                <a href="{% url 'materials' %}" class="dropdown-item pl-2">Manage Materials</a>
+            </div>
+        </li>
+        {% endif %}
     </ul>
 </div> 

@@ -203,7 +203,7 @@ body{
     }
 }
 .cupboard-cancel-btn{
-    width:4.5rem;
+    width:4.5rem !important;
 }
 
 /* Cupboard details page */
@@ -386,6 +386,11 @@ form{
 .cancel-btn:hover{
     background-color: white !important;
     border-color: #000;
+}
+.material-btn{
+    width:4rem !important;
+
+  
 }
 
 /* Main image widget */

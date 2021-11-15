@@ -14,14 +14,14 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="logo-font my-4 text-center">Product Management</h2>
+                <h2 class="logo-font my-4 text-center">Edit Design</h2>
                 <hr>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6 offset-md-3">
-                <h5 class="text-center">Edit Design</h5>
+            <div class="col-12 col-md-8 offset-md-2 offset-lg-3 col-lg-6">
+
                 <form method="POST" action="{% url 'edit_design' cupboard.id%}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}

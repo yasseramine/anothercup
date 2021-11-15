@@ -90,9 +90,6 @@
                         <div class="dropdown-menu user-menu dropdown-menu-right text-right py-0 mt-1 border-0"
                             aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                            <a href="{% url 'add_design_material' %}" class="dropdown-item">Product Management</a>
-                            {% endif %}
                             <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}

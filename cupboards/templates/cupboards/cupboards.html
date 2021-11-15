@@ -24,7 +24,7 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row mt-1 mb-2">
+    <div class="row mt-1 mb-0">
         <div class="col-12 col-md-6  order-md-last d-flex justify-content-center justify-content-md-end">
             <div class="sort-select-wrapper back w-40 mb-2 mr-md-5">
                 <select id="sort-selector"
@@ -57,9 +57,11 @@
             </p>
         </div>
     </div>
-    <hr class="mb-1 mb-md-0 mt-0 mx-5 d-none d-md-block">
 
-    <div class="row">
+    <div class="row mt-0">
+        <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 pb-3">
+            <hr class="black-line">
+        </div>
         {%for cupboard in cupboards%}
         <div class="col-12 col-md-4 offset-md-1 text-center text-md-left p-0">
             <div
@@ -91,13 +93,13 @@
                 <p class="text-center mb-0 mt-2">
                     {% if request.user.is_superuser %}
                     <a href="{% url 'edit_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cancel-btn my-2 "><strong>Edit</strong></a>
+                        class="btn light-theme-color rounded-0 cupboard-cancel-btn my-2 d-none d-md-inline px-4"><strong>Edit</strong></a>
                     {% endif %}
                     <a class="btn btn-lg details-btn red-theme-color"
                         href="{% url 'cupboard_details' cupboard.id %}"><strong>SELECT</strong></a>
                     {% if request.user.is_superuser %}
                     <a href="{% url 'delete_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cancel-btn my-2 "><strong>Delete</strong></a>
+                        class="btn light-theme-color rounded-0 cupboard-cancel-btn my-2 d-none d-md-inline px-3"><strong>Delete</strong></a>
                     {% endif %}
                 </p>
            

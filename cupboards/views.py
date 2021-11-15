@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 
-from .models import Cupboard, Material, Type
+from .models import Cupboard, Material, Type, Image
 from .forms import DesignForm, MaterialForm
 
 # Create your views here.
@@ -182,30 +182,12 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
 
 
 @login_required
-def add_design_material(request):
-    """A view just to render the page with forms to add a new design or new material"""
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorised to access this page.')
-        return redirect(reverse('home'))
-
-    form1 = DesignForm()
-    form2 = MaterialForm()
-    template = 'cupboards/add_design_material.html'
-
-    context = {
-        "form1": form1,
-        "form2": form2
-    }
-    return render(request, template, context)
-
-
-@login_required
 def add_design(request):
-    """ Add a new design to the collection"""
+    """ Add a new design to the database"""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you are not authorised to do this.')
         return redirect(reverse('home'))
-
+   
     if request.method == 'POST':
         form = DesignForm(request.POST, request.FILES)
         if form.is_valid():
@@ -215,7 +197,14 @@ def add_design(request):
         else:
             messages.error(request, 'Failed to add design. Please ensure the form is valid.')
     else:
-        return redirect('add_design_material')
+        form = DesignForm()
+
+    template = 'cupboards/add_design.html'
+
+    context = {
+        "form": form,
+    }
+    return render(request, template, context)
 
 
 @login_required
@@ -230,20 +219,22 @@ def add_material(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Material successfully added.')
-            return redirect('add_design_material')
+            return redirect('materials')
         else:
             messages.error(request, 'Failed to add material. Please ensure the form is valid.')
     else:
-        return redirect('add_design_material')
+        return redirect('materials')
 
 
 def list_materials(request):
     """ A view to show more detailed information about te materials available and a link for admin to edit materials in the database"""
 
     materials = Material.objects.all()
+    form = MaterialForm()
 
     context = {
-        'materials': materials
+        'materials': materials,
+        'form': form
     }
 
     return render(request, 'cupboards/materials.html', context) 
@@ -328,3 +319,8 @@ def delete_material(request, material_id):
     messages.success(request, 'Material deleted.')
 
     return redirect(reverse('materials'))
+
+
+# @login_required
+# def add_image(request):
+    
