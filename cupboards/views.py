@@ -129,25 +129,31 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
     is a £10 cutting fee per shelf"""
 
     if type.name == "cupboard":
-        cost = ((
-            (height*depth*2) + (height*width*2) +
-            (width*depth*(2+shelves)
-            )) * price_per_mm2) + float(cupboard.design_surcharge) + (
-                shelves*10)
+        area = (height*depth*2) + (height*width*2) + (width*depth*(2+shelves))
+           
 # or if shelving has not front
     else:
-        cost = ((
-            (height*depth*2) + (height*width) +
-            (width*depth*(2+shelves)
-            )) * price_per_mm2) + float(cupboard.design_surcharge) + (
-                shelves*10)
+        area = (height*depth*2) + (height*width) + (width*depth*(2+shelves))
+            
+    cost = (area * price_per_mm2) + float(cupboard.design_surcharge) +(shelves*10)
+
+    if float(area/10000) <= 732:
+        postage = 10.00
+    if 733 <= float(area/10000) <= 1488:
+        postage = 20.00
+    if 1489 <= float(area/10000) <= 2164:
+        postage = 30.00
+    if 2165 <= float(area/10000) <= 2880:
+        postage = 40.00
+
+    print(postage)
 
     H = height
     D = depth
     W = width
     S = shelves
     cost = round(cost, 2)
-    code = f"{H}#{W}#{D}#{S}#{cost}"
+    code = f"{H}#{W}#{D}#{S}#{cost}#{postage}"
 
     max_height = 2400
     max_width = 2400
@@ -175,7 +181,8 @@ def calculated_cupboard(request, cupboard_id, material_id, type_id):
         'max_depth': max_depth,
         'min_height': min_height,
         'min_width': min_width,
-        'min_depth': min_depth
+        'min_depth': min_depth,
+        'postage': postage
     }
 
     return render(request, 'cupboards/calculated_cupboard.html', context)

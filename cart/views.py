@@ -47,7 +47,7 @@ def update_cart(request, item_id):
     if quantity > 0:
         cart[item_id]['cupboards_by_code'][code] = quantity
         messages.success(request, 
-                            f'Quantity in cart updated to {cart[item_id]["cupboards_by_code"][code]}.')
+                            f'Cart quantity updated')
     else:
         del cart[item_id]['cupboards_by_code'][code]
         if not cart[item_id]['cupboards_by_code']:

@@ -45,11 +45,13 @@
 
         <div class="col-8 px-md-0 pl-lg-2 col-md-4 large-text pt-lg-4">
             <h5 class="my-0"><strong>{{ item.cupboard.name }}</strong></h5>
-            <p class="my-1">H: {{ item.spec.height}} cm / W: {{ item.spec.width}} cm / D: {{ item.spec.depth}} cm
+            <p class="my-1">H: {{ item.spec.height}} mm / W: {{ item.spec.width}} mm / D: {{ item.spec.depth}} mm
             </p>
             <p class="my-0">Shelves: {{ item.spec.shelves}}</p>
-
             <h6 class="my-1 d-block d-md-none">Price: £{{ item.price }}</h6>
+            <p class="my-0 small pb-2">Delivery: £{{ item.spec.postage}}</p>
+
+            
 
             <form class="form d-block d-md-none update-form" method="POST"
                 action="{% url 'update_cart' item.item_id %}">
@@ -134,7 +136,7 @@
 <div class="col-12 px-0 pt-2 pb-0 col-md-7 offset-md-5 col-lg-5 offset-lg-7">
     <div class="card light-theme-color rounded-0 border-0 text-right py-3 px-5 p-lg-4">
         <h4 class="pr-lg-5">Cart Total: £{{ total|floatformat:2 }}</h4>
-        <h5 class="pr-lg-5">Delivery: £{{ delivery|floatformat:2 }}</h5>
+        <h5 class="pr-lg-5">Delivery Total: £{{ delivery|floatformat:2 }}</h5>
         <h3 class="my-2 pr-lg-5"><strong>Total: £{{ grand_total|floatformat:2 }}</strong></h3>
         <div class="col-12 text-center p-0 pt-2">
             <a href="{% url 'checkout' %}" class="btn red-theme-color chkt-btn rounded-0 btn-lg">

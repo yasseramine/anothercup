@@ -101,7 +101,7 @@
             <div class="card border-2 border-black
                 m-3 mt-lg-5 pb-3 mx-lg-5 white" id="calculation">
                 <strong>
-                    <h5 class="ml-md-5 mb-0 pt-2">Cost for {{type.name}} of <br
+                    <h5 class="ml-md-5 mb-0 pt-2">Cost for {{type.friendly_name | lower}} of <br
                             class=" d-md-none">
                         H: {{H}} mm / W: {{W}} mm / D: {{D}} mm<br
                         class="d-md-none">
@@ -110,7 +110,8 @@
 
                 <div class="row text-center ">
                     <div class="col-12 pt-3">
-                        <h3 class="text-center" name="cost">£ {{cost}}</h3>
+                        <h3 class="text-center" >£ {{cost}}</h3>
+                        <h6 class="text-center">Delivery: £{{postage}}</h6>
                     </div>
                 </div>
                 <form class="form text-center" action="{% url 'add_to_cart' cupboard.id code %}" method="POST">

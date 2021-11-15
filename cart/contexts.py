@@ -22,20 +22,27 @@ def cart_contents(request):
             subtotal = format(subtotal, '.2f')
             total += float(subtotal)
             count += quantity
-            delivery += count * 25
 
             height = code.split('#')[0]
             width = code.split('#')[1]
             depth = code.split('#')[2]
             shelves = code.split('#')[3]
-            dims = f"{height}cm x {width}cm x {depth}cm with {shelves} shelves."
+            dims = f"{height}mm x {width}mm x {depth}mm with {shelves} shelves."
+            postage = float(code.split('#')[5])
+
+            print(postage)
+
+            postage_subtotal = postage * quantity
+
+            delivery += postage_subtotal
 
             spec = {
-                "height": float(height),
-                "width": float(width),
-                "depth": float(depth),
+                "height": int(height),
+                "width": int(width),
+                "depth": int(depth),
                 "shelves": int(shelves),
-                "dims": dims
+                "dims": dims,
+                "postage": postage
             }
             cart_items.append({
                 'item_id': item_id,
