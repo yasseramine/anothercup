@@ -66,6 +66,7 @@ class OrderLineItem(models.Model):
     dims = models.CharField(max_length=254, null=True, blank=True) 
     price = models.FloatField(null=False, blank=False, default=0)
     quantity = models.IntegerField(null=False, blank=False, default=0)
+    postage = models.FloatField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, 
     editable=False)
     lineitem_delivery_total = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=False, editable=False)
@@ -76,7 +77,7 @@ class OrderLineItem(models.Model):
         and update the order total.
         """
         self.lineitem_total = self.price * self.quantity
-        self.lineitem_delivery_total = self.quantity * 25
+        self.lineitem_delivery_total = self.quantity * self.postage
         super().save(*args, **kwargs)
 
     def __str__(self):

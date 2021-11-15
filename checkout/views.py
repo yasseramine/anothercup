@@ -66,7 +66,8 @@ def checkout(request):
                         width = code.split('#')[1]
                         depth = code.split('#')[2]
                         shelves = code.split('#')[3]
-                        dims = f"{height}cm x {width}cm x {depth}cm with {shelves} shelves."
+                        dims = f"{height}mm x {width}mm x {depth}mm with {shelves} shelves."
+                        postage = float(code.split('#')[5])
                         price = float(code.split('#')[4])
 
                         order_line_item = OrderLineItem(
@@ -75,6 +76,7 @@ def checkout(request):
                             quantity=quantity,
                             dims=dims,
                             price=price,
+                            postage=postage,
                         )
                         order_line_item.save()
 
