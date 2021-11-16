@@ -29,7 +29,7 @@
                 <p class="pl-md-3 mb-1 example small d-lg-none">(for cupboard of dimensions:</p>
                 <p class="pl-md-3 mb-1 small d-lg-none">H: 1500mm / W: 1000mm / D: 500mm)</p>
             </div>
-            <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-2 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
+            <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-3 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
                 <form class="" action="{% url 'calculated_cupboard' cupboard.id %}" method="POST">
                     {% csrf_token %}
                     <div class="container-fluid">
@@ -76,7 +76,7 @@
                                     of shelves:</h5>
                                 <div class="select-wrapper">
                                     <select name="shelves" id="shelves" class="text-center">
-                                        <option value="3">3</option>
+                                        <option value="{{S}}">{{S}}</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>

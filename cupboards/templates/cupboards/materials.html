@@ -27,14 +27,14 @@
 
             {% for material in materials%}
             <div class="row my-2">
-                <div class="col-4 col-md-5 mt-3 pl-1 pl-md-5">{{material.display_name}}</div>
+                <div class="col-4 col-md-5 mt-2 pl-1 pl-md-5">{{material.display_name}}</div>
                 <div class="col-2 mt-3 ">{{material.price_per_m2}}</div>
 
                 <div class="col-6 col-md-5 text-center">
                     <a href="{% url 'edit_material' material.id %}"
-                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black pr-1"><strong>Edit</strong></a>
+                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Edit</strong></a>
                     <a href="{% url 'delete_material' material.id %}"
-                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black pr-1"><strong>Delete</strong></a>
+                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Delete</strong></a>
                 </div>
 
             </div>
@@ -42,7 +42,6 @@
             <hr class="d-md-none">
         </div>
         <div class="col-12 col-md-6 px-5 pl-md-0">
-
             <h5 class="text-center font-weight-bold my-2">Add a Material</h5>
             <form method="POST" action="{% url 'add_material' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}

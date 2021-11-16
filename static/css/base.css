@@ -26,6 +26,10 @@ header{
     color: rgb(102, 102, 102) !important;
 }
 
+.no-bg{
+    background-color: none;
+}
+
 body{
     font-family: "Slabo+27";
 }
@@ -271,7 +275,7 @@ button:hover{
     }
 }
 
-@media(min-width: 992px){
+@media(min-width: 1030px){
     .small-text{
         font-size: 100%;
     }
