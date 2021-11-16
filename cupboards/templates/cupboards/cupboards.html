@@ -84,35 +84,39 @@
                 <p class="pl-md-3">{{cupboard.description}}</p>
                 <p class="pl-md-3">Material: {{cupboard.material.display_name}}</p>
                 <h6 class="pl-md-3"><strong>Example price*: £{{cupboard.example_price}}</strong></h6>
-                <p class="pl-md-3 mb-1 example small">*Given for cost comparison.  Calculated for a
+                <p class="pl-md-3 mb-1 example small">*Given for cost comparison. Calculated for a
                     unit with
                     dimensions:</p>
                 <p class="pl-md-3 mb-3 small">H: 150cm / W: 100cm / D: 50cm and 4 shelves.</p>
-                
-                
+
+
                 <p class="text-center mb-0 mt-2">
                     {% if request.user.is_superuser %}
                     <a href="{% url 'edit_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cupboard-cancel-btn my-2 d-none d-md-inline px-4"><strong>Edit</strong></a>
+                        class="btn light-theme-color rounded-0 d-none d-md-inline cupboard-cancel-btn m-0 border-0 px-4"><strong>Edit</strong></a>
                     {% endif %}
+
                     <a class="btn btn-lg details-btn red-theme-color"
                         href="{% url 'cupboard_details' cupboard.id %}"><strong>SELECT</strong></a>
+
                     {% if request.user.is_superuser %}
-                    <a href="{% url 'delete_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cupboard-cancel-btn my-2 d-none d-md-inline px-3"><strong>Delete</strong></a>
+                    <button class="border-0 btn light-theme-color rounded-0 d-none d-md-inline cupboard-cancel-btn"
+                        type="button" onclick="cfmDelDesign()"><strong>Delete</strong></button>
                     {% endif %}
                 </p>
-           
                 <br>
-                <p class="pl-md-3"><strong>Select this {{cupboard.type.friendly_name | lower}} design and enter your required dimensions on the next
+                <p class="pl-md-3"><strong>Select this {{cupboard.type.friendly_name | lower}} design and enter your
+                        required dimensions on the next
                         page to receive a quote.</strong></p>
-                
+
+                <!-- small screens -->
                 {% if request.user.is_superuser %}
                 <p class="text-center mx-0 d-block d-md-none">
                     <a href="{% url 'edit_design' cupboard.id %}"
                         class="btn light-theme-color rounded-0 cupboard-cancel-btn mt-2 mb-0"><strong>Edit</strong></a>
-                        <a href="{% url 'delete_design' cupboard.id %}"
-                        class="btn light-theme-color rounded-0 cupboard-cancel-btn mt-2 mb-0"><strong>Delete</strong></a> 
+
+                    <button class="btn light-theme-color rounded-0 cupboard-cancel-btn mt-2 mb-0 border-0" type="button"
+                        onclick="cfmDelDesign()"><strong>Delete</strong></button>
                 </p>
                 {% endif %}
             </div>
@@ -120,6 +124,9 @@
         <div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 pb-3">
             <hr class="black-line">
         </div>
+        <!-- confirm delete -->
+        {% include 'cupboards/includes/confirm_delete_design.html' %}
+
         {% endfor %}
         <div class="col-12 pt-1 pt-md-2 mb-5 text-center">
             <a href="" class="text-black btt-link">
@@ -128,6 +135,8 @@
         </div>
     </div>
 </div>
+
+
 {% endblock%}
 {% block postloadjs %}
 {{ block.super }}
@@ -159,5 +168,14 @@
             window.location.replace(currentUrl);
         }
     })
+</script>
+<script>
+    function cfmDelDesign(){
+        document.getElementById("cfmDelDesign").classList.remove('d-none');
+    }
+
+    function closeCfmDelDesign() {
+        document.getElementById("cfmDelDesign").classList.add('d-none');
+    }
 </script>
 {% endblock %}

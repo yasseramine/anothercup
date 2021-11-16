@@ -67,9 +67,10 @@ def remove_item(request, item_id):
         cart = request.session.get('cart', {})
 
         del cart[item_id]['cupboards_by_code'][code]
+
         if not cart[item_id]['cupboards_by_code']:
             cart.pop(item_id)
-            messages.info(request, f'Item removed from cart.')
+        messages.info(request, f'Item removed from cart.')
 
         request.session['cart'] = cart
         return redirect('view_cart')

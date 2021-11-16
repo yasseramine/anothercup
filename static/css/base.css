@@ -207,7 +207,24 @@ body{
     }
 }
 .cupboard-cancel-btn{
-    width:4.5rem !important;
+    width:5rem !important;
+    height: 2.5rem !important;
+}   
+
+.confirm-container{
+    position:fixed;
+    height:100%;
+    width:100%;
+    z-index:2;
+}
+.confirm{
+    position:fixed;
+    margin-left: calc(50%-150px);
+    margin-top: 0;
+    margin-bottom: auto;
+}
+.confirm-del-btn{
+    width:9rem !important;
 }
 
 /* Cupboard details page */
@@ -322,7 +339,9 @@ form{
 }
 @media(max-width: 768px){
     .badge{
-        font-size: 70%;
+    font-size: 70%;
+    top: 0.3vh;
+    right: 0.6vw;
     }
 }
 
@@ -375,10 +394,6 @@ form{
     color:red !important;
 }
 
-.toast-warning{
-    background-color: rgb(231, 224, 193);
-    color:rgb(156, 98, 31) !important;
-}
 .toast-info{
     background-color: rgb(188, 236, 245);
     color:rgb(25, 36, 138) !important;
@@ -387,6 +402,11 @@ form{
     background-color: rgb(188, 245, 205);
     color:rgb(27, 92, 43) !important;
 }
+.toast-warning{
+    background-color: rgb(231, 224, 193);
+    color:rgb(156, 98, 31) !important;
+}
+
 
 /* Allauth formatting */
 
