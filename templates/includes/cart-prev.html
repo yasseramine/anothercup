@@ -1,0 +1,72 @@
+<div id="cart-prev" class="d-none">
+    <div class="close-right"><button type="button" class="closebtn no-bg border-0 m-1" onclick="closePrev()"><i class="fas fa-times fa-lg"></i></button></div>
+    <div class="row mt-0 pt-0">
+        <div class="col-12">
+            <h5 class="logo-font text-center ">Cart Preview</h5>
+            <hr class="mt-0 mx-2">
+        </div>
+        {% if cart_items %}
+        <div class="col-12 mb-2">
+            <div class="items-prev">
+            <p class="px-2 mb-0">Order Summary ({{ count }})</p>
+            <div class="row px-2">
+                <div class="col-7 offset-2">
+                    <p class="mb-1 mt-0 small "><strong>Item</strong></p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="mb-1 mt-0 small"><strong>Subtotal</strong></p>
+                </div>
+            </div>
+            {% for item in cart_items %}
+            <div class="row px-2">
+                <div class="col-2 mb-1">
+                    <a href="">
+                        {% if item.cupboard.main_image %}
+                        <img class="w-100" src="{{ item.cupboard.main_image.url }}" alt="{{ cupboard.name }}">
+                        {% else %}
+                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ cupboard.name }}">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="col-7">
+                    <p class="my-0"><strong>{{ item.cupboard.name }}</strong></p>
+                    <p class="my-0 small">{{ item.spec.dims}}</p>
+                    <p class="my-0 small">Qty: {{ item.quantity }}</p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="my-0 small">£{{ item.subtotal }}</p>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+            <hr class="mt-0 ">
+            <div class="row text-black text-right px-2">
+                <div class="col-7 offset-2">
+                    <p class="my-0">Order Total:</p>
+                    <p class="my-0">Delivery:</p>
+                    <p class="my-0">Grand Total:</p>
+                </div>
+                <div class="col-3">
+                    <p class="my-0">£{{ total | floatformat:2 }}</p>
+                    <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                    <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-center p-0 pt-2 mb-2">
+            <a href="{% url 'view_cart' %}" class="btn light-theme-color prev-btn px-0 rounded-0 btn-lg py-1"> View Cart</a>
+            <a href="{% url 'checkout' %}" class="btn red-theme-color prev-btn rounded-0 btn-lg px-0 py-1">
+                <span class=>Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock fa-sm"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+
+    {% else %}
+    <h3 class ="text-center">Your cart is currently empty.</h3>
+    {% endif %}
+
+</div>

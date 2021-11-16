@@ -296,12 +296,26 @@ form{
 #cart-prev{
     z-index: 999;
     position: absolute;
-    top: 5vh;
+    top: 4.8vh;
     right: 0;
-    height: 400px;
-    width: 300px;
+    height: fit-content;
+    overflow-x: hidden;
+    width: 400px;
     background-color: white;
     border:0.5px solid black;
+}
+.items-prev{
+    height: fit-content;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+.prev-btn{
+    height:40px;
+    width:190px
+}
+
+.no-bg:focus{
+    border:none;
 }
 
 /* Toasts */
