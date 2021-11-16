@@ -292,6 +292,18 @@ form{
     display:inline;
 }
 
+/* cart preview */
+#cart-prev{
+    z-index: 999;
+    position: absolute;
+    top: 5vh;
+    right: 0;
+    height: 400px;
+    width: 300px;
+    background-color: white;
+    border:0.5px solid black;
+}
+
 /* Toasts */
 
 .overlay{

@@ -97,11 +97,11 @@
                         </div>
                     </li>
                     <li class="list-inline-item p-0">
-                        <a class="nav-link text-black p-0" href="{% url 'view_cart' %}">
                             <div class="text-center">
+                                <button type="button" class="no-bg border-0 nav-link text-black p-0" onclick="cartPrev()">
                                 <i class="fas fa-shopping-cart  fa-lg p-2 pr-3"></i>
                             </div>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -125,6 +125,18 @@
             </nav>
         </div>
     </header>
+
+    <div id="cart-prev" class="d-none">
+        <div class="close-right"><button type="button" class="closebtn no-bg border-0 m-1" onclick="closePrev()"><i class="fas fa-times fa-lg"></i></button></div>
+        <div class="row mt-0 pt-0">
+            <div class="col-12">
+                <h5 class="logo-font text-center ">Cart Preview</h5>
+                <hr class="mt-0 mx-2">
+            </div>
+        </div>
+        <a href="{% url 'view_cart' %}"> View Cart</a>
+
+    </div>
 
     {% if messages %}
     <div class="toasts-container d-flex justify-content-center align-items-center">
@@ -160,6 +172,12 @@
             document.getElementById("sidenav_underlay").classList.remove('d-none');
             document.getElementById("side-nav").classList.add('sidenav-open');
             document.getElementById("main").style.marginLeft = "200px";
+        }
+        function cartPrev(){
+            document.getElementById("cart-prev").classList.remove('d-none');
+        }
+        function closePrev(){
+            document.getElementById("cart-prev").classList.add('d-none');
         }
 
     </script>
