@@ -47,6 +47,9 @@
             <a class="nav-link text-black p-0" href="{% url 'view_cart' %}">
                 <div class="text-center">
                     <i class="fas fa-shopping-cart  fa-lg p-2"></i>
+                    {% if cart_items %}
+                    <span class="badge badge-pill badge-info text-center text-black">{{ count }}</span>
+                    {% endif %}
                 </div>
             </a>
         </li>

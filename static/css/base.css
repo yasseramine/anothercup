@@ -313,6 +313,19 @@ form{
     height:40px;
     width:190px
 }
+.badge{
+    z-index: 998;
+    position: absolute;
+    top: 0.2vh;
+    right: 0.5vw;
+    font-size:83%;
+}
+@media(max-width: 768px){
+    .badge{
+        font-size: 70%;
+    }
+}
+
 
 .no-bg:focus{
     border:none;
