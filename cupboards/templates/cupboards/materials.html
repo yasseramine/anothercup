@@ -32,24 +32,13 @@
 
                 <div class="col-6 col-md-5 text-center">
                     <a href="{% url 'edit_material' material.id %}"
-                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Edit</strong></a>
-                    <button class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1" type="button"
-                        onclick="cfmDelMaterial({{material.id}})"><strong>Delete</strong></button>
+                        class="btn light-theme-color rounded-0 material-btn my-2 border-black px-1"><strong>Edit</strong></a>
+                        <button onclick="clickHandler(event)" data-id="{{material.id}}" class="btn light-theme-color rounded-0 material-btn mb-0 border-black px-0" type="button"><strong>Delete</strong></button>
                 </div>
             </div>
-            <!-- confirm delete -->
+ 
         {% include 'cupboards/includes/confirm_delete_material.html' %}
-        <script>
-            function cfmDelMaterial(id){
-                document.getElementById("cfmDel{{id}}").classList.remove('d-none');
-                document.getElementById("cfmDel{{id}}").classList.add('d-flex');
-            }
         
-            function closeCfmDelMaterial(id) {
-                document.getElementById("cfmDel{{id}}").classList.remove('d-flex');
-                document.getElementById("cfmDel{{id}}").classList.add('d-none');
-            }
-        </script>
             {% endfor %}
             <hr class="d-md-none">
         </div>
@@ -69,3 +58,24 @@
     </div>
 </div>
 {% endblock%}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    function clickHandler(event){
+        const clickedButton = event.target.parentNode;
+        let id = clickedButton.getAttribute("data-id");
+        
+        cfmDelDesign(id)
+    }
+    function cfmDelDesign(id){
+        document.getElementById("cfmDel" + id).classList.remove('d-none');
+        document.getElementById("cfmDel" + id).classList.add('d-flex');
+    }
+
+    function closeCfmDelDesign(id) {
+        document.getElementById("cfmDel" + id).classList.remove('d-flex');
+        document.getElementById("cfmDel" + id).classList.add('d-none');
+    }
+</script>
+{% endblock %}

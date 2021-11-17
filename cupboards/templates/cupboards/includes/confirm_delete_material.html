@@ -1,20 +1,19 @@
-<div class="confirm-container d-none justify-content-center align-items-center" id="cfmDel{{material.id}}" >
+<div class="confirm-container d-none justify-content-center align-items-center" id="cfmDel{{material.id}}">
     <div class="toast rounded-0 border-top-0 confirm" data-autohide="false">
-      <div class="confirm-overlay"></div>
-      <div class="toast-header toast-warning darken-1">
-          <strong class="mr-auto">Warning!</strong>
-  
-      </div>
-      <div class="toast-body toast-warning text-center">
-          <p>Are you sure you want to delete the material "{{material.display_name | lower}}"?</p>
-          <a href="{% url 'delete_material' material.id %}" class="">
-              <button class="confirm-del-btn border-0 btn light-theme-color rounded-0  mb-0 text-center"
-                  type="button" onclick="closeCfmDelMaterial()"><strong>Confirm Delete</strong></button></a>
-  
-          <button type="button" class="confirm-del-btn border-0 btn light-theme-color rounded-0  mb-0 text-center"
-              onclick="closeCfmDelMaterial()" aria-label="Close">
-              <span aria-hidden="true"><strong>Cancel</strong></span>
-          </button>
-      </div>
-  </div>
-  </div>
+        <div class="confirm-overlay"></div>
+        <div class="toast-header toast-warning darken-1 rounded-0">
+            <strong class="mr-auto">Warning!</strong>
+        </div>
+        <div class="toast-body toast-warning text-center">
+            <p>Are you sure you want to delete the material "{{material.display_name | lower}}"?</p>
+            <a href="{% url 'delete_material' material.id %}"
+                class="confirm-del-btn border-0 btn light-theme-color rounded-0  mb-0 text-center" type="button"
+                onclick="closeCfmDelDesign({{material.id}});"><strong>Confirm Delete</strong></a>
+
+                <button type="button" class="confirm-del-btn border-0 btn light-theme-color rounded-0  mb-0 text-center"
+                onclick="closeCfmDelDesign({{material.id}});" aria-label="Close">
+                <span aria-hidden="true"><strong>Cancel</strong></span>
+            </button>
+        </div>
+    </div>
+</div>
