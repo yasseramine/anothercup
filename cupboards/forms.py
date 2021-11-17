@@ -38,8 +38,4 @@ class MaterialForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
 
-# Add images
-# class ImageForm(forms.ModelForm):
 
-#     class Meta:
-#         model = Image

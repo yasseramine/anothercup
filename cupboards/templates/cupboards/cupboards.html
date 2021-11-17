@@ -97,12 +97,13 @@
                 <p class="pl-md-3"><strong>Select this {{cupboard.type.friendly_name | lower}} design and enter your
                         required dimensions on the next
                         page to receive a quote.</strong></p>
+                        
                 {% if request.user.is_superuser %}
                 <p class="text-center mx-0 d-block">
                     <a href="{% url 'edit_design' cupboard.id %}"
                         class="btn light-theme-color rounded-0 cupboard-cancel-btn  mb-0"><strong>Edit</strong></a>
-                    <button class="btn light-theme-color rounded-0 cupboard-cancel-btn mb-0 border-0" type="button"
-                        onclick="cfmDelDesign()"><strong>Delete</strong></button>
+                        
+                        <button onclick="clickHandler(event)" data-id="{{cupboard.id}}" class="btn light-theme-color rounded-0 cupboard-cancel-btn mb-0 border-0" type="button"><strong>Delete</strong></button>
                 </p>
                 {% endif %}
             </div>
@@ -112,20 +113,10 @@
         </div>
         <!-- confirm delete -->
         {% include 'cupboards/includes/confirm_delete_design.html' %}
-        <script>
-            function cfmDelDesign(){
-                document.getElementById("cfmDel{{cupboard.id}}").classList.remove('d-none');
-                document.getElementById("cfmDel{{cupboard.id}}").classList.add('d-flex');
-            }
-        
-            function closeCfmDelDesign() {
-                document.getElementById("cfmDel{{cupboard.id}}").classList.remove('d-flex');
-                document.getElementById("cfmDel{{cupboard.id}}").classList.add('d-none');
-            }
-        </script>
+ 
 
         {% endfor %}
-        <div class="col-12 pt-1 pt-md-2 mb-5 text-center">
+        <div class="col-12 mb-3 text-center">
             <a href="" class="text-black btt-link">
                 <h5>Back to top</h5>
             </a>
@@ -165,6 +156,23 @@
             window.location.replace(currentUrl);
         }
     })
+</script>
+<script>
+    function clickHandler(event){
+        const clickedButton = event.target.parentNode;
+        let id = clickedButton.getAttribute("data-id");
+        
+        cfmDelDesign(id)
+    }
+    function cfmDelDesign(id){
+        document.getElementById("cfmDel" + id).classList.remove('d-none');
+        document.getElementById("cfmDel" + id).classList.add('d-flex');
+    }
+
+    function closeCfmDelDesign(id) {
+        document.getElementById("cfmDel" + id).classList.remove('d-flex');
+        document.getElementById("cfmDel" + id).classList.add('d-none');
+    }
 </script>
 
 {% endblock %}

@@ -250,7 +250,7 @@ def add_design(request):
         if form.is_valid():
             cupboard = form.save()
             messages.success(request, 'Design successfully added.')
-            return redirect(reverse('cupboard.details', args=[cupboard.id]))
+            return redirect(reverse('cupboard_details', args=[cupboard.id]))
         else:
             messages.error(request, 'Failed to add design. Please ensure the form is valid.')
     else:
@@ -310,7 +310,7 @@ def edit_design(request, cupboard_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Design successfully updated.')
-            return redirect(reverse('cupboard.details', args=[cupboard.id]))
+            return redirect(reverse('cupboard_details', args=[cupboard.id]))
         else:
             messages.error(request, 'Failed to update design. Please ensure the form is valid.')
     else:
@@ -360,7 +360,7 @@ def delete_design(request, cupboard_id):
 
     cupboard = get_object_or_404(Cupboard, pk=cupboard_id)
     cupboard.delete()
-    messages.success(request, 'Design deleted.')
+    messages.success(request, f'{cupboard.name} deleted.')
     return redirect(reverse('cupboards'))
 
 
@@ -373,7 +373,7 @@ def delete_material(request, material_id):
         
     material = get_object_or_404(Material, pk=material_id)
     material.delete()
-    messages.success(request, 'Material deleted.')
+    messages.success(request, f'{material.display_name} deleted.')
 
     return redirect(reverse('materials'))
 
