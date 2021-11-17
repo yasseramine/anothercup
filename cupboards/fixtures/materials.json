@@ -3,7 +3,6 @@
         "pk": 1,
         "model": "cupboards.material",
         "fields": {
-            "material_code": "pin",
             "name": "solid_pine",
             "display_name": "Solid Pine",
             "price_per_m2": 13.99
@@ -13,7 +12,6 @@
         "pk": 2,
         "model": "cupboards.material",
         "fields": {
-            "material_code": "oak",
             "name": "solid_oak",
             "display_name": "Solid Oak",
             "price_per_m2": 23.99
@@ -23,7 +21,6 @@
         "pk": 3,
         "model": "cupboards.material",
         "fields": {
-            "material_code": "mel",
             "name": "melamine_mdf",
             "display_name": "Melamine faced MDF",
             "price_per_m2": 3.99
@@ -33,7 +30,6 @@
         "pk": 4,
         "model": "cupboards.material",
         "fields": {
-            "material_code": "bvn",
             "name": "beech_mdf",
             "display_name": "Beech Veneered MDF",
             "price_per_m2": 8.99
@@ -43,7 +39,6 @@
         "pk": 5,
         "model": "cupboards.material",
         "fields": {
-            "material_code": "wvn",
             "name": "walnut_mdf",
             "display_name": "Walnut Veneered MDF",
             "price_per_m2": 8.99
@@ -53,7 +48,6 @@
         "pk": 6,
         "model": "cupboards.material",
         "fields": {
-            "material_code": "ovn",
             "name": "oak_mdf",
             "display_name": "Oak Veneered MDF",
             "price_per_m2": 8.99

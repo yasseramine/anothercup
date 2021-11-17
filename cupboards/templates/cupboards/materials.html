@@ -33,11 +33,23 @@
                 <div class="col-6 col-md-5 text-center">
                     <a href="{% url 'edit_material' material.id %}"
                         class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Edit</strong></a>
-                    <a href="{% url 'delete_material' material.id %}"
-                        class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1"><strong>Delete</strong></a>
+                    <button class="btn light-theme-color rounded-0 material-btn my-2 small border-black px-1" type="button"
+                        onclick="cfmDelMaterial()"><strong>Delete</strong></button>
                 </div>
-
             </div>
+            <!-- confirm delete -->
+        {% include 'cupboards/includes/confirm_delete_material.html' %}
+        <script>
+            function cfmDelMaterial(){
+                document.getElementById("cfmDel{{material.id}}").classList.remove('d-none');
+                document.getElementById("cfmDel{{material.id}}").classList.add('d-flex');
+            }
+        
+            function closeCfmDelMaterial() {
+                document.getElementById("cfmDel{{material.id}}").classList.remove('d-flex');
+                document.getElementById("cfmDel{{material.id}}").classList.add('d-none');
+            }
+        </script>
             {% endfor %}
             <hr class="d-md-none">
         </div>
