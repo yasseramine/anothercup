@@ -215,16 +215,28 @@ body{
     position:fixed;
     height:100%;
     width:100%;
-    z-index:2;
+    /* z-index:3; */
+    z-index: 3 !important;
+    align-items: center !important;
 }
 .confirm{
     position:fixed;
-    margin-left: calc(50%-150px);
     margin-top: 0;
-    margin-bottom: auto;
+    z-index:99;
+    top:30%;
 }
 .confirm-del-btn{
     width:9rem !important;
+}
+
+.confirm-overlay{
+    height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+    z-index: -1;
+	background: rgba(148, 143, 140, 0.664);
 }
 
 /* Cupboard details page */
