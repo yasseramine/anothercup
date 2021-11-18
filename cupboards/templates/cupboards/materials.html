@@ -30,7 +30,7 @@
                 <div class="col-4 col-md-5 mt-2 pl-1 pl-md-5">{{material.display_name}}</div>
                 <div class="col-2 mt-3 ">{{material.price_per_m2}}</div>
 
-                <div class="col-6 col-md-5 text-center">
+                <div class="col-6 col-md-5 text-right">
                     <a href="{% url 'edit_material' material.id %}"
                         class="btn light-theme-color rounded-0 material-btn my-2 border-black px-1"><strong>Edit</strong></a>
                         <button onclick="clickHandler(event)" data-id="{{material.id}}" class="btn light-theme-color rounded-0 material-btn mb-0 border-black px-0" type="button"><strong>Delete</strong></button>
@@ -48,9 +48,9 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-center my-4 pt-3">
-                    <button class="btn red-theme-color rounded-0 font-weight-bold" type="submit">Add
+                    <button class="btn red-theme-color rounded-0 font-weight-bold my-1" type="submit">Add
                         Material</button>
-                    <a class="btn light-theme-color cancel-btn rounded-0 font-weight-bold border-black"
+                    <a class="btn light-theme-color cancel-btn rounded-0 font-weight-bold border-black my-1"
                         href="{%url 'cupboards'%}">Cancel</a>
                 </div>
             </form>

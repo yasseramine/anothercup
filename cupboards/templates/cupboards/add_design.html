@@ -30,9 +30,9 @@
                             {{ field }}
                         {% endif %}
                     {% endfor %}
-                    <div class="text-center mt-1 mb-4">
-                        <button class="btn red-theme-color rounded-0 font-weight-bold" type="submit">Add Design</button>
-                        <a class="btn light-theme-color rounded-0 font-weight-bold cancel-btn" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
+                    <div class="text-center mt-1 mb-3">
+                        <button class="btn red-theme-color rounded-0 font-weight-bold my-1" type="submit">Add Design</button>
+                        <a class="btn light-theme-color rounded-0 font-weight-bold cancel-btn my-1" href="{%url 'cupboards'%}?type=cupboard,shelving">Cancel</a>
                     </div>
                 </form>
             </div>            
@@ -51,4 +51,5 @@
             $('#filename').text(`Image will be set to: ${file.name}`);
         });
     </script>
+
 {% endblock %}

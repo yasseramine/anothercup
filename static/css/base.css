@@ -370,7 +370,7 @@ form{
 /* Toasts */
 
 .overlay{
-    height: 100%;
+    height: 100vh;
 	width: 100%;
 	top: 0;
 	left: 0;
@@ -426,6 +426,9 @@ form{
 
 
 /* Allauth formatting */
+/* .grey-bg{
+    background-color:rgba(148, 143, 140, 0.664); ;
+} */
 
 .hover-white{
     height:40px;
@@ -507,14 +510,21 @@ form{
     border-radius: 0;
 }
 /* footer */
-/* .footer{
+.footer{
+    position:relalive;
     bottom:0 !important;
     width:100%;
     height:fit-content;
-    vertical-align: baseline;
+  
+}
+body{
+    height: 100vh;
+}
+section{
+    min-height: calc(100% - 275px);
+    width: 100vw;
 }
 
 .stripe-seal{
-    background: url('/media/stripe-icon.png') no-repeat center center fixed;
-    height: 100%
-} */
+    height: 100%;
+}

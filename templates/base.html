@@ -56,7 +56,7 @@
                                 <i class="fas fa-search fa-lg p-2"></i>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="search">
+                        <div class="dropdown-menu border-0 w-100 p-3 ml-0 mt-1 rounded-0 my-0" aria-labelledby="search">
                             <form class="form" method="GET" action="{% url 'cupboards' %}">
                                 <div class="input-group  mob-srch-grp w-100">
                                     <input
@@ -109,8 +109,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-12 pt-1 light-theme-color text-center">
-                <a href="{% url 'home' %}" class="nav-link pt-0 text-center">
+            <div class="col-12 pt-1 light-theme-color text-center px-0">
+                <a href="{% url 'home' %}" class="nav-link pt-0 text-center px-0">
                     <h2 class="logo-font logo-small text-black my-0 pt-2 pb-0">Custom Cupboards</h2>
                 </a>
             </div>
@@ -150,43 +150,48 @@
         {% endfor %}
     </div>
     {% endif %}
-
+<section>
     {% block page_header %}
     {% endblock %}
 
     {% block content %}
     {% endblock %}
-    <!-- <footer>
+</section>
+    <footer>
         <div class="footer light-theme-color">
-            <div class="row">
-                <div class="col-12 mx-0 call red-theme-color text-center">
+            <div class="row mx-0">
+                <div class="col-12 mx-0 p-0 call red-theme-color text-center">
                     <h4 class="text-white my-1">CALL US ON: 0800 000 000</h4>
                 </div>
-                    <div class="col-6 text-left">
-                    <h5>CUSTOM CUPBOARDS</h5>
-                    <a href=""><p></p></a>
-                    <a href=""><p></p></a>
-                    <a href=""><p></p></a>
+                    <div class="col-12 text-center col-md-5 offset-md-1 text-md-left pt-1">
+                    <h5>Custom Cupboards</h5>
+                    <a href=""><p class="mb-1 text-black">Designs</p></a>
+                    <a href=""><p class="mb-1 text-black ">Pricing</p></a>
+                    <a href=""><p class="mb-1 text-black">Postage</p></a>
 
                     </div>
+                    
                
-                <div class="col-6 text-right">
+                <div class="col-12 text-center col-md-5 pt-md-1 text-md-right">
                     <h5>Contact Us</h5>
-                    <a href=""><p></p></a>
-                    <a href=""><p></p></a>
-                    <a href=""><p></p></a>
+                    <p class="mb-1">contact@customcupboards.co.uk</p>
+                    <p class="my-0">The Workshop</p>
+                    <p class="my-0">A Nice Place</p>
+                    <p class="mb-1">England</p>
+                    <p class="my-0">0800 000 000</p>
                 </div>
-           
-                <div class="col-12 text-center d-block">
-                    <p class="mb-0 mt-1">&copy Custom Cupboards 2021</p>
-                    <p>Website by: Juliet Simpson</p>
-                    <div class="stripe-seal col-4 offset-4 col-md-2 offset-md-2"></div>
-
+                <div class="col-12 text-center col-md-5 text-md-right offset-md-1">
+                    <p class="mb-0 mt-0">&copy Custom Cupboards 2021</p>
+                    <p class="mb-0">Website by: Juliet Simpson</p>
                 </div>
+                
+                    <div class="stripe-seal col-6 offset-3 col-sm-4 offset-sm-4 col-md-3 col-lg-2 offset-md-0 text-center mb-2 text-md-right">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}stripe-badge-white.png" alt="stripe-seal">
+                    </div>
             </div>
 
         </div>
-    </footer> -->
+    </footer>
 
     {% block postloadjs %}
     <script type="text/javascript">
