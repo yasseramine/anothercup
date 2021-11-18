@@ -40,8 +40,6 @@
 
     {% block extra_js %}
     {% endblock %}
-
-    <title>Custom Cupboards{% block extra_title %}{% endblock %}</title>
 </head>
 
 <body id="main">
@@ -130,9 +128,7 @@
         </div>
         {% include 'includes/cart-prev.html' %}
     </header>
-
-
-
+    <section>
     {% if messages %}
     <div class="toasts-container d-flex justify-content-center align-items-center">
         {% for message in messages %}
@@ -150,10 +146,10 @@
         {% endfor %}
     </div>
     {% endif %}
-<section>
+
     {% block page_header %}
     {% endblock %}
-
+   
     {% block content %}
     {% endblock %}
 </section>

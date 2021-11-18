@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-<div class="container-fluid header-container">
-</div>
-{% endblock %}
-
 {% block content %}
 <div class="container-fluid">
     <div class="row">
@@ -25,7 +20,7 @@
                 <p class="pl-md-3 mb-2 ml-4 mr-4 m-md-0">{{cupboard.description}}</p>
                 <h6 class="pl-md-3 mb-1">Example price: £{{cupboard.example_price}}</h6>
                 <p class="pl-md-3 mb-1 example small">(for cupboard with dimensions:</p>
-                <p class="pl-md-3 mb-1 small">H: 1500mm / W: 1000mm / D: 500mm and 3 shelves.)</p>
+                <p class="pl-md-3 mb-1 small">H: 1500mm / W: 1000mm / D: 500mm and 3 shelves.</p>
             </div>
             <div class="card border-0 m-3 mr-4 mt-4 p-md-3 pb-3 ml-md-0 pl-lg-0 pr-lg-0 red-theme-color">
                 

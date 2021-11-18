@@ -1,16 +1,61 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col">
-                <h2 class="font-weight-bold text-center">Quality hand crafted cupboards and shelving units made to measure.</h2>
+{% block content %}
+
+<div class="container-fluid home-content">
+    <div class="row home-row">
+        <div class="col-12 spacer"></div>
+        <div class="col-12 spacer"></div>
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <div class="card home-card p-3">
+                <h2 class="text-center mx-5 font-weight-light d-block d-md-none">Quality hand crafted cupboards and
+                    shelving units made to
+                    measure.</h2>
+                <h1 class="text-center mx-5 font-weight-light d-none d-md-block">Quality hand crafted cupboards and
+                    shelving units made to
+                    measure.</h1>
+                <div class="col-12 spacer"></div>
+                    <h4 class="text-center mb-0 d-none d-md-block">Choose from our range of stunning designs and enter
+                        your required dimensions to receive an instant online quote...</h4>
+                    <h5 class="text-center mb-0 d-block d-md-none">Choose from our range of stunning designs then enter
+                        your required dimensions and
+                        shelves to get an instant online quote!</h5>   
             </div>
         </div>
-    </div>
-{% endblock %}
+            <div class="col-12 spacer"></div>
+            <div class="col-12 spacer"></div>
+            <div class="col-12">
+                <p class="text-center mb-0 mt-2">
+                    <a class="btn btn-lg details-btn red-theme-color" href="{% url 'cupboards' %}"><strong>VIEW OUR
+                            DESIGNS</strong></a>
+                </p>
+            </div>
+            <div class="col-12 spacer"></div>
+            <div class="col-12 spacer"></div>
+        </div>
+        <div class="card home-card py-1">
+        <div class="row mx-3 py-0 font-weight-bold">
 
-{% block content %}
-<h5 class="text-center">Select your chosen design from our range of stunning options then enter your required dimensions and shelf or rail requirements to get an instant online quote!</h5>
-{% endblock%}
+            <div class="offset-3 offset-sm-0 col-sm-6 col-md-3 text-left">
+                <p class="large"><i class="far fa-check-circle mr-2"></iaria-hidden="true"></i><span class="sr-only">Check</span>Buy
+                    Online</p>
+            </div>
+            <div class="offset-3 offset-sm-0 col-6 col-md-3 text-left">
+                <p class="large"><i class="far fa-check-circle mr-2"></iaria-hidden="true"></i><span
+                        class="sr-only">Check</span>Secure Checkout</p>
+            </div>
+            <div class="offset-3 offset-sm-0 col-6 col-md-3 text-left">
+                <p class="large"><i class="far fa-check-circle mr-2"></iaria-hidden="true"></i><span
+                        class="sr-only">Check</span>Guaranteed</p>
+            </div>
+            <div class="offset-3 offset-sm-0 col-6 col-md-3 text-left text-sm-left p-md-0">
+                <p class="large"> <i class="far fa-check-circle mr-2"></iaria-hidden="true"></i><span
+                        class="sr-only">Check</span>Handcrafted in the UK</p>
+            </div>
+        </div>
+        </div>
+        <div class="col-12 spacer"></div>
+        <div class="col-12 spacer"></div>
+    </div>
+    {% endblock%}
