@@ -183,6 +183,9 @@ body{
 .home-card{
     background-color: rgba(255, 255, 255, 0.664);
 }
+.check-card{
+    background-color: rgba(252, 221, 136, 0.397);
+}
 .large{
     font-size: 100%;
     margin:0;
@@ -416,7 +419,7 @@ form{
 
 /* Toasts */
 
-.overlay{
+.toast-overlay{
     height: 100vh;
 	width: 100%;
 	top: 0;
@@ -504,6 +507,15 @@ form{
 
 .allauth-form-inner-content input::placeholder {
     color: #aab7c4;
+}
+.overlay{
+    height: 100vh;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+    z-index: -4;
+	background: rgba(148, 143, 140, 0.664);
 }
 
 /* Product management */
