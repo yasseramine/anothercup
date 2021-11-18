@@ -5,8 +5,8 @@
                 About Us
             </a>
             <div class="dropdown-menu border-0 pt-0" aria-labelledby="about-link">
-                <a href="#" class="dropdown-item pl-2">What we do</a> 
-                <a href="#" class="dropdown-item pl-2">Contact</a>   
+                <a href="{% url 'about' %}" class="dropdown-item pl-2">What we do</a> 
+                <a href="{% url 'contact' %}" class="dropdown-item pl-2">Contact</a>   
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -26,10 +26,10 @@
                 Info
             </a>
             <div class="dropdown-menu border-0 pb-0 pt-0" aria-labelledby="info-link">
-                <a href="#" class="dropdown-item pl-2">Pricing</a>
-                <a href="#" class="dropdown-item pl-2">Delivery</a>
-                <a href="#" class="dropdown-item pl-2">Assembly</a>
-                <a href="#" class="dropdown-item pl-2">Returns</a>
+                <a href="{%url 'pricing'%}" class="dropdown-item pl-2">Pricing</a>
+                <a href="{%url 'delivery'%}" class="dropdown-item pl-2">Delivery</a>
+                <a href="{%url 'assembly'%}" class="dropdown-item pl-2">Assembly</a>
+                <a href="{%url 'returns'%}" class="dropdown-item pl-2">Returns</a>
             </div>
         </li>
         {% if request.user.is_superuser %}

@@ -45,13 +45,13 @@
 <body id="main">
     <header class="container-fluid back">
         <div id="topnav" class="row red-theme-color pt-md-1 d-none d-md-flex">
-            <div class="col-9 col-lg-6 pb-1 d-flex">
+            <div class="col-9 col-lg-6 pl-0 pb-1 d-flex">
                 <ul class="pl-0 list-inline list-unstyled text-left my-auto my-0">
                     <li class="list-inline-item p-0">
                         <a class="text-black nav-link my-auto p-0" href="#" id="mobile-search" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
-                                <i class="fas fa-search fa-lg p-2"></i>
+                                <i class="fas fa-search fa-lg p-2 pl-5"></i>
                             </div>
                         </a>
                         <div class="dropdown-menu border-0 w-100 p-3 ml-0 mt-1 rounded-0 my-0" aria-labelledby="search">
@@ -159,11 +159,11 @@
                 <div class="col-12 mx-0 p-0 call red-theme-color text-center">
                     <h4 class="text-white my-1">CALL US ON: 0800 000 000</h4>
                 </div>
-                    <div class="col-12 text-center col-md-5 offset-md-1 text-md-left pt-1">
+                    <div class="col-12 text-center col-md-5 offset-md-1 text-md-left pt-1 ">
                     <h5>Custom Cupboards</h5>
-                    <a href=""><p class="mb-1 text-black">Designs</p></a>
-                    <a href=""><p class="mb-1 text-black ">Pricing</p></a>
-                    <a href=""><p class="mb-1 text-black">Postage</p></a>
+                    <a href="{% url 'cupboards' %}"><p class="mb-1 text-black">Designs</p></a>
+                    <a href="{% url 'delivery' %}"><p class="mb-1 text-black ">Delivery</p></a>
+                    <a href="{% url 'returns' %}"><p class="mb-1 text-black">Returns</p></a>
 
                     </div>
                     
